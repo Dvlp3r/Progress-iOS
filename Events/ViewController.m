@@ -25,17 +25,15 @@ NSMutableArray* imagesforKIImagePager;
 @end
 
 @implementation ViewController
-@synthesize scrollView;
-
 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     NSLog(@"View didLoad called");
-    [_labelTextShow setNumberOfLines:0];
-    
-    [_labelTextShow setLineBreakMode:NSLineBreakByWordWrapping];
-    [_labelTextShow sizeToFit];
+//    [_labelTextShow setNumberOfLines:0];
+//    
+//    [_labelTextShow setLineBreakMode:NSLineBreakByWordWrapping];
+//    [_labelTextShow sizeToFit];
     
     _ImagePager.slideshowTimeInterval = 5.5f;
     _ImagePager.slideshowShouldCallScrollToDelegate = YES;
@@ -44,7 +42,7 @@ NSMutableArray* imagesforKIImagePager;
         _ImagePager.pageControl.pageIndicatorTintColor = [UIColor whiteColor];
     });
     _ImagePager.imageCounterDisabled =YES;
-    
+    _ImagePager.bounces = NO;
     _ImagePager.delegate =self;
     _ImagePager.dataSource = self;
 
@@ -56,8 +54,8 @@ NSMutableArray* imagesforKIImagePager;
     NSLog(@"arrayWithImages called");
     imagesforKIImagePager = [[NSMutableArray alloc]init];
     [imagesforKIImagePager addObject:[UIImage imageNamed:@"splash_bg.png"]];
-    [imagesforKIImagePager addObject:[UIImage imageNamed:@"Stone.png"]];
     [imagesforKIImagePager addObject:[UIImage imageNamed:@"eventfirst.png"]];
+    [imagesforKIImagePager addObject:[UIImage imageNamed:@"Stone.png"]];
     
     return imagesforKIImagePager;
 }
@@ -70,6 +68,26 @@ NSMutableArray* imagesforKIImagePager;
 
 -(void)imagePager:(KIImagePager *)imagePager didScrollToIndex:(NSUInteger)index
 {
+    NSLog(@"%lu",(unsigned long)index);
+
+    if (index == 0) {
+        _screen1Title.hidden = NO;
+        _screen1Detail.hidden = NO;
+        _screen2Detail.hidden = YES;
+        _screen3Detail.hidden = YES;
+    }
+    else if (index == 1) {
+        _screen1Title.hidden = YES;
+        _screen1Detail.hidden = YES;
+        _screen2Detail.hidden = NO;
+        _screen3Detail.hidden = YES;
+    }
+    else if (index == 2) {
+        _screen1Title.hidden = YES;
+        _screen1Detail.hidden = YES;
+        _screen2Detail.hidden = YES;
+        _screen3Detail.hidden = NO;
+    }
     
 }
 

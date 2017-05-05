@@ -16,4 +16,7 @@
 
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *indicatorLogin;
 
+
+@property (weak, nonatomic) IBOutlet UIView *vwCredentials;
+
 @end

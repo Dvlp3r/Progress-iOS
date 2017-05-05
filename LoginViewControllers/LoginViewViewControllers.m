@@ -46,7 +46,10 @@
     [self.view addGestureRecognizer:tap];
     
     
-    
+    _vwCredentials.layer.shadowColor = [UIColor whiteColor].CGColor;
+    _vwCredentials.layer.shadowOpacity = 1;
+    _vwCredentials.layer.shadowOffset = CGSizeZero;
+    _vwCredentials.layer.shadowRadius = 10;
     
 }
 

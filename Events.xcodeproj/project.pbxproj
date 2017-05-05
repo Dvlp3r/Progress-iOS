@@ -28,6 +28,7 @@
 		1813759D1EBC839700E9DF44 /* ICETutorialController.m in Sources */ = {isa = PBXBuildFile; fileRef = 181375981EBC839700E9DF44 /* ICETutorialController.m */; };
 		1813759E1EBC839700E9DF44 /* ICETutorialPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 1813759A1EBC839700E9DF44 /* ICETutorialPage.m */; };
 		1813759F1EBC839700E9DF44 /* ICETutorialStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 1813759C1EBC839700E9DF44 /* ICETutorialStyle.m */; };
+		184329611EBCF9020031DBC8 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 184329601EBCF9020031DBC8 /* StoreKit.framework */; };
 		1862BCC21EBC993B004A1E19 /* KICamera.png in Resources */ = {isa = PBXBuildFile; fileRef = 1862BCBE1EBC993B004A1E19 /* KICamera.png */; };
 		1862BCC31EBC993B004A1E19 /* KICamera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1862BCBF1EBC993B004A1E19 /* KICamera@2x.png */; };
 		1862BCC41EBC993B004A1E19 /* KIImagePager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1862BCC11EBC993B004A1E19 /* KIImagePager.m */; };
@@ -183,6 +184,7 @@
 		1813759A1EBC839700E9DF44 /* ICETutorialPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICETutorialPage.m; sourceTree = "<group>"; };
 		1813759B1EBC839700E9DF44 /* ICETutorialStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICETutorialStyle.h; sourceTree = "<group>"; };
 		1813759C1EBC839700E9DF44 /* ICETutorialStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICETutorialStyle.m; sourceTree = "<group>"; };
+		184329601EBCF9020031DBC8 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		1862BCBE1EBC993B004A1E19 /* KICamera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = KICamera.png; sourceTree = "<group>"; };
 		1862BCBF1EBC993B004A1E19 /* KICamera@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "KICamera@2x.png"; sourceTree = "<group>"; };
 		1862BCC01EBC993B004A1E19 /* KIImagePager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KIImagePager.h; sourceTree = "<group>"; };
@@ -354,6 +356,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				184329611EBCF9020031DBC8 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -410,6 +413,14 @@
 				1813759C1EBC839700E9DF44 /* ICETutorialStyle.m */,
 			);
 			name = Pager;
+			sourceTree = "<group>";
+		};
+		1843295F1EBCF9020031DBC8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				184329601EBCF9020031DBC8 /* StoreKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		1862BCBC1EBC993B004A1E19 /* KIImagePager */ = {
@@ -700,6 +711,7 @@
 				8141B4001E40862B0079FE0C /* EventsTests */,
 				8141B40B1E40862B0079FE0C /* EventsUITests */,
 				8141B3E51E40862B0079FE0C /* Products */,
+				1843295F1EBCF9020031DBC8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -948,10 +960,13 @@
 				TargetAttributes = {
 					8141B3E31E40862B0079FE0C = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 7LRH4VL44G;
+						DevelopmentTeam = 8NL99R24EE;
 						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.ApplePay = {
+								enabled = 0;
+							};
+							com.apple.InAppPurchase = {
 								enabled = 1;
 							};
 							com.apple.Push = {
@@ -1304,17 +1319,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = Events/Events.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Chloe Berkowitz (7LRH4VL44G)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Chloe Berkowitz (7LRH4VL44G)";
-				DEVELOPMENT_TEAM = 7LRH4VL44G;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				DEVELOPMENT_TEAM = 8NL99R24EE;
 				INFOPLIST_FILE = Events/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.rv.Tech.Events;
+				PRODUCT_BUNDLE_IDENTIFIER = com.swamtech.progress;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "0c3f86b2-8f96-4ee3-948e-69e1b3f382ea";
-				PROVISIONING_PROFILE_SPECIFIER = new_Adhoc_Progress;
+				PROVISIONING_PROFILE = "5b33fcd4-8eb9-4c1f-9112-2f5f19755d0a";
+				PROVISIONING_PROFILE_SPECIFIER = "Progress Dist";
 			};
 			name = Debug;
 		};
@@ -1322,17 +1336,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = Events/Events.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Chloe Berkowitz (7LRH4VL44G)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Chloe Berkowitz (7LRH4VL44G)";
-				DEVELOPMENT_TEAM = 7LRH4VL44G;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				DEVELOPMENT_TEAM = 8NL99R24EE;
 				INFOPLIST_FILE = Events/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.rv.Tech.Events;
+				PRODUCT_BUNDLE_IDENTIFIER = com.swamtech.progress;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "0c3f86b2-8f96-4ee3-948e-69e1b3f382ea";
-				PROVISIONING_PROFILE_SPECIFIER = new_Adhoc_Progress;
+				PROVISIONING_PROFILE = "5b33fcd4-8eb9-4c1f-9112-2f5f19755d0a";
+				PROVISIONING_PROFILE_SPECIFIER = "Progress Dist";
 			};
 			name = Release;
 		};
