@@ -10,23 +10,121 @@
 #import "FirstScreenViewController.h"
 #import "DeepLinkForgetPasswordViewController.h"
 #import "LoginViewViewControllers.h"
+#import "ICETutorialPage.h"
+#import "ICETutorialStyle.h"
+#import "ICETutorialController.h"
+#import "KIImagePager.h"
 
-@interface ViewController ()
 
+
+@interface ViewController ()<ICETutorialControllerDelegate,KIImagePagerDelegate, KIImagePagerDataSource>
+{
+//ICETutorialController* tutorialController;
+NSMutableArray* imagesforKIImagePager;
+}
 @end
 
 @implementation ViewController
 @synthesize scrollView;
 
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    NSLog(@"View didLoad called");
     [_labelTextShow setNumberOfLines:0];
     
     [_labelTextShow setLineBreakMode:NSLineBreakByWordWrapping];
     [_labelTextShow sizeToFit];
+    
+    _ImagePager.slideshowTimeInterval = 5.5f;
+    _ImagePager.slideshowShouldCallScrollToDelegate = YES;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        _ImagePager.pageControl.currentPageIndicatorTintColor = [UIColor colorWithRed:(0.0/255.0) green:(230.0/255.0) blue:(215.0/255.0) alpha:1.0];
+        _ImagePager.pageControl.pageIndicatorTintColor = [UIColor whiteColor];
+    });
+    _ImagePager.imageCounterDisabled =YES;
+    
+    _ImagePager.delegate =self;
+    _ImagePager.dataSource = self;
+
+    
 }
+
+- (NSArray *) arrayWithImages:(KIImagePager*)pager
+{
+    NSLog(@"arrayWithImages called");
+    imagesforKIImagePager = [[NSMutableArray alloc]init];
+    [imagesforKIImagePager addObject:[UIImage imageNamed:@"splash_bg.png"]];
+    [imagesforKIImagePager addObject:[UIImage imageNamed:@"Stone.png"]];
+    [imagesforKIImagePager addObject:[UIImage imageNamed:@"eventfirst.png"]];
+    
+    return imagesforKIImagePager;
+}
+
+
+- (void)imagePager:(KIImagePager *)imagePager didSelectImageAtIndex:(NSUInteger)index
+{
+    
+}
+
+-(void)imagePager:(KIImagePager *)imagePager didScrollToIndex:(NSUInteger)index
+{
+    
+}
+
+
+- (UIViewContentMode) contentModeForImage:(NSUInteger)image inPager:(KIImagePager *)pager
+{
+    return UIViewContentModeScaleAspectFill;
+}
+
+
+
+
+//-(void)viewDidAppear:(BOOL)animated
+//{
+//    [super viewDidAppear:animated];
+//    
+//    
+//    ICETutorialPage *layer1 = [[ICETutorialPage alloc] initWithTitle:@""
+//                                                            subTitle:@""
+//                                                         pictureName:@"splash_bg.png"
+//                                                            duration:3.0];
+//    ICETutorialPage *layer2 = [[ICETutorialPage alloc] initWithTitle:@""
+//                                                            subTitle:@""
+//                                                         pictureName:@"Stone.png"
+//                                                            duration:3.0];
+//    ICETutorialPage *layer3 = [[ICETutorialPage alloc] initWithTitle:@""
+//                                                            subTitle:@""
+//                                                         pictureName:@"eventfirst.png"
+//                                                            duration:3.0];
+//        NSArray *tutorialLayers = @[layer1,layer2,layer3];
+//    
+//    // Set the common style for the title.
+//    ICETutorialLabelStyle *titleStyle = [[ICETutorialLabelStyle alloc] init];
+//    [titleStyle setFont:[UIFont fontWithName:@"Helvetica-Bold" size:17.0f]];
+//    [titleStyle setTextColor:[UIColor whiteColor]];
+//    [titleStyle setLinesNumber:1];
+//    [titleStyle setOffset:180];
+//    [[ICETutorialStyle sharedInstance] setTitleStyle:titleStyle];
+//    
+//    // Set the subTitles style with few properties and let the others by default.
+//    [[ICETutorialStyle sharedInstance] setSubTitleColor:[UIColor whiteColor]];
+//    [[ICETutorialStyle sharedInstance] setSubTitleOffset:150];
+//    
+//    // Init tutorial.
+//    tutorialController = [[ICETutorialController alloc] initWithPages:tutorialLayers
+//                                                              delegate:self];
+//    
+//    [self presentViewController:tutorialController animated:YES completion:^{
+//        [tutorialController startScrolling];
+//    }];
+//    // Run it.
+//    
+//    
+//    
+//}
 
 - (UIStatusBarStyle)preferredStatusBarStyle
 {
@@ -60,18 +158,22 @@
 
 -(void) viewWillAppear:(BOOL)animated{
         
-    NSString *ForgetScreen=[[NSUserDefaults standardUserDefaults]objectForKey:@"ForgetScreen"];
+//    NSString *ForgetScreen=[[NSUserDefaults standardUserDefaults]objectForKey:@"ForgetScreen"];
+//    //ForgetScreen = @"1";
+//    if ([ForgetScreen isEqualToString:@"1"]) {
+//        
+//        UIStoryboard *str=[UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//        
+//        UIViewController *obj=[str instantiateViewControllerWithIdentifier:@"DeepLinkForgetPasswordViewController"];
+//        
+//        [self.navigationController pushViewController:obj animated:true];
+//        
+//        
+//    }else{
     
-    if ([ForgetScreen isEqualToString:@"1"]) {
-        
-        UIStoryboard *str=[UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        
-        UIViewController *obj=[str instantiateViewControllerWithIdentifier:@"DeepLinkForgetPasswordViewController"];
-        
-        [self.navigationController pushViewController:obj animated:true];
         
         
-    }else{
+        
         
         
 //        [self.buttonProgress.layer setBorderWidth:2.0];
@@ -131,7 +233,7 @@
 //        _screenThree.frame = frame2;
 //        
         
-    }
+  //  }
     
     
 }
@@ -149,5 +251,24 @@
     
 }
 
+//#pragma mark - ICETutorialController delegate
+//- (void)tutorialController:(ICETutorialController *)tutorialController scrollingFromPageIndex:(NSUInteger)fromIndex toPageIndex:(NSUInteger)toIndex {
+//    NSLog(@"Scrolling from page %lu to page %lu.", (unsigned long)fromIndex, (unsigned long)toIndex);
+//}
+//
+//- (void)tutorialControllerDidReachLastPage:(ICETutorialController *)tutorialController {
+//    NSLog(@"Tutorial reached the last page.");
+//}
+//
+//- (void)tutorialController:(ICETutorialController *)tutorialController didClickOnLeftButton:(UIButton *)sender {
+//    NSLog(@"Button 1 pressed.");
+//}
+//
+//- (void)tutorialController:(ICETutorialController *)tutorialController didClickOnRightButton:(UIButton *)sender {
+//    NSLog(@"Button 2 pressed.");
+//    NSLog(@"Auto-scrolling stopped.");
+//    
+//    [tutorialController stopScrolling];
+//}
 
 @end

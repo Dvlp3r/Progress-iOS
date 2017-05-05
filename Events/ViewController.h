@@ -7,6 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ICETutorialController.h"
+#import "KIImagePager.h"
+
 
 @interface ViewController : UIViewController
 
@@ -24,6 +27,9 @@
 
 
 @property (strong, nonatomic) IBOutlet UILabel *labelTextShow;
+
+
+@property (weak, nonatomic) IBOutlet KIImagePager *ImagePager;
 
 
 
