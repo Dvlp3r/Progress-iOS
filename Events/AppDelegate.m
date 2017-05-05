@@ -17,6 +17,18 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+//    UIApplication *mySafari = [UIApplication sharedApplication];
+//    NSURL *myURL = [[NSURL alloc]initWithString:@"http://www.mydomain.com"];
+//    [mySafari openURL:myURL];
+    
+//    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+
+    
+//    [[NSUserDefaults standardUserDefaults]removeObjectForKey: @"profilepicchangeCheck"];
+//    [[NSUserDefaults standardUserDefaults]synchronize];
+
+    
     return YES;
 }
 
@@ -35,7 +47,8 @@
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
-}
+    NSLog(@"onForground");
+   }
 
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
@@ -46,6 +59,50 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+{
+    NSLog(@"Calling Application Bundle ID: %@", sourceApplication);
+    NSLog(@"URL scheme:%@", [url scheme]);
+    
+    NSString *changePasswordUrl=[NSString stringWithFormat:@"%@",url];
+    NSLog(@"%@ changePasswordUrl",changePasswordUrl);
+
+    [[NSUserDefaults standardUserDefaults]setValue:@"1" forKey:@"ForgetScreen"];
+
+    [[NSUserDefaults standardUserDefaults]setObject:changePasswordUrl forKey:@"changePasswordUrl"];
+    [[NSUserDefaults standardUserDefaults]synchronize];
+    
+    
+    
+    NSString *ForgetScreen=[[NSUserDefaults standardUserDefaults]objectForKey:@"ForgetScreen"];
+    
+    if ([ForgetScreen isEqualToString:@"1"]) {
+        
+        UIStoryboard *str=[UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        
+        Device_view = [str instantiateViewControllerWithIdentifier:@"DeepLinkForgetPasswordViewController"];
+        
+        navigationController=[[UINavigationController alloc] initWithRootViewController:Device_view];
+
+        navigationController.navigationBarHidden = YES;
+        [self.window addSubview:Device_view.view];
+        self.window.rootViewController =nil;
+        self.window.rootViewController = navigationController;
+        [self.window makeKeyAndVisible];
+        
+       // [self.navController pushViewController:obj animated:true];
+        
+//          _navController =  _window.rootViewController;
+        
+//        [self.navController pushViewController:obj animated:true];
+        
+    }
+
+    return YES;
+}
+
 
 
 @end
