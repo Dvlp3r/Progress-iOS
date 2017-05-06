@@ -10,16 +10,12 @@
 #import "FirstScreenViewController.h"
 #import "DeepLinkForgetPasswordViewController.h"
 #import "LoginViewViewControllers.h"
-#import "ICETutorialPage.h"
-#import "ICETutorialStyle.h"
-#import "ICETutorialController.h"
 #import "KIImagePager.h"
 
 
 
-@interface ViewController ()<ICETutorialControllerDelegate,KIImagePagerDelegate, KIImagePagerDataSource>
+@interface ViewController ()<KIImagePagerDelegate, KIImagePagerDataSource>
 {
-//ICETutorialController* tutorialController;
 NSMutableArray* imagesforKIImagePager;
 }
 @end

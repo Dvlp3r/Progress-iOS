@@ -25,13 +25,11 @@
 		181321B61EBC645B0079188D /* RobotoCondensed-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 181321A41EBC63B10079188D /* RobotoCondensed-Light.ttf */; };
 		181321B71EBC645B0079188D /* RobotoCondensed-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 181321A51EBC63B10079188D /* RobotoCondensed-LightItalic.ttf */; };
 		181321B81EBC645B0079188D /* RobotoCondensed-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 181321A61EBC63B10079188D /* RobotoCondensed-Regular.ttf */; };
-		1813759D1EBC839700E9DF44 /* ICETutorialController.m in Sources */ = {isa = PBXBuildFile; fileRef = 181375981EBC839700E9DF44 /* ICETutorialController.m */; };
-		1813759E1EBC839700E9DF44 /* ICETutorialPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 1813759A1EBC839700E9DF44 /* ICETutorialPage.m */; };
-		1813759F1EBC839700E9DF44 /* ICETutorialStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 1813759C1EBC839700E9DF44 /* ICETutorialStyle.m */; };
 		184329611EBCF9020031DBC8 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 184329601EBCF9020031DBC8 /* StoreKit.framework */; };
 		1862BCC21EBC993B004A1E19 /* KICamera.png in Resources */ = {isa = PBXBuildFile; fileRef = 1862BCBE1EBC993B004A1E19 /* KICamera.png */; };
 		1862BCC31EBC993B004A1E19 /* KICamera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1862BCBF1EBC993B004A1E19 /* KICamera@2x.png */; };
 		1862BCC41EBC993B004A1E19 /* KIImagePager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1862BCC11EBC993B004A1E19 /* KIImagePager.m */; };
+		18CF6F361EBDDD5700C9E47D /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 18CF6F351EBDDD5700C9E47D /* settings.png */; };
 		81019C601E657EB30046A9D4 /* login_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 81019C5E1E657EB30046A9D4 /* login_bg.png */; };
 		81019C611E657EB30046A9D4 /* splash_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 81019C5F1E657EB30046A9D4 /* splash_bg.png */; };
 		810792BE1E4EC85D00B4121F /* imageDummy.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 810792BD1E4EC85D00B4121F /* imageDummy.jpg */; };
@@ -136,7 +134,6 @@
 		81CA721B1E6596D300700A40 /* logout-512.png in Resources */ = {isa = PBXBuildFile; fileRef = 81CA721A1E6596D300700A40 /* logout-512.png */; };
 		81CA72211E659C2200700A40 /* account.png in Resources */ = {isa = PBXBuildFile; fileRef = 81CA721C1E659C2200700A40 /* account.png */; };
 		81CA72221E659C2200700A40 /* events.png in Resources */ = {isa = PBXBuildFile; fileRef = 81CA721D1E659C2200700A40 /* events.png */; };
-		81CA72231E659C2200700A40 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 81CA721E1E659C2200700A40 /* settings.png */; };
 		81CA72241E659C2200700A40 /* time.png in Resources */ = {isa = PBXBuildFile; fileRef = 81CA721F1E659C2200700A40 /* time.png */; };
 		81CA72251E659C2200700A40 /* upload.png in Resources */ = {isa = PBXBuildFile; fileRef = 81CA72201E659C2200700A40 /* upload.png */; };
 		81CA72271E659CF100700A40 /* my_events.png in Resources */ = {isa = PBXBuildFile; fileRef = 81CA72261E659CF100700A40 /* my_events.png */; };
@@ -178,17 +175,12 @@
 		181321A41EBC63B10079188D /* RobotoCondensed-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoCondensed-Light.ttf"; sourceTree = "<group>"; };
 		181321A51EBC63B10079188D /* RobotoCondensed-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoCondensed-LightItalic.ttf"; sourceTree = "<group>"; };
 		181321A61EBC63B10079188D /* RobotoCondensed-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoCondensed-Regular.ttf"; sourceTree = "<group>"; };
-		181375971EBC839700E9DF44 /* ICETutorialController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICETutorialController.h; sourceTree = "<group>"; };
-		181375981EBC839700E9DF44 /* ICETutorialController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICETutorialController.m; sourceTree = "<group>"; };
-		181375991EBC839700E9DF44 /* ICETutorialPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICETutorialPage.h; sourceTree = "<group>"; };
-		1813759A1EBC839700E9DF44 /* ICETutorialPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICETutorialPage.m; sourceTree = "<group>"; };
-		1813759B1EBC839700E9DF44 /* ICETutorialStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICETutorialStyle.h; sourceTree = "<group>"; };
-		1813759C1EBC839700E9DF44 /* ICETutorialStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICETutorialStyle.m; sourceTree = "<group>"; };
 		184329601EBCF9020031DBC8 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		1862BCBE1EBC993B004A1E19 /* KICamera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = KICamera.png; sourceTree = "<group>"; };
 		1862BCBF1EBC993B004A1E19 /* KICamera@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "KICamera@2x.png"; sourceTree = "<group>"; };
 		1862BCC01EBC993B004A1E19 /* KIImagePager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KIImagePager.h; sourceTree = "<group>"; };
 		1862BCC11EBC993B004A1E19 /* KIImagePager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KIImagePager.m; sourceTree = "<group>"; };
+		18CF6F351EBDDD5700C9E47D /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
 		81019C5E1E657EB30046A9D4 /* login_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = login_bg.png; sourceTree = "<group>"; };
 		81019C5F1E657EB30046A9D4 /* splash_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash_bg.png; sourceTree = "<group>"; };
 		810792BD1E4EC85D00B4121F /* imageDummy.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = imageDummy.jpg; sourceTree = "<group>"; };
@@ -345,7 +337,6 @@
 		81CA721A1E6596D300700A40 /* logout-512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logout-512.png"; sourceTree = "<group>"; };
 		81CA721C1E659C2200700A40 /* account.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = account.png; sourceTree = "<group>"; };
 		81CA721D1E659C2200700A40 /* events.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = events.png; sourceTree = "<group>"; };
-		81CA721E1E659C2200700A40 /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
 		81CA721F1E659C2200700A40 /* time.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = time.png; sourceTree = "<group>"; };
 		81CA72201E659C2200700A40 /* upload.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = upload.png; sourceTree = "<group>"; };
 		81CA72261E659CF100700A40 /* my_events.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = my_events.png; sourceTree = "<group>"; };
@@ -400,19 +391,6 @@
 				181321A61EBC63B10079188D /* RobotoCondensed-Regular.ttf */,
 			);
 			name = Font;
-			sourceTree = "<group>";
-		};
-		181375961EBC838800E9DF44 /* Pager */ = {
-			isa = PBXGroup;
-			children = (
-				181375971EBC839700E9DF44 /* ICETutorialController.h */,
-				181375981EBC839700E9DF44 /* ICETutorialController.m */,
-				181375991EBC839700E9DF44 /* ICETutorialPage.h */,
-				1813759A1EBC839700E9DF44 /* ICETutorialPage.m */,
-				1813759B1EBC839700E9DF44 /* ICETutorialStyle.h */,
-				1813759C1EBC839700E9DF44 /* ICETutorialStyle.m */,
-			);
-			name = Pager;
 			sourceTree = "<group>";
 		};
 		1843295F1EBCF9020031DBC8 /* Frameworks */ = {
@@ -743,7 +721,6 @@
 			isa = PBXGroup;
 			children = (
 				1862BCBC1EBC993B004A1E19 /* KIImagePager */,
-				181375961EBC838800E9DF44 /* Pager */,
 				181321941EBC63A40079188D /* Font */,
 				8141B3E81E40862B0079FE0C /* main.m */,
 			);
@@ -781,8 +758,8 @@
 				812704B51E699A48001C9AC0 /* images.png */,
 				81CA721C1E659C2200700A40 /* account.png */,
 				81CA721D1E659C2200700A40 /* events.png */,
-				81CA721E1E659C2200700A40 /* settings.png */,
 				81CA721F1E659C2200700A40 /* time.png */,
+				18CF6F351EBDDD5700C9E47D /* settings.png */,
 				81CA72261E659CF100700A40 /* my_events.png */,
 				81CA72201E659C2200700A40 /* upload.png */,
 				81019C5F1E657EB30046A9D4 /* splash_bg.png */,
@@ -1075,7 +1052,6 @@
 				811D94D11E55B4C100EA4C9E /* ApplePay.png in Resources */,
 				811A6DCB1E4D849800365966 /* background.png in Resources */,
 				810D32C01E5F1BD1009137E6 /* AttendUserTableViewCell.xib in Resources */,
-				81CA72231E659C2200700A40 /* settings.png in Resources */,
 				8141B4241E408ED50079FE0C /* special-events-hero-image.jpg in Resources */,
 				8130D3DF1E432A1700DA7995 /* firstimage.jpg in Resources */,
 				8130D3DB1E43133500DA7995 /* Log.png in Resources */,
@@ -1092,6 +1068,7 @@
 				811A6DF21E4DFA3400365966 /* penciledit.png in Resources */,
 				810792F81E4F0BFA00B4121F /* DatepickerIcon.png in Resources */,
 				81CA72221E659C2200700A40 /* events.png in Resources */,
+				18CF6F361EBDDD5700C9E47D /* settings.png in Resources */,
 				8152FF471E5310C30095FC78 /* donation.png in Resources */,
 				812704B61E699A48001C9AC0 /* images.png in Resources */,
 				8130D3ED1E4333A800DA7995 /* Contactimage1.png in Resources */,
@@ -1122,7 +1099,6 @@
 				810792EF1E4EEC1D00B4121F /* UIImage+GIF.m in Sources */,
 				810D32AD1E5EE7F3009137E6 /* PastEventDetailViewController.m in Sources */,
 				810792EC1E4EEC1D00B4121F /* SDWebImageManager.m in Sources */,
-				1813759D1EBC839700E9DF44 /* ICETutorialController.m in Sources */,
 				810792F31E4EEC1D00B4121F /* UIImageView+WebCache.m in Sources */,
 				810792EB1E4EEC1D00B4121F /* SDWebImageDownloaderOperation.m in Sources */,
 				8152FF4D1E5327870095FC78 /* DashboardNextScreenViewController.m in Sources */,
@@ -1137,7 +1113,6 @@
 				810792F41E4EEC1D00B4121F /* UIView+WebCacheOperation.m in Sources */,
 				811A6DF01E4DEA6E00365966 /* ProfileAccountViewController.m in Sources */,
 				811074461E51D2DC00611546 /* MyEventCreateTableViewCell.m in Sources */,
-				1813759E1EBC839700E9DF44 /* ICETutorialPage.m in Sources */,
 				810792F11E4EEC1D00B4121F /* UIImage+WebP.m in Sources */,
 				810792ED1E4EEC1D00B4121F /* SDWebImagePrefetcher.m in Sources */,
 				8130D3F51E43425E00DA7995 /* DashBoradViewController.m in Sources */,
@@ -1148,7 +1123,6 @@
 				811074411E51D02A00611546 /* MyEventCreateViewController.m in Sources */,
 				810D32B11E5EE80B009137E6 /* PastEventTableViewCell.m in Sources */,
 				810792E61E4EEC1D00B4121F /* NSData+ImageContentType.m in Sources */,
-				1813759F1EBC839700E9DF44 /* ICETutorialStyle.m in Sources */,
 				810792E91E4EEC1D00B4121F /* SDWebImageDecoder.m in Sources */,
 				810D32BF1E5F1BD1009137E6 /* AttendUserTableViewCell.m in Sources */,
 				81B9AFD41E66F7090024F92A /* UserAdminEventTableViewCell.m in Sources */,

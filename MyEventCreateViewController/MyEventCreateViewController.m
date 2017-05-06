@@ -60,11 +60,17 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    //_imageViewMyEvent.layer.cornerRadius = 55.0;
+    UIGraphicsBeginImageContextWithOptions(_imageViewMyEvent.bounds.size, NO, [UIScreen mainScreen].scale);
+    [[UIBezierPath bezierPathWithRoundedRect:_imageViewMyEvent.bounds
+                                cornerRadius:55.0] addClip];
+    [_imageViewMyEvent.image drawInRect:_imageViewMyEvent.bounds];
     
+    // Get the image, here setting the UIImageView image
+    _imageViewMyEvent.image = UIGraphicsGetImageFromCurrentImageContext();
     
-  
-    
-    
+    // Lets forget about that we were drawing
+    UIGraphicsEndImageContext();
     
     
     NSString *profilepicchangeCheck=[[NSUserDefaults standardUserDefaults]objectForKey:@"profilepicchangeCheck"];
@@ -127,7 +133,7 @@
     
     
     [self.viewonImage.layer setBorderWidth:1.0];
-    _viewonImage.layer.borderColor=[[UIColor lightGrayColor]CGColor];
+    _viewonImage.layer.borderColor=[[UIColor colorWithRed:(213.0/255.0) green:(215.0/255.0) blue:(216.0/255.0) alpha:1.0]CGColor];
     
     
     

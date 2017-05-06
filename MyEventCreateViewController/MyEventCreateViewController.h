@@ -24,7 +24,7 @@
 
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *indicator;
 
-@property (strong, nonatomic) IBOutlet UIImageView *imageViewMyEvent;
+@property (weak, nonatomic) IBOutlet UIImageView *imageViewMyEvent;
 
 @property (strong, nonatomic) IBOutlet UIImageView *imageViewBackground;
 

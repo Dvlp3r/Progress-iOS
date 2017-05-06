@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ICETutorialController.h"
+
 #import "KIImagePager.h"
 
 
