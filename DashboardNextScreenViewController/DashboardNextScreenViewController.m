@@ -152,10 +152,10 @@
     NSString *valueDate=[[NSUserDefaults standardUserDefaults]objectForKey:@"valueDate"];
     NSString *valueDescription=[[NSUserDefaults standardUserDefaults]objectForKey:@"valueDescription"];
     
-    NSString *imageUrl = [@"http://122.180.254.6/progressbackend/public/eventpics/" stringByAppendingString:valueImage];
-    
-    
-    [_imageViewEvent sd_setImageWithURL:[NSURL URLWithString:imageUrl] placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
+//    NSString *imageUrl = [@"http://122.180.254.6/progressbackend/public/eventpics/" stringByAppendingString:valueImage];
+//    
+//    
+//    [_imageViewEvent sd_setImageWithURL:[NSURL URLWithString:imageUrl] placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
     
     _labelAmount.text=valueMaxAttend;
     _labelDate.text=valueDate;
@@ -169,10 +169,11 @@
     
     _labelTime.text=startTime;
     
-    [self.viewAllData.layer setBorderWidth:0.5];
-    
-    _viewAllData.layer.borderColor=[[UIColor lightGrayColor]CGColor];
-    
+//    [self.viewAllData.layer setBorderWidth:0.5];
+//    
+//    _viewAllData.layer.borderColor=[[UIColor lightGrayColor]CGColor];
+    self.viewAllData.layer.borderColor = [UIColor colorWithRed:(215.0/255.0) green:(215.0/255.0) blue:(215.0/255.0) alpha:1.0].CGColor;
+    self.viewAllData.layer.borderWidth = 1.0f;
     
     
 }

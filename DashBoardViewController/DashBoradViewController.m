@@ -1,4 +1,4 @@
-//
+//Main Page After Login
 //  DashBoradViewController.m
 //  Events
 //
@@ -270,10 +270,10 @@
     
     //cell.imageViewEvent.image=[ev]
     
-    NSString *imageUrl = [@"http://122.180.254.6/progressbackend/public/eventpics/" stringByAppendingString:[arrayPicEvent objectAtIndex:indexPath.row]];
-    
-    
-    [cell.imageViewEvent sd_setImageWithURL:[NSURL URLWithString:imageUrl] placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
+//    NSString *imageUrl = [@"http://122.180.254.6/progressbackend/public/eventpics/" stringByAppendingString:[arrayPicEvent objectAtIndex:indexPath.row]];
+//    
+//    
+//    [cell.imageViewEvent sd_setImageWithURL:[NSURL URLWithString:imageUrl] placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
     
     cell.labelEventName.text=[arrayNameEvent objectAtIndex:indexPath.row];
     
