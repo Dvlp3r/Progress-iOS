@@ -15,11 +15,11 @@
 #import "AdminDashboardViewController.h"
 #define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
 
-@interface CreateEventScreenViewController (){
+@interface CreateEventScreenViewController ()<UITextFieldDelegate>{
     
     UIImage *selectedImage;
-    
-
+    UIDatePicker* datePicker;
+    NSDateFormatter* dateFormatter;
 }
 
 @end
@@ -28,9 +28,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     
+    dateFormatter = [[NSDateFormatter alloc] init];
+    dateFormatter.dateFormat = @"dd-MMM-yyyy";
+
     
+    datePicker = [UIDatePicker new];
+    _txtEventDate.delegate = self;
+    self.txtEventDate.inputView  = datePicker;
     NSString *Createventdataedit=[[NSUserDefaults standardUserDefaults]objectForKey:@"Createventdataedit"];
     
     if ([Createventdataedit isEqualToString:@"1"]) {
@@ -1424,6 +1429,25 @@
     
 }
 
+-(BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
+    if ([textField isEqual:_txtEventDate]) {
+        [datePicker setDatePickerMode:UIDatePickerModeDate];
+        [datePicker addTarget:self action:@selector(onDatePickerValueChanged:) forControlEvents:UIControlEventValueChanged];
 
+    }
+    return YES;
+}
+
+-(void) onDatePickerValueChanged:(UIDatePicker *)picker
+{
+    _txtEventDate.text = [dateFormatter stringFromDate:datePicker.date];
+}
+
+
+-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    [self.view endEditing:YES];
+}
 
 @end

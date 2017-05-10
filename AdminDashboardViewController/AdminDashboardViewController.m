@@ -519,14 +519,14 @@
         
         
   
-        cell.imageViewUserAdmin.layer.cornerRadius=cell.imageViewUserAdmin.frame.size.width / 2;
+        //cell.imageViewUserAdmin.layer.cornerRadius=cell.imageViewUserAdmin.frame.size.width / 2;
         
         cell.imageViewUserAdmin.clipsToBounds=YES;
         
         
-        NSString *imageUrl = [@"http://122.180.254.6/progressbackend/public/profilepics/" stringByAppendingString:[arrayProfilePic objectAtIndex:indexPath.row]];
+       // NSString *imageUrl = [@"http://122.180.254.6/progressbackend/public/profilepics/" stringByAppendingString:[arrayProfilePic objectAtIndex:indexPath.row]];
         
-        [cell.imageViewUserAdmin sd_setImageWithURL:[NSURL URLWithString:imageUrl] placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
+        //[cell.imageViewUserAdmin sd_setImageWithURL:[NSURL URLWithString:imageUrl] placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
         
 
         

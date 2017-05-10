@@ -76,4 +76,9 @@
 
 
 
+
+@property (weak, nonatomic) IBOutlet UITextField *txtEventDate;
+
+
+
 @end
