@@ -413,7 +413,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="BD9-vM-iRT" sceneMemberID="viewController">
                     <toolbarItems/>
                     <nil key="simulatedTopBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="lwL-gp-bhz">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="lwL-gp-bhz">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1537,7 +1537,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="imageViewProfilePic" destination="PLd-VI-X2v" id="09E-xe-2yx"/>
+                        <outlet property="imageViewProfilePic" destination="PLd-VI-X2v" id="FUO-OQ-7Xw"/>
                         <outlet property="indicator" destination="il2-xp-xKh" id="9Ec-7d-DKG"/>
                         <outlet property="textFieldContactNo" destination="l9u-Jl-lju" id="AAf-Tx-3bI"/>
                         <outlet property="textFieldEmail" destination="3Wi-uP-doy" id="ahM-jQ-ChQ"/>
@@ -1799,6 +1799,9 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="buttonCreateEvent" destination="VsK-ni-S3a" id="xkE-jD-giI"/>
+                        <outlet property="textFieldEventName" destination="Bka-OK-2PM" id="gPS-6J-YCA"/>
+                        <outlet property="textFieldSelectMaxAttendes" destination="UE0-Cx-CYb" id="HtW-YK-j0L"/>
                         <outlet property="txtEventDate" destination="son-sM-1Ez" id="9bJ-bz-CzZ"/>
                     </connections>
                 </viewController>

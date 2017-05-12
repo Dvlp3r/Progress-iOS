@@ -41,7 +41,7 @@
     if ([Createventdataedit isEqualToString:@"1"]) {
         
         
-        _buttonSubmit.hidden=NO;
+       // _buttonSubmit.hidden=NO;
         
         
         _buttonCreateEvent.hidden=YES;
@@ -70,7 +70,7 @@
         
         [_imageViewEventImage sd_setImageWithURL:[NSURL URLWithString:imageUrl] placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
         
-        _textFieldSelectPrice.text=valuePrice;
+      //  _textFieldSelectPrice.text=valuePrice;
         
         _labelEventDate.text=valueDate;
         _textFieldEventDescription.text=valueDescription;
@@ -113,7 +113,7 @@
         
     }else{
     
-    _buttonSubmit.hidden=YES;
+   // _buttonSubmit.hidden=YES;
     
     _buttonCreateEvent.hidden=NO;
         
@@ -122,9 +122,9 @@
     _mapViewEventLocation.hidden=YES;
     _indicatorEvent.hidden=YES;
     
-    _datePickerView.hidden=YES;
+    //_datePickerView.hidden=YES;
     
-    _datePickerViewBackground.hidden=YES;
+   // _datePickerViewBackground.hidden=YES;
     
     _viewstartTimeBackground.hidden=YES;
     
@@ -371,7 +371,7 @@
         
     [_textFieldEventDescription resignFirstResponder];
     
-    _datePickerViewBackground.hidden=YES;
+  //  _datePickerViewBackground.hidden=YES;
     
     _viewstartTimeBackground.hidden=YES;
     
@@ -381,7 +381,7 @@
 
     _SearchBarLocation.hidden=YES;
 
-    [_textFieldSelectPrice resignFirstResponder];
+  //  [_textFieldSelectPrice resignFirstResponder];
     
     [_textFieldSelectMaxAttendes resignFirstResponder];
     
@@ -410,7 +410,7 @@
     
     _textFieldSelectMaxAttendes.inputAccessoryView = toolBar;
     
-    _textFieldSelectPrice.inputAccessoryView=toolBar;
+    //_textFieldSelectPrice.inputAccessoryView=toolBar;
     
     
     if (textField==_textFieldEventDescription) {
@@ -429,7 +429,7 @@
     
     [_textFieldSelectMaxAttendes resignFirstResponder];
     
-    [_textFieldSelectPrice resignFirstResponder];
+    //[_textFieldSelectPrice resignFirstResponder];
 
     
     
@@ -543,7 +543,7 @@
     [aParametersDic setObject:_textFieldSelectMaxAttendes.text forKey:@"max_attend"];
 
     
-    [aParametersDic setObject:_textFieldSelectPrice.text forKey:@"price"];
+    //[aParametersDic setObject:_textFieldSelectPrice.text forKey:@"price"];
 
    
 
@@ -798,7 +798,7 @@
     [aParametersDic setObject:_textFieldSelectMaxAttendes.text forKey:@"max_attend"];
     
     
-    [aParametersDic setObject:_textFieldSelectPrice.text forKey:@"price"];
+    //[aParametersDic setObject:_textFieldSelectPrice.text forKey:@"price"];
     
     [aParametersDic setObject:valueidAttend forKey:@"id"];
 
@@ -1054,12 +1054,12 @@
     
     df.dateFormat = @"dd-MMM-yyyy";
     
-    _labelEventDate.text = [NSString stringWithFormat:@"%@",
-                      [df stringFromDate:_datePickerView.date]];
+  //  _labelEventDate.text = [NSString stringWithFormat:@"%@",
+                   //   [df stringFromDate:_datePickerView.date]];
     
     
     
-    NSLog(@"%@",[df stringFromDate:_datePickerView.date]);
+  //  NSLog(@"%@",[df stringFromDate:_datePickerView.date]);
 
     
 }
@@ -1070,9 +1070,9 @@
 
     
     
-    _datePickerView.hidden=NO;
-    _datePickerViewBackground.hidden=NO;
-    
+//    _datePickerView.hidden=NO;
+//    _datePickerViewBackground.hidden=NO;
+//    
     
 
 }
@@ -1162,12 +1162,7 @@
     
     
     NSDateFormatter *outputFormatter = [[NSDateFormatter alloc] init]; [outputFormatter setDateFormat:@"HH:mm"];
-    NSString *dateEndString = [outputFormatter stringFromDate:self.datePickerEndTime.date];
-    
-    
-    _labelEndTime.text=dateEndString;
-    
-    [[NSUserDefaults standardUserDefaults]setObject:dateEndString forKey:@"dateEndString"];
+    //NSString *dateEndString = [outputFormatter stringFromDate:seldatePickerStartTimeefaults]setObject:dateEndString forKey:@"dateEndString"];
     
     [[NSUserDefaults standardUserDefaults]synchronize];
     
@@ -1363,10 +1358,8 @@
     _viewEndTimeBackground.hidden=YES;
     
     _viewstartTimeBackground.hidden=YES;
-
-    _datePickerView.hidden=YES;
     
-    _datePickerViewBackground.hidden=YES;
+    //_datePickerViewBackground.hidden=YES;
     
 }
 

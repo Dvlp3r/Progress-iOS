@@ -25,6 +25,7 @@
 		181321B61EBC645B0079188D /* RobotoCondensed-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 181321A41EBC63B10079188D /* RobotoCondensed-Light.ttf */; };
 		181321B71EBC645B0079188D /* RobotoCondensed-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 181321A51EBC63B10079188D /* RobotoCondensed-LightItalic.ttf */; };
 		181321B81EBC645B0079188D /* RobotoCondensed-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 181321A61EBC63B10079188D /* RobotoCondensed-Regular.ttf */; };
+		182172781EC5D9E000FAB472 /* placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 182172771EC5D9E000FAB472 /* placeholder.png */; };
 		184329611EBCF9020031DBC8 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 184329601EBCF9020031DBC8 /* StoreKit.framework */; };
 		1862BCC21EBC993B004A1E19 /* KICamera.png in Resources */ = {isa = PBXBuildFile; fileRef = 1862BCBE1EBC993B004A1E19 /* KICamera.png */; };
 		1862BCC31EBC993B004A1E19 /* KICamera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1862BCBF1EBC993B004A1E19 /* KICamera@2x.png */; };
@@ -175,6 +176,7 @@
 		181321A41EBC63B10079188D /* RobotoCondensed-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoCondensed-Light.ttf"; sourceTree = "<group>"; };
 		181321A51EBC63B10079188D /* RobotoCondensed-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoCondensed-LightItalic.ttf"; sourceTree = "<group>"; };
 		181321A61EBC63B10079188D /* RobotoCondensed-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoCondensed-Regular.ttf"; sourceTree = "<group>"; };
+		182172771EC5D9E000FAB472 /* placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placeholder.png; sourceTree = "<group>"; };
 		184329601EBCF9020031DBC8 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		1862BCBE1EBC993B004A1E19 /* KICamera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = KICamera.png; sourceTree = "<group>"; };
 		1862BCBF1EBC993B004A1E19 /* KICamera@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "KICamera@2x.png"; sourceTree = "<group>"; };
@@ -756,6 +758,7 @@
 				81CA721A1E6596D300700A40 /* logout-512.png */,
 				812704B31E696E26001C9AC0 /* PlusBlack.png */,
 				812704B51E699A48001C9AC0 /* images.png */,
+				182172771EC5D9E000FAB472 /* placeholder.png */,
 				81CA721C1E659C2200700A40 /* account.png */,
 				81CA721D1E659C2200700A40 /* events.png */,
 				81CA721F1E659C2200700A40 /* time.png */,
@@ -1046,6 +1049,7 @@
 				811A6DCD1E4D86A000365966 /* logo9.png in Resources */,
 				81B9AFCB1E66A5A80024F92A /* events-w.png in Resources */,
 				810792BE1E4EC85D00B4121F /* imageDummy.jpg in Resources */,
+				182172781EC5D9E000FAB472 /* placeholder.png in Resources */,
 				8130D3D91E43106C00DA7995 /* Logo.png in Resources */,
 				1862BCC31EBC993B004A1E19 /* KICamera@2x.png in Resources */,
 				8141B3F41E40862B0079FE0C /* Assets.xcassets in Resources */,

@@ -32,9 +32,9 @@
     _indicator.hidden=YES;
     
     
-    NSString *profilepicchangeCheck=[[NSUserDefaults standardUserDefaults]objectForKey:@"profilepicchangeCheck"];
-    
-    NSString *imageProfile=[[NSUserDefaults standardUserDefaults]objectForKey:@"imageProfile"];
+//    NSString *profilepicchangeCheck=[[NSUserDefaults standardUserDefaults]objectForKey:@"profilepicchangeCheck"];
+    NSString *profilepicchangeCheck = @"1";
+    NSString *imageProfile=[[NSUserDefaults standardUserDefaults] objectForKey:@"imageProfile"];
     
     
     

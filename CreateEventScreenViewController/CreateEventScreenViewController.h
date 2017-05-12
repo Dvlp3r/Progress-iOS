@@ -22,12 +22,6 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageViewEventImage;
 
-
-@property (weak, nonatomic) IBOutlet UIDatePicker *datePickerView;
-
-@property (weak, nonatomic) IBOutlet UIView *datePickerViewBackground;
-
-
 @property (weak, nonatomic) IBOutlet UILabel *labelEventDate;
 
 @property (weak, nonatomic) IBOutlet UIButton *buttonEventDate;
@@ -51,9 +45,6 @@
 @property (weak, nonatomic) IBOutlet UIDatePicker *datePickerStartTime;
 
 
-@property (weak, nonatomic) IBOutlet UIDatePicker *datePickerEndTime;
-
-
 @property (weak, nonatomic) IBOutlet MKMapView *mapViewEventLocation;
 
 
@@ -64,18 +55,11 @@
 
 @property (weak, nonatomic) IBOutlet UIView *viewdatetimeHidder;
 
-@property (weak, nonatomic) IBOutlet UITextField *textFieldSelectPrice;
-
 
 @property (weak, nonatomic) IBOutlet UITextField *textFieldSelectMaxAttendes;
 
 
-@property (strong, nonatomic) IBOutlet UIButton *buttonSubmit;
-
 @property (strong, nonatomic) IBOutlet UIButton *buttonCreateEvent;
-
-
-
 
 @property (weak, nonatomic) IBOutlet UITextField *txtEventDate;
 
