@@ -11,6 +11,7 @@
 #import "UIImageView+WebCache.h"
 #import "NSString+Validation.h"
 #import "DashBoradViewController.h"
+#import "Constant.h"
 
 
 
@@ -40,8 +41,7 @@
     
     if ([profilepicchangeCheck isEqualToString:@"1"]) {
         
-        NSString *imageUrl = [@"http://122.180.254.6/progressbackend/public/profilepics/" stringByAppendingString:imageProfile];
-        
+        NSString *imageUrl = [@"http://54.209.19.2/api/profilepics/" stringByAppendingString:imageProfile];
         
         
              [_imageViewProfilePic sd_setImageWithURL:[NSURL URLWithString:imageUrl] placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
@@ -454,7 +454,7 @@
     
     NSMutableDictionary*aParametersDic;
     NSMutableDictionary*aImageDic;
-    NSString *URL = @"http://122.180.254.6/progressbackend/public/api/updateprofile";
+    NSString *URL = [NSString stringWithFormat:@"%@%@",Api_Server_Url,updateprofile];
     NSURL *url = [NSURL URLWithString:URL];
     NSMutableURLRequest *request= [[NSMutableURLRequest alloc] initWithURL:url] ;
     aParametersDic = [[NSMutableDictionary alloc] init];

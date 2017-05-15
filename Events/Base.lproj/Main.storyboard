@@ -1102,10 +1102,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view alpha="0.34999999403953552" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WDB-zX-lMO">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
-                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ivr-j0-rF7">
                                 <rect key="frame" x="10" y="34" width="28" height="22"/>
                                 <constraints>
@@ -1270,7 +1266,7 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="17"/>
                                 <state key="normal" title="SIGN UP">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="ButtonSignUpAction:" destination="amL-dc-Qsf" eventType="touchUpInside" id="6n7-Qo-adg"/>
@@ -1281,10 +1277,9 @@
                                 <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </activityIndicatorView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.5607843137254902" green="0.72156862745098038" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="nAF-1s-OI1" secondAttribute="trailing" constant="13" id="0ce-S2-0RU"/>
-                            <constraint firstAttribute="trailing" secondItem="WDB-zX-lMO" secondAttribute="trailing" id="0sC-sm-yzu"/>
                             <constraint firstItem="0rK-Eq-Nh0" firstAttribute="leading" secondItem="aRW-wf-axm" secondAttribute="trailing" constant="2" id="9gQ-4J-hd7"/>
                             <constraint firstItem="Bds-9j-6xL" firstAttribute="leading" secondItem="IwX-qj-J3i" secondAttribute="trailing" constant="2" id="BDT-Ik-Uga"/>
                             <constraint firstItem="VJn-Gv-BBU" firstAttribute="top" secondItem="Nt4-aa-O0f" secondAttribute="bottom" constant="48" id="BpP-PT-yiS"/>
@@ -1292,7 +1287,6 @@
                             <constraint firstItem="KlP-D0-vDz" firstAttribute="leading" secondItem="OnK-vW-KI4" secondAttribute="trailing" constant="2" id="GFb-Cs-fyU"/>
                             <constraint firstItem="Nt4-aa-O0f" firstAttribute="centerX" secondItem="DC6-NF-xTK" secondAttribute="centerX" id="KO9-9L-1cG"/>
                             <constraint firstItem="KlP-D0-vDz" firstAttribute="top" secondItem="Bds-9j-6xL" secondAttribute="bottom" constant="21" id="MHt-16-VsQ"/>
-                            <constraint firstAttribute="bottom" secondItem="WDB-zX-lMO" secondAttribute="bottom" id="PcU-NZ-wt4"/>
                             <constraint firstAttribute="trailingMargin" secondItem="VJn-Gv-BBU" secondAttribute="trailing" constant="-1" id="QXl-bb-8rw"/>
                             <constraint firstItem="4ik-DC-JEg" firstAttribute="centerX" secondItem="Bds-9j-6xL" secondAttribute="centerX" id="QgE-do-kch"/>
                             <constraint firstItem="4ik-DC-JEg" firstAttribute="centerY" secondItem="Bds-9j-6xL" secondAttribute="centerY" id="RgS-qc-AaJ"/>
@@ -1307,7 +1301,6 @@
                             <constraint firstItem="0rK-Eq-Nh0" firstAttribute="top" secondItem="VJn-Gv-BBU" secondAttribute="bottom" constant="21" id="cju-uB-bTi"/>
                             <constraint firstItem="IwX-qj-J3i" firstAttribute="top" secondItem="aRW-wf-axm" secondAttribute="bottom" constant="19" id="cnq-cZ-lku"/>
                             <constraint firstItem="KlP-D0-vDz" firstAttribute="trailing" secondItem="Bds-9j-6xL" secondAttribute="trailing" id="dAG-9G-MDu"/>
-                            <constraint firstItem="WDB-zX-lMO" firstAttribute="top" secondItem="DC6-NF-xTK" secondAttribute="top" id="jS3-4q-eNQ"/>
                             <constraint firstItem="OnK-vW-KI4" firstAttribute="leading" secondItem="DC6-NF-xTK" secondAttribute="leadingMargin" constant="1" id="ly3-fw-k5T"/>
                             <constraint firstItem="h3f-pd-vm3" firstAttribute="leading" secondItem="DC6-NF-xTK" secondAttribute="leadingMargin" constant="1" id="qtk-PA-x4d"/>
                             <constraint firstItem="Ivr-j0-rF7" firstAttribute="top" secondItem="Etb-yH-9eU" secondAttribute="bottom" constant="14" id="s8L-U6-vCJ"/>
@@ -1315,7 +1308,6 @@
                             <constraint firstItem="0rK-Eq-Nh0" firstAttribute="trailing" secondItem="VJn-Gv-BBU" secondAttribute="trailing" id="t0g-lA-9C2"/>
                             <constraint firstItem="nAF-1s-OI1" firstAttribute="leading" secondItem="DC6-NF-xTK" secondAttribute="leadingMargin" constant="16" id="vSL-Jd-YMC"/>
                             <constraint firstItem="h3f-pd-vm3" firstAttribute="top" secondItem="Ivr-j0-rF7" secondAttribute="bottom" constant="55" id="yF5-V1-LmT"/>
-                            <constraint firstItem="WDB-zX-lMO" firstAttribute="leading" secondItem="DC6-NF-xTK" secondAttribute="leading" id="zd6-7i-ld2"/>
                         </constraints>
                     </view>
                     <connections>
@@ -1493,7 +1485,6 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="buttonSignUpAction:" destination="3X1-El-TcH" eventType="touchUpInside" id="Fb4-ks-Ij4"/>
                                     <action selector="buttonUpdateAction:" destination="XNW-s5-dgI" eventType="touchUpInside" id="y84-Io-8WM"/>
                                 </connections>
                             </button>
