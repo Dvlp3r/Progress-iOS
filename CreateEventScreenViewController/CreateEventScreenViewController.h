@@ -22,7 +22,7 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageViewEventImage;
 
-@property (weak, nonatomic) IBOutlet UILabel *labelEventDate;
+//@property (weak, nonatomic) IBOutlet UITextField *labelEventDate;
 
 @property (weak, nonatomic) IBOutlet UIButton *buttonEventDate;
 
@@ -37,7 +37,6 @@
 
 
 @property (weak, nonatomic) IBOutlet UIView *viewstartTimeBackground;
-
 
 @property (weak, nonatomic) IBOutlet UIView *viewEndTimeBackground;
 
@@ -63,6 +62,8 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *txtEventDate;
 
+@property(weak, nonatomic) IBOutlet MKMapView *vwMap;
 
+@property (strong, nonatomic) IBOutlet UIButton *imageViewButton;
 
 @end

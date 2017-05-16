@@ -29,6 +29,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+//    _vwMap.layer.shadowColor = [UIColor blackColor].CGColor;
+//    _vwMap.layer.shadowOpacity = 1;
+//    _vwMap.layer.shadowOffset = CGSizeZero;
+//    _vwMap.layer.shadowRadius = 10;
+
+//    _vwMap.layer.borderColor = [[UIColor whiteColor] CGColor];
+//    _vwMap.layer.borderWidth = 2.0;
+    
     dateFormatter = [[NSDateFormatter alloc] init];
     dateFormatter.dateFormat = @"dd-MMM-yyyy";
 
@@ -72,7 +80,7 @@
         
       //  _textFieldSelectPrice.text=valuePrice;
         
-        _labelEventDate.text=valueDate;
+        _txtEventDate.text=valueDate;
         _textFieldEventDescription.text=valueDescription;
         
         _textFieldEventName.text=valueName;
@@ -400,15 +408,15 @@
     
     
     
-    UIToolbar *toolBar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 44)];
-    UIBarButtonItem *doItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doDone)];
+    //UIToolbar *toolBar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 44)];
+    //UIBarButtonItem *doItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doDone)];
 //    self.navigationItem.rightBarButtonItem = doItem;
 
     
-    [toolBar setItems:@[doItem]];
+   // [toolBar setItems:@[doItem]];
     
     
-    _textFieldSelectMaxAttendes.inputAccessoryView = toolBar;
+   // _textFieldSelectMaxAttendes.inputAccessoryView = toolBar;
     
     //_textFieldSelectPrice.inputAccessoryView=toolBar;
     
@@ -536,7 +544,7 @@
     [aParametersDic setObject:eventlat forKey:@"latitude"];
 
     
-    [aParametersDic setObject:_labelEventDate.text forKey:@"event_date"];
+    [aParametersDic setObject:_txtEventDate.text forKey:@"event_date"];
     [aParametersDic setObject:dateStartString forKey:@"start_time"];
     [aParametersDic setObject:dateEndString forKey:@"end_time"];
     
@@ -791,7 +799,7 @@
     [aParametersDic setObject:eventlat forKey:@"latitude"];
     
     
-    [aParametersDic setObject:_labelEventDate.text forKey:@"event_date"];
+    [aParametersDic setObject:_txtEventDate.text forKey:@"event_date"];
     [aParametersDic setObject:dateStartString forKey:@"start_time"];
     [aParametersDic setObject:dateEndString forKey:@"end_time"];
     

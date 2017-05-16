@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import "IQKeyboardManager.h"
+
 
 @interface AppDelegate ()
 
@@ -16,6 +18,13 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    
+    [IQKeyboardManager sharedManager].enable = YES;
+    [IQKeyboardManager sharedManager].shouldShowTextFieldPlaceholder = NO;
+    //[IQKeyboardManager sharedManager].toolbarTintColor = [UIColor colorWithRed:(18.0/255.0) green:(131/255.0) blue:(151/255.0) alpha:1.0];
+    [IQKeyboardManager sharedManager].toolbarTintColor = [UIColor blueColor];
+    //[[UIApplication sharedApplication] setStatusBarHidden:YES];
     
     
     // Override point for customization after application launch.
