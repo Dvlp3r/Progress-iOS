@@ -1705,6 +1705,23 @@
     
 }
 
-           
+
+-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    
+    NSLog(@"heyy%d",x1);
+    if (x1 == 1) {
+    [UIView animateWithDuration:0.4 animations:^{
+        _viewMenuDashBoard.frame=CGRectMake(-417,self.viewMenuDashBoard.frame.origin.y,self.viewMenuDashBoard.frame.size.width,self.viewMenuDashBoard.frame.size.height);
+        //            _transperant_view.frame=CGRectMake(-500,self.transperant_view.frame.origin.y,self.transperant_view.frame.size.width,self.transperant_view.frame.size.height);
+        
+        
+        //            _transperant_view.hidden=YES;
+        NSLog(@"right");
+    }];
+    x1=0;
+    }
+}
+
 
 @end

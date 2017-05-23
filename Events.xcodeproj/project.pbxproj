@@ -47,6 +47,7 @@
 		18C07F2E1ECAEF66002BC63C /* IQUIView+IQKeyboardToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C07F1E1ECAEF66002BC63C /* IQUIView+IQKeyboardToolbar.m */; };
 		18C07F2F1ECAEF66002BC63C /* IQKeyboardManager.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 18C07F201ECAEF66002BC63C /* IQKeyboardManager.bundle */; };
 		18CF6F361EBDDD5700C9E47D /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 18CF6F351EBDDD5700C9E47D /* settings.png */; };
+		18DAA95B1ECF04B2004B3610 /* LocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DAA95A1ECF04B2004B3610 /* LocationViewController.m */; };
 		81019C601E657EB30046A9D4 /* login_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 81019C5E1E657EB30046A9D4 /* login_bg.png */; };
 		81019C611E657EB30046A9D4 /* splash_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 81019C5F1E657EB30046A9D4 /* splash_bg.png */; };
 		810792BE1E4EC85D00B4121F /* imageDummy.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 810792BD1E4EC85D00B4121F /* imageDummy.jpg */; };
@@ -230,6 +231,8 @@
 		18C07F1E1ECAEF66002BC63C /* IQUIView+IQKeyboardToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IQUIView+IQKeyboardToolbar.m"; sourceTree = "<group>"; };
 		18C07F201ECAEF66002BC63C /* IQKeyboardManager.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = IQKeyboardManager.bundle; sourceTree = "<group>"; };
 		18CF6F351EBDDD5700C9E47D /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
+		18DAA9591ECF04B2004B3610 /* LocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationViewController.h; sourceTree = "<group>"; };
+		18DAA95A1ECF04B2004B3610 /* LocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationViewController.m; sourceTree = "<group>"; };
 		81019C5E1E657EB30046A9D4 /* login_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = login_bg.png; sourceTree = "<group>"; };
 		81019C5F1E657EB30046A9D4 /* splash_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash_bg.png; sourceTree = "<group>"; };
 		810792BD1E4EC85D00B4121F /* imageDummy.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = imageDummy.jpg; sourceTree = "<group>"; };
@@ -782,6 +785,8 @@
 		8141B3DB1E40862B0079FE0C = {
 			isa = PBXGroup;
 			children = (
+				18DAA9591ECF04B2004B3610 /* LocationViewController.h */,
+				18DAA95A1ECF04B2004B3610 /* LocationViewController.m */,
 				81B9AFD01E66F6CD0024F92A /* UserAdminEventTableViewCell */,
 				81B9AFC61E6699AC0024F92A /* LoginViewControllers */,
 				810D32BB1E5F1BB6009137E6 /* AttendUserTableViewCell */,
@@ -1245,6 +1250,7 @@
 				810792F01E4EEC1D00B4121F /* UIImage+MultiFormat.m in Sources */,
 				8130D3CD1E4308F400DA7995 /* FirstScreenViewController.m in Sources */,
 				8130D3D51E43093E00DA7995 /* SignUpViewController.m in Sources */,
+				18DAA95B1ECF04B2004B3610 /* LocationViewController.m in Sources */,
 				810792F41E4EEC1D00B4121F /* UIView+WebCacheOperation.m in Sources */,
 				811A6DF01E4DEA6E00365966 /* ProfileAccountViewController.m in Sources */,
 				811074461E51D2DC00611546 /* MyEventCreateTableViewCell.m in Sources */,

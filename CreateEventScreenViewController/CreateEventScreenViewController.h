@@ -17,8 +17,13 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *textFieldEventName;
 
-@property (weak, nonatomic) IBOutlet UITextField *textFieldEventDescription;
+@property (weak, nonatomic) IBOutlet UITextView *textFieldEventDescription;
 
+@property (weak, nonatomic) IBOutlet UIScrollView* scrollViewMain;
+
+@property (weak, nonatomic) IBOutlet UIView* mainView;
+
+@property (weak, nonatomic) IBOutlet UITextField* cost;
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageViewEventImage;
 

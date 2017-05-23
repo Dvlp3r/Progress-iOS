@@ -26,10 +26,21 @@
 
 @implementation CreateEventScreenViewController
 
+//- (void)viewDidLayoutSubviews
+//{
+//    //[self.scrollViewMain setContentSize:CGSizeMake(self.scrollViewMain.contentSize.width, 880)];
+//}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    UITapGestureRecognizer *singleFingerTap =
+    [[UITapGestureRecognizer alloc] initWithTarget:self
+                                            action:@selector(openMapForLocationSelection)];
+    [_vwMap addGestureRecognizer:singleFingerTap];
     
-//    _vwMap.layer.shadowColor = [UIColor blackColor].CGColor;
+        //[self.view bringSubviewToFront:_mainView];
+  
+    //    _vwMap.layer.shadowColor = [UIColor blackColor].CGColor;
 //    _vwMap.layer.shadowOpacity = 1;
 //    _vwMap.layer.shadowOffset = CGSizeZero;
 //    _vwMap.layer.shadowRadius = 10;
@@ -150,6 +161,13 @@
     
 }
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    _scrollViewMain.contentSize = _mainView.frame.size;
+
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -474,9 +492,9 @@
         
         
         [_textFieldEventDescription setReturnKeyType:UIReturnKeyDone];
-        [_textFieldEventDescription addTarget:self
-                                action:@selector(textFieldFinished:)
-                      forControlEvents:UIControlEventEditingDidEndOnExit];
+        //[_textFieldEventDescription addTarget:self
+                                //action:@selector(textFieldFinished:)
+                    //  forControlEvents:UIControlEventEditingDidEndOnExit];
         
     }
     return YES;
@@ -499,9 +517,8 @@
 //    
 //}
 
-
--(void)uploadPhoto :(UIImage*)image{
-    
+//-(void)uploadPhoto :(UIImage*)image{
+ - (IBAction)uploadPhoto:(id)sender {
     //    [SVProgressHUD showWithStatus:@"Please Wait..." maskType:SVProgressHUDMaskTypeBlack];
     
     _indicatorEvent.hidden=NO;
@@ -536,20 +553,37 @@
         [request setValue:barrer_token2 forHTTPHeaderField:@"Accept"];
         
     }
+    
+//    _textFieldEventName.text = @"abc";
+//    _textFieldEventDescription.text = @"Descriptions";
+//    fulladdressevent = @"Full address";
+//    eventlong = @"22.12321";
+//    eventlat = @"33.44432";
+//    _txtEventDate.text= @"22/01/2018";
+//    dateEndString = @"24/01/2018";
+//    _textFieldSelectMaxAttendes.text = @"1200";
+    
+    
     [aParametersDic setObject:_textFieldEventName.text forKey:@"name"];
     [aParametersDic setObject:_textFieldEventDescription.text forKey:@"description"];
     
-    [aParametersDic setObject:fulladdressevent forKey:@"address"];
-    [aParametersDic setObject:eventlong forKey:@"longitude"];
-    [aParametersDic setObject:eventlat forKey:@"latitude"];
+     
+    //[aParametersDic setObject:fulladdressevent forKey:@"address"];
+     [aParametersDic setObject:@"Dummy Address" forKey:@"address"];
+     
+//    [aParametersDic setObject:eventlong forKey:@"longitude"];
+//    [aParametersDic setObject:eventlat forKey:@"latitude"];
+      [aParametersDic setObject:@"22.222222" forKey:@"longitude"];
+      [aParametersDic setObject:@"33.333333" forKey:@"latitude"];
 
     
     [aParametersDic setObject:_txtEventDate.text forKey:@"event_date"];
-    [aParametersDic setObject:dateStartString forKey:@"start_time"];
-    [aParametersDic setObject:dateEndString forKey:@"end_time"];
-    
+   // [aParametersDic setObject:dateStartString forKey:@"start_time"];
+     [aParametersDic setObject:@"11:11" forKey:@"start_time"];
+     //[aParametersDic setObject:dateEndString forKey:@"end_time"];
+     [aParametersDic setObject:@"12:12p" forKey:@"end_time"];
     [aParametersDic setObject:_textFieldSelectMaxAttendes.text forKey:@"max_attend"];
-
+     [aParametersDic setObject:_cost.text forKey:@"price"];
     
     //[aParametersDic setObject:_textFieldSelectPrice.text forKey:@"price"];
 
@@ -558,13 +592,14 @@
     
     [request setURL:url];
     aImageDic = [[NSMutableDictionary alloc]init];
+//    
+//    CGFloat scaleSize = 0.2f;
+//    UIImage *smallImage = [UIImage imageWithCGImage:image.CGImage
+//                                              scale:scaleSize
+//                                        orientation:image.imageOrientation];
     
-    CGFloat scaleSize = 0.2f;
-    UIImage *smallImage = [UIImage imageWithCGImage:image.CGImage
-                                              scale:scaleSize
-                                        orientation:image.imageOrientation];
-    
-    NSData *imageData = UIImageJPEGRepresentation(smallImage, 0.035);
+     
+    NSData *imageData = UIImageJPEGRepresentation(_imageViewEventImage.image, 0.035);
     
     if(imageData){
         [aImageDic setObject:imageData forKey:[NSString stringWithFormat:@"image%d.jpg",0]];
@@ -611,6 +646,9 @@
                                        NSLog(@"%@",requestReply);
                                        //    [SVProgressHUD dismiss];
                                        
+                        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:@"Event Created Successfully!" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles: nil];
+                                       [alert show];
+
                                        
                                        [_indicatorEvent stopAnimating];
                                        
@@ -633,117 +671,15 @@
                                            [self.navigationController pushViewController:vc animated:YES];
                                        }
                                        
-//                                       NSArray *error = [result valueForKey:@"error"];
-//                                       
-//                                       
-//                                       NSArray *emailrepeat=[error valueForKey:@"email"];
-//                                       
-//                                       NSArray *emailRepear1=[emailrepeat objectAtIndex:0];
-//                                       
-//                                       NSArray *usernamerepeat=[error valueForKey:@"username"];
-//                                       
-//                                       NSArray *usernamerepeat1=[usernamerepeat objectAtIndex:0];
-//                                       
-//                                       NSArray *contactRepeat=[error valueForKey:@"contact"];
-//                                       
-//                                       NSArray *contactRepeat1=[contactRepeat objectAtIndex:0];
-                                       
-//                                       if ([emailRepear1 isEqual:@"The email has already been taken."]) {
-//                                           
-//                                           
-//                                           [self callAlert:@"Warning" message:@"The email has already been taken."];
-//                                           
-//                                           
-////                                           _textFieldEventName.text=nil;
-////                                           _textFieldEventDescription.text=nil;
-//                                           
-//                                           
-//                                           
-//                                       }else if ([usernamerepeat1 isEqual:@"The username has already been taken."]){
-                                       
-//                                           
-//                                           [self callAlert:@"Warning" message:@"The username has already been taken."];
-//                                           
-////                                           
-////                                           _textFieldUserName.text=nil;
-////                                           _textFieldEmail.text=nil;
-////                                           _textFieldContactNo.text=nil;
-                                       
-                                           
-                                   //    }
-                                       
-//                                       else if ([contactRepeat1 isEqual:@"The contact has already been taken."]){
-//                                           
-//                                           
-//                                           [self callAlert:@"Warning" message:@"The contact has already been taken."];
-//                                           
-//                                           
-////                                           _textFieldUserName.text=nil;
-////                                           _textFieldEmail.text=nil;
-////                                           _textFieldContactNo.text=nil;
-//                                           
-//                                           
-//                                       }
-                                      // else{
-                                           
-//                                           NSArray *Message = [result valueForKey:@"message"];
-//                                           
-//                                           
-//                                           NSString *imageProfile = [result valueForKey:@"new_image"];
-//                                           
-//                                           [[NSUserDefaults standardUserDefaults]setObject:imageProfile forKey:@"imageProfile"];
-                                       
-                                           //                                       [[NSUserDefaults standardUserDefaults]setObject:image forKey:@"imageProfileChange"];
-         
-//                                           
-//                                           if([Message isEqual:@"success"]){
-//                                               
-//                                               
-//                                               //                                           [[NSUserDefaults standardUserDefaults]setValue:@"1" forKey:@"profilepicchange"];
-//                                               //                                           [[NSUserDefaults standardUserDefaults]synchronize];
-//                                               
-//                                               
-//                                               [self callAlert:@"Message" message:@"Update Successfully"];
-                                       
-                                               
-                                               
-                                               
-                                               
-                                               
-                                               //    [SVProgressHUD dismiss];
-                                               
-                                               //                                           SCLAlertView *alert = [[SCLAlertView alloc] init];
-                                               //                                           UIColor *color = [UIColor colorWithRed:255.0/255.0 green:38.0/255.0 blue:28.0/255.0 alpha:1.0];
-                                               //                                           [alert showCustom:self image:[UIImage imageNamed:@"success_icon"] color:color title:@"Success!!" subTitle:@"Your data have been successfully posted" closeButtonTitle:@"OK" duration:1.5f];
-                                               //
-                                               //                                           double delayInSeconds = 1.5f;
-                                               //                                           dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
-                                               //                                           dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-                                               //
-                                               //                                               CATransition* transition = [CATransition animation];
-                                               //                                               transition.duration = 0.5f;
-                                               //                                               transition.type = kCATransitionReveal;
-                                               //                                               transition.subtype = kCATransitionFromLeft;
-                                               //                                               [self.navigationController.view.layer addAnimation:transition
-                                               //                                                                                           forKey:kCATransition];
-                                               //                                               [self.navigationController popViewControllerAnimated:YES];
-                                               //
-                                               //
-                                               //                                           });
-                                          // }
-                                      // }
-                                       
-                                       //                                       else if([Message isEqualToString:@"failure"]){
-                                       //
-                                       //                                         //  [SVProgressHUD dismiss];
-                                       //                                           UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:
-                                       //                                                                     @"Error" message:@"Error" delegate:self
-                                       //                                                                                    cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-                                       //                                           [alertView show];
-                                       //
-                                       //                                       }
+
                                        
                                    }
+                                   else
+                                   {
+                                   
+                                       UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"OOOpppssss!" message:@"Something Went Wrong! Try again" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles: nil];
+                                       [alert show];
+}
                                }
                                
                                
@@ -1449,6 +1385,12 @@
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
     [self.view endEditing:YES];
+}
+
+
+- (void)openMapForLocationSelection
+{
+    [self performSegueWithIdentifier:@"openLocationView" sender:self];
 }
 
 @end
