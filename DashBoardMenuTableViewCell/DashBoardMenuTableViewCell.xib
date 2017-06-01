@@ -16,8 +16,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" restorationIdentifier="DashBoardMenuTableViewCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="DashBoardMenuTableViewCell" rowHeight="179" id="KGk-i7-Jjw" customClass="DashBoardMenuTableViewCell">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="156"/>
+        <tableViewCell contentMode="scaleToFill" restorationIdentifier="DashBoardMenuTableViewCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="DashBoardMenuTableViewCell" rowHeight="178" id="KGk-i7-Jjw" customClass="DashBoardMenuTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="155"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
                 <rect key="frame" x="0.0" y="0.0" width="375" height="155"/>
@@ -35,12 +35,12 @@
                                     <constraint firstAttribute="width" constant="254" id="KvP-PZ-UXD"/>
                                     <constraint firstAttribute="height" constant="25" id="dLg-8j-BAJ"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h4N-6B-l3U">
-                                <rect key="frame" x="17" y="25" width="216" height="19"/>
+                                <rect key="frame" x="17" y="25" width="224" height="19"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="19" id="1XA-hu-o5X"/>
                                 </constraints>
@@ -54,15 +54,15 @@
                                     <constraint firstAttribute="height" constant="19" id="NYm-ge-40v"/>
                                     <constraint firstAttribute="width" constant="92" id="Sx9-ei-Rro"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="13"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="events-w.png" translatesAutoresizingMaskIntoConstraints="NO" id="qhO-di-3OX">
-                                <rect key="frame" x="247" y="26" width="20" height="16"/>
+                                <rect key="frame" x="255" y="28" width="14" height="14"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="16" id="Huj-HF-yhb"/>
-                                    <constraint firstAttribute="width" constant="20" id="XB5-uB-AsQ"/>
+                                    <constraint firstAttribute="height" constant="14" id="Huj-HF-yhb"/>
+                                    <constraint firstAttribute="width" constant="14" id="XB5-uB-AsQ"/>
                                 </constraints>
                             </imageView>
                         </subviews>
@@ -77,7 +77,7 @@
                             <constraint firstAttribute="bottom" secondItem="x0V-tn-6x0" secondAttribute="bottom" constant="6" id="h2u-q1-kM2"/>
                             <constraint firstItem="Cd5-FY-CHQ" firstAttribute="leading" secondItem="JNw-Ah-aYa" secondAttribute="leading" constant="17" id="hY4-tJ-3hj"/>
                             <constraint firstItem="qhO-di-3OX" firstAttribute="leading" secondItem="h4N-6B-l3U" secondAttribute="trailing" constant="14" id="nGY-A7-geu"/>
-                            <constraint firstItem="x0V-tn-6x0" firstAttribute="leading" secondItem="qhO-di-3OX" secondAttribute="trailing" constant="8" id="r2l-hW-lqd"/>
+                            <constraint firstItem="x0V-tn-6x0" firstAttribute="leading" secondItem="qhO-di-3OX" secondAttribute="trailing" constant="6" id="r2l-hW-lqd"/>
                             <constraint firstAttribute="trailing" secondItem="x0V-tn-6x0" secondAttribute="trailing" constant="8" id="xPN-vZ-WhB"/>
                         </constraints>
                     </view>
@@ -98,7 +98,7 @@
                 <outlet property="labelEventDate" destination="x0V-tn-6x0" id="SO2-ID-Z7Z"/>
                 <outlet property="labelEventName" destination="Cd5-FY-CHQ" id="3XR-HJ-chn"/>
             </connections>
-            <point key="canvasLocation" x="260.5" y="-47"/>
+            <point key="canvasLocation" x="260.5" y="-47.5"/>
         </tableViewCell>
     </objects>
     <resources>
