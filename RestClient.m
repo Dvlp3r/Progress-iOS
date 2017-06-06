@@ -67,7 +67,7 @@
         [urlRequest setHTTPMethod:self.httpObject.methodType];
         NSString *postStr = self.postStr;
         [urlRequest setHTTPBody:[postStr dataUsingEncoding:NSUTF8StringEncoding]];
-        [urlRequest setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+        [urlRequest setValue:@"application/x-www-form-urlencoded;charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
     }else{
         [urlRequest setValue:@"application/x-www-form-urlencoded;charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
     }

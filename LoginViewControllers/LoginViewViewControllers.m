@@ -24,8 +24,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
-    
     NSString *userName=[[NSUserDefaults standardUserDefaults]objectForKey:@"username1"];
     
     NSString *password=[[NSUserDefaults standardUserDefaults]objectForKey:@"Password"];
@@ -53,16 +51,31 @@
     
 }
 
--(void)testLoginApi{
+-(void)loginApi:(NSString *)username password:(NSString *)password{
     NSMutableDictionary *dict = [[NSMutableDictionary alloc]init];
-    [dict setValue:@"nbansa1111" forKey:@"username"];
-    [dict setValue:@"12611612" forKey:@"password"];
+    [dict setValue:username forKey:@"username"];
+    [dict setValue:password forKey:@"password"];
     [self executeTask:[APIGenerator loginApi:dict]];
 }
 
+-(void)onPreExecute:(id)object forRT:(NSString *)rt{
+    _indicatorLogin.hidden=NO;
+    [_indicatorLogin startAnimating];
+}
+
 -(BOOL)onSuccess:(id)object forRT:(NSString *)rt andParamObject:(HttpObject *)params{
+    _indicatorLogin.hidden=YES;
+    [_indicatorLogin stopAnimating];
     [super onSuccess:object forRT:rt andParamObject:params];
+    if([Login_url isEqualToString:rt]){
+        [self onLoginResponseReceived:object];
+    }
     return YES;
+}
+
+-(void)onFailure:(HttpObject *)paramObject forRT:(NSString *)rt{
+    _indicatorLogin.hidden=YES;
+    [_indicatorLogin stopAnimating];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -156,13 +169,6 @@
         
         [self callAlert:@"Warning" message:@"Password should not be less than 6 digit"];
     }
-    
-    //    else if (isemailValid==NO){
-    //
-    //        [self callAlert:@"Warning" message:@"Check your Email ID Format"];
-    //  }
-    
-    
     else{
         
         
@@ -175,10 +181,88 @@
         
         [[NSUserDefaults standardUserDefaults]synchronize];
         
-        [self callLoginApi:__textFieldUserNameLogin.text Password:__textFieldPasswordLogin.text];
+        //        [self callLoginApi:__textFieldUserNameLogin.text Password:__textFieldPasswordLogin.text];
+        [self loginApi:__textFieldUserNameLogin.text password:__textFieldPasswordLogin.text];
+    }
+    
+}
+
+-(void)onLoginResponseReceived:(NSDictionary *)json{
+    
+    NSLog(@"%@",json);
+    NSArray *errors = [json objectForKey:@"errors"];
+    
+    if (errors!=nil) {
+        [self showAlert:@"Incorrect username or password"];
+    }else{
+        [self saveToken:[json objectForKey:@"access_token"]];
+        
+        NSLog(@"access token %@",[Model sharedInstance].accessToken);
+        
+        NSArray *valueData = [json objectForKey:@"user"];
+        
+        NSLog(@"%@ data",valueData);
+        
+        NSArray *username1=[valueData valueForKey:@"username"];
+        
+        NSString *role =   [NSString stringWithFormat:@"%@",[valueData valueForKey:@"role"]];
+        
+        NSString *contact=[valueData valueForKey:@"contact"];
+        
+        NSString *email1=[valueData valueForKey:@"email"];
+        
+        NSString *profilepic=[valueData valueForKey:@"profile_pic"];
+        
+        if ([profilepic isKindOfClass:[NSNull class]]){
+            profilepic=@"";
+        }
+        [self saveLoginData:username1 contact:contact email:email1 role:role image:profilepic];
+        NSString *roleAdmin=[[NSUserDefaults standardUserDefaults]objectForKey:@"role"];
+        if ([roleAdmin isEqualToString:@"1"]) {
+            [self moveToAdminDashboard];
+        }else{
+            [self moveToUserDashboard];
+        }
+        __textFieldUserNameLogin.text=nil;
+        
+        __textFieldPasswordLogin.text=nil;
+        
         
     }
     
+    
+    
+    
+}
+
+-(void)saveToken:(NSString *)token{
+    [Model sharedInstance].accessToken= token;
+    [[NSUserDefaults standardUserDefaults]setObject:token forKey:@"accessToken"];
+    [[NSUserDefaults standardUserDefaults]synchronize];
+}
+
+-(void)saveLoginData:(NSArray *)username contact:(NSString *)contact email:(NSString *)email role:(NSString *)role image:(NSString *)image{
+    [[NSUserDefaults standardUserDefaults]setObject:username forKey:@"username1"];
+    //   [[NSUserDefaults standardUserDefaults]setObject:_textFieldPassword.text forKey:@"Password"];
+    [[NSUserDefaults standardUserDefaults]setObject:contact forKey:@"contact"];
+    [[NSUserDefaults standardUserDefaults]setObject:email forKey:@"email"];
+    [[NSUserDefaults standardUserDefaults]setObject:role forKey:@"role"];
+    [[NSUserDefaults standardUserDefaults]setObject:image forKey:@"imageProfile"];
+    [[NSUserDefaults standardUserDefaults]synchronize];
+}
+
+-(void)moveToAdminDashboard{
+    [[NSUserDefaults standardUserDefaults]setValue:@"1" forKey:@"hidepopupmessage"];
+    [[NSUserDefaults standardUserDefaults]synchronize];
+    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UIViewController *vc = [sb instantiateViewControllerWithIdentifier:@"AdminDashboardViewController"];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+-(void)moveToUserDashboard{
+    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UIViewController *vc = [sb instantiateViewControllerWithIdentifier:@"DashBoradViewController"];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 
@@ -288,7 +372,7 @@
                     
                     
                 }
-
+                
                 
                 
                 
@@ -302,7 +386,7 @@
                 
                 
                 
-
+                
                 
                 
                 [[NSUserDefaults standardUserDefaults]setObject:contact forKey:@"contact"];
