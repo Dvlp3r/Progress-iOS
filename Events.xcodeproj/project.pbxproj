@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		106FA42A1EE723BD00921B84 /* JASidePanelController.m in Sources */ = {isa = PBXBuildFile; fileRef = 106FA4271EE723BD00921B84 /* JASidePanelController.m */; };
+		106FA42B1EE723BD00921B84 /* UIViewController+JASidePanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 106FA4291EE723BD00921B84 /* UIViewController+JASidePanel.m */; };
+		106FA42F1EE7277E00921B84 /* MenuVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 106FA42E1EE7277E00921B84 /* MenuVC.m */; };
+		106FA4321EE73C1600921B84 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 106FA4311EE73C1600921B84 /* AppDelegate.m */; };
 		181321A71EBC645B0079188D /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 181321951EBC63B00079188D /* Roboto-Black.ttf */; };
 		181321A81EBC645B0079188D /* Roboto-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 181321961EBC63B10079188D /* Roboto-BlackItalic.ttf */; };
 		181321A91EBC645B0079188D /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 181321971EBC63B10079188D /* Roboto-Bold.ttf */; };
@@ -121,7 +125,6 @@
 		813A917A1E4482E50001B69B /* DeepLinkForgetPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 813A91791E4482E50001B69B /* DeepLinkForgetPasswordViewController.m */; };
 		813A917F1E449E080001B69B /* Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 813A917D1E449E080001B69B /* Model.m */; };
 		8141B3E91E40862B0079FE0C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8141B3E81E40862B0079FE0C /* main.m */; };
-		8141B3EC1E40862B0079FE0C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8141B3EB1E40862B0079FE0C /* AppDelegate.m */; };
 		8141B3EF1E40862B0079FE0C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8141B3EE1E40862B0079FE0C /* ViewController.m */; };
 		8141B3F71E40862B0079FE0C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8141B3F51E40862B0079FE0C /* LaunchScreen.storyboard */; };
 		8141B4021E40862B0079FE0C /* EventsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8141B4011E40862B0079FE0C /* EventsTests.m */; };
@@ -180,6 +183,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		106FA4261EE723BD00921B84 /* JASidePanelController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JASidePanelController.h; sourceTree = "<group>"; };
+		106FA4271EE723BD00921B84 /* JASidePanelController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JASidePanelController.m; sourceTree = "<group>"; };
+		106FA4281EE723BD00921B84 /* UIViewController+JASidePanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+JASidePanel.h"; sourceTree = "<group>"; };
+		106FA4291EE723BD00921B84 /* UIViewController+JASidePanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+JASidePanel.m"; sourceTree = "<group>"; };
+		106FA42D1EE7277E00921B84 /* MenuVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuVC.h; sourceTree = "<group>"; };
+		106FA42E1EE7277E00921B84 /* MenuVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuVC.m; sourceTree = "<group>"; };
+		106FA4301EE73C1600921B84 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		106FA4311EE73C1600921B84 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		181321951EBC63B00079188D /* Roboto-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Black.ttf"; sourceTree = "<group>"; };
 		181321961EBC63B10079188D /* Roboto-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-BlackItalic.ttf"; sourceTree = "<group>"; };
 		181321971EBC63B10079188D /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
@@ -352,8 +363,6 @@
 		813A917D1E449E080001B69B /* Model.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Model.m; sourceTree = "<group>"; };
 		8141B3E41E40862B0079FE0C /* Events.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Events.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8141B3E81E40862B0079FE0C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		8141B3EA1E40862B0079FE0C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = ../Events/AppDelegate.h; sourceTree = "<group>"; };
-		8141B3EB1E40862B0079FE0C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = ../Events/AppDelegate.m; sourceTree = "<group>"; };
 		8141B3ED1E40862B0079FE0C /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ViewController.h; path = ../Events/ViewController.h; sourceTree = "<group>"; };
 		8141B3EE1E40862B0079FE0C /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ViewController.m; path = ../Events/ViewController.m; sourceTree = "<group>"; };
 		8141B3F11E40862B0079FE0C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -437,6 +446,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		106FA4251EE7238800921B84 /* JsideSource */ = {
+			isa = PBXGroup;
+			children = (
+				106FA4261EE723BD00921B84 /* JASidePanelController.h */,
+				106FA4271EE723BD00921B84 /* JASidePanelController.m */,
+				106FA4281EE723BD00921B84 /* UIViewController+JASidePanel.h */,
+				106FA4291EE723BD00921B84 /* UIViewController+JASidePanel.m */,
+			);
+			name = JsideSource;
+			sourceTree = "<group>";
+		};
+		106FA42C1EE7275E00921B84 /* MenuVc */ = {
+			isa = PBXGroup;
+			children = (
+				106FA42D1EE7277E00921B84 /* MenuVC.h */,
+				106FA42E1EE7277E00921B84 /* MenuVC.m */,
+			);
+			name = MenuVc;
+			sourceTree = "<group>";
+		};
 		181321941EBC63A40079188D /* Font */ = {
 			isa = PBXGroup;
 			children = (
@@ -803,6 +832,8 @@
 		8141B3DB1E40862B0079FE0C = {
 			isa = PBXGroup;
 			children = (
+				106FA42C1EE7275E00921B84 /* MenuVc */,
+				106FA4251EE7238800921B84 /* JsideSource */,
 				BB63E66D1EE6CD0300470DA3 /* Utility */,
 				BB63E65D1EE6C61B00470DA3 /* RestFramework */,
 				18DAA9591ECF04B2004B3610 /* LocationViewController.h */,
@@ -858,6 +889,8 @@
 		8141B3E61E40862B0079FE0C /* Events */ = {
 			isa = PBXGroup;
 			children = (
+				106FA4301EE73C1600921B84 /* AppDelegate.h */,
+				106FA4311EE73C1600921B84 /* AppDelegate.m */,
 				811D94D21E55C0F200EA4C9E /* Events.entitlements */,
 				8141B4261E408F590079FE0C /* MainViewController */,
 				8141B3F01E40862B0079FE0C /* Main.storyboard */,
@@ -972,8 +1005,6 @@
 		8141B4271E408F7D0079FE0C /* AppDelegate */ = {
 			isa = PBXGroup;
 			children = (
-				8141B3EA1E40862B0079FE0C /* AppDelegate.h */,
-				8141B3EB1E40862B0079FE0C /* AppDelegate.m */,
 			);
 			path = AppDelegate;
 			sourceTree = "<group>";
@@ -1290,6 +1321,7 @@
 				8152FF4D1E5327870095FC78 /* DashboardNextScreenViewController.m in Sources */,
 				813A91721E4465D90001B69B /* NSString+Validation.m in Sources */,
 				18C07F281ECAEF66002BC63C /* IQKeyboardReturnKeyHandler.m in Sources */,
+				106FA42B1EE723BD00921B84 /* UIViewController+JASidePanel.m in Sources */,
 				8152FF3F1E52DA340095FC78 /* AdminDashboardViewController.m in Sources */,
 				810792E71E4EEC1D00B4121F /* SDImageCache.m in Sources */,
 				810792E51E4EEC1D00B4121F /* MKAnnotationView+WebCache.m in Sources */,
@@ -1299,6 +1331,7 @@
 				8130D3D51E43093E00DA7995 /* SignUpViewController.m in Sources */,
 				18DAA95B1ECF04B2004B3610 /* LocationViewController.m in Sources */,
 				810792F41E4EEC1D00B4121F /* UIView+WebCacheOperation.m in Sources */,
+				106FA4321EE73C1600921B84 /* AppDelegate.m in Sources */,
 				811A6DF01E4DEA6E00365966 /* ProfileAccountViewController.m in Sources */,
 				811074461E51D2DC00611546 /* MyEventCreateTableViewCell.m in Sources */,
 				BB63E6641EE6C67F00470DA3 /* DownloadManager.m in Sources */,
@@ -1307,8 +1340,8 @@
 				8130D3F51E43425E00DA7995 /* DashBoradViewController.m in Sources */,
 				8130D3FF1E43523200DA7995 /* DashBoardMenuTableViewCell.m in Sources */,
 				18C07F2E1ECAEF66002BC63C /* IQUIView+IQKeyboardToolbar.m in Sources */,
-				8141B3EC1E40862B0079FE0C /* AppDelegate.m in Sources */,
 				18C07F261ECAEF66002BC63C /* IQUIWindow+Hierarchy.m in Sources */,
+				106FA42F1EE7277E00921B84 /* MenuVC.m in Sources */,
 				810792E81E4EEC1D00B4121F /* SDWebImageCompat.m in Sources */,
 				810D32BA1E5F1BA0009137E6 /* AttendUserViewController.m in Sources */,
 				811074411E51D02A00611546 /* MyEventCreateViewController.m in Sources */,
@@ -1320,6 +1353,7 @@
 				810D32BF1E5F1BD1009137E6 /* AttendUserTableViewCell.m in Sources */,
 				81B9AFD41E66F7090024F92A /* UserAdminEventTableViewCell.m in Sources */,
 				8141B3E91E40862B0079FE0C /* main.m in Sources */,
+				106FA42A1EE723BD00921B84 /* JASidePanelController.m in Sources */,
 				BB63E6691EE6C85E00470DA3 /* APIGenerator.m in Sources */,
 				810792F21E4EEC1D00B4121F /* UIImageView+HighlightedWebCache.m in Sources */,
 				18C07F271ECAEF66002BC63C /* IQKeyboardManager.m in Sources */,
