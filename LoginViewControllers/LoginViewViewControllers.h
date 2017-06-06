@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface LoginViewViewControllers : UIViewController
+#import "BaseVC.h"
+@interface LoginViewViewControllers : BaseVC
 
 @property (weak, nonatomic) IBOutlet UITextField *_textFieldUserNameLogin;
 

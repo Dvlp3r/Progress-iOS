@@ -154,6 +154,12 @@
 		81CA72241E659C2200700A40 /* time.png in Resources */ = {isa = PBXBuildFile; fileRef = 81CA721F1E659C2200700A40 /* time.png */; };
 		81CA72251E659C2200700A40 /* upload.png in Resources */ = {isa = PBXBuildFile; fileRef = 81CA72201E659C2200700A40 /* upload.png */; };
 		81CA72271E659CF100700A40 /* my_events.png in Resources */ = {isa = PBXBuildFile; fileRef = 81CA72261E659CF100700A40 /* my_events.png */; };
+		BB63E6641EE6C67F00470DA3 /* DownloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BB63E65F1EE6C67F00470DA3 /* DownloadManager.m */; };
+		BB63E6651EE6C67F00470DA3 /* HttpObject.m in Sources */ = {isa = PBXBuildFile; fileRef = BB63E6611EE6C67F00470DA3 /* HttpObject.m */; };
+		BB63E6661EE6C67F00470DA3 /* RestClient.m in Sources */ = {isa = PBXBuildFile; fileRef = BB63E6631EE6C67F00470DA3 /* RestClient.m */; };
+		BB63E6691EE6C85E00470DA3 /* APIGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = BB63E6681EE6C85E00470DA3 /* APIGenerator.m */; };
+		BB63E66C1EE6CB2600470DA3 /* BaseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = BB63E66B1EE6CB2600470DA3 /* BaseVC.m */; };
+		BB63E6701EE6CD0F00470DA3 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = BB63E66F1EE6CD0F00470DA3 /* Reachability.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -391,6 +397,18 @@
 		81CA721F1E659C2200700A40 /* time.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = time.png; sourceTree = "<group>"; };
 		81CA72201E659C2200700A40 /* upload.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = upload.png; sourceTree = "<group>"; };
 		81CA72261E659CF100700A40 /* my_events.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = my_events.png; sourceTree = "<group>"; };
+		BB63E65E1EE6C67F00470DA3 /* DownloadManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadManager.h; sourceTree = "<group>"; };
+		BB63E65F1EE6C67F00470DA3 /* DownloadManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadManager.m; sourceTree = "<group>"; };
+		BB63E6601EE6C67F00470DA3 /* HttpObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpObject.h; sourceTree = "<group>"; };
+		BB63E6611EE6C67F00470DA3 /* HttpObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpObject.m; sourceTree = "<group>"; };
+		BB63E6621EE6C67F00470DA3 /* RestClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestClient.h; sourceTree = "<group>"; };
+		BB63E6631EE6C67F00470DA3 /* RestClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestClient.m; sourceTree = "<group>"; };
+		BB63E6671EE6C85E00470DA3 /* APIGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APIGenerator.h; sourceTree = "<group>"; };
+		BB63E6681EE6C85E00470DA3 /* APIGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APIGenerator.m; sourceTree = "<group>"; };
+		BB63E66A1EE6CB2600470DA3 /* BaseVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseVC.h; sourceTree = "<group>"; };
+		BB63E66B1EE6CB2600470DA3 /* BaseVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseVC.m; sourceTree = "<group>"; };
+		BB63E66E1EE6CD0F00470DA3 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		BB63E66F1EE6CD0F00470DA3 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -785,6 +803,8 @@
 		8141B3DB1E40862B0079FE0C = {
 			isa = PBXGroup;
 			children = (
+				BB63E66D1EE6CD0300470DA3 /* Utility */,
+				BB63E65D1EE6C61B00470DA3 /* RestFramework */,
 				18DAA9591ECF04B2004B3610 /* LocationViewController.h */,
 				18DAA95A1ECF04B2004B3610 /* LocationViewController.m */,
 				81B9AFD01E66F6CD0024F92A /* UserAdminEventTableViewCell */,
@@ -844,6 +864,8 @@
 				8141B3F51E40862B0079FE0C /* LaunchScreen.storyboard */,
 				8141B3F81E40862B0079FE0C /* Info.plist */,
 				8141B3E71E40862B0079FE0C /* Supporting Files */,
+				BB63E66A1EE6CB2600470DA3 /* BaseVC.h */,
+				BB63E66B1EE6CB2600470DA3 /* BaseVC.m */,
 			);
 			path = Events;
 			sourceTree = "<group>";
@@ -1001,6 +1023,30 @@
 				81B9AFD31E66F7090024F92A /* UserAdminEventTableViewCell.xib */,
 			);
 			path = UserAdminEventTableViewCell;
+			sourceTree = "<group>";
+		};
+		BB63E65D1EE6C61B00470DA3 /* RestFramework */ = {
+			isa = PBXGroup;
+			children = (
+				BB63E65E1EE6C67F00470DA3 /* DownloadManager.h */,
+				BB63E65F1EE6C67F00470DA3 /* DownloadManager.m */,
+				BB63E6601EE6C67F00470DA3 /* HttpObject.h */,
+				BB63E6611EE6C67F00470DA3 /* HttpObject.m */,
+				BB63E6621EE6C67F00470DA3 /* RestClient.h */,
+				BB63E6631EE6C67F00470DA3 /* RestClient.m */,
+				BB63E6671EE6C85E00470DA3 /* APIGenerator.h */,
+				BB63E6681EE6C85E00470DA3 /* APIGenerator.m */,
+			);
+			name = RestFramework;
+			sourceTree = "<group>";
+		};
+		BB63E66D1EE6CD0300470DA3 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				BB63E66E1EE6CD0F00470DA3 /* Reachability.h */,
+				BB63E66F1EE6CD0F00470DA3 /* Reachability.m */,
+			);
+			name = Utility;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1234,6 +1280,7 @@
 				810792EF1E4EEC1D00B4121F /* UIImage+GIF.m in Sources */,
 				810D32AD1E5EE7F3009137E6 /* PastEventDetailViewController.m in Sources */,
 				810792EC1E4EEC1D00B4121F /* SDWebImageManager.m in Sources */,
+				BB63E66C1EE6CB2600470DA3 /* BaseVC.m in Sources */,
 				18C07F221ECAEF66002BC63C /* IQUIScrollView+Additions.m in Sources */,
 				810792F31E4EEC1D00B4121F /* UIImageView+WebCache.m in Sources */,
 				18C07F2D1ECAEF66002BC63C /* IQToolbar.m in Sources */,
@@ -1254,6 +1301,7 @@
 				810792F41E4EEC1D00B4121F /* UIView+WebCacheOperation.m in Sources */,
 				811A6DF01E4DEA6E00365966 /* ProfileAccountViewController.m in Sources */,
 				811074461E51D2DC00611546 /* MyEventCreateTableViewCell.m in Sources */,
+				BB63E6641EE6C67F00470DA3 /* DownloadManager.m in Sources */,
 				810792F11E4EEC1D00B4121F /* UIImage+WebP.m in Sources */,
 				810792ED1E4EEC1D00B4121F /* SDWebImagePrefetcher.m in Sources */,
 				8130D3F51E43425E00DA7995 /* DashBoradViewController.m in Sources */,
@@ -1265,17 +1313,20 @@
 				810D32BA1E5F1BA0009137E6 /* AttendUserViewController.m in Sources */,
 				811074411E51D02A00611546 /* MyEventCreateViewController.m in Sources */,
 				810D32B11E5EE80B009137E6 /* PastEventTableViewCell.m in Sources */,
+				BB63E6661EE6C67F00470DA3 /* RestClient.m in Sources */,
 				810792E61E4EEC1D00B4121F /* NSData+ImageContentType.m in Sources */,
 				810792E91E4EEC1D00B4121F /* SDWebImageDecoder.m in Sources */,
 				18C07F231ECAEF66002BC63C /* IQUITextFieldView+Additions.m in Sources */,
 				810D32BF1E5F1BD1009137E6 /* AttendUserTableViewCell.m in Sources */,
 				81B9AFD41E66F7090024F92A /* UserAdminEventTableViewCell.m in Sources */,
 				8141B3E91E40862B0079FE0C /* main.m in Sources */,
+				BB63E6691EE6C85E00470DA3 /* APIGenerator.m in Sources */,
 				810792F21E4EEC1D00B4121F /* UIImageView+HighlightedWebCache.m in Sources */,
 				18C07F271ECAEF66002BC63C /* IQKeyboardManager.m in Sources */,
 				810792EE1E4EEC1D00B4121F /* UIButton+WebCache.m in Sources */,
 				18C07F2C1ECAEF66002BC63C /* IQTitleBarButtonItem.m in Sources */,
 				18C07F2B1ECAEF66002BC63C /* IQPreviousNextView.m in Sources */,
+				BB63E6651EE6C67F00470DA3 /* HttpObject.m in Sources */,
 				810D32B61E5EF87E009137E6 /* AdminDashBoardNextScreenViewController.m in Sources */,
 				811B82211E54718200F19261 /* AdminDashBoardUserTableViewCell.m in Sources */,
 				813A91761E4482380001B69B /* ChangePasswordViewController.m in Sources */,
@@ -1284,6 +1335,7 @@
 				813A917A1E4482E50001B69B /* DeepLinkForgetPasswordViewController.m in Sources */,
 				18C07F2A1ECAEF66002BC63C /* IQBarButtonItem.m in Sources */,
 				813A917F1E449E080001B69B /* Model.m in Sources */,
+				BB63E6701EE6CD0F00470DA3 /* Reachability.m in Sources */,
 				810792EA1E4EEC1D00B4121F /* SDWebImageDownloader.m in Sources */,
 				810D32A81E5ED9E4009137E6 /* FutureDetailViewController.m in Sources */,
 				810792C21E4ECEF900B4121F /* CreateEventScreenViewController.m in Sources */,

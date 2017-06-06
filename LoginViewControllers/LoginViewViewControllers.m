@@ -53,6 +53,18 @@
     
 }
 
+-(void)testLoginApi{
+    NSMutableDictionary *dict = [[NSMutableDictionary alloc]init];
+    [dict setValue:@"nbansa1111" forKey:@"username"];
+    [dict setValue:@"12611612" forKey:@"password"];
+    [self executeTask:[APIGenerator loginApi:dict]];
+}
+
+-(BOOL)onSuccess:(id)object forRT:(NSString *)rt andParamObject:(HttpObject *)params{
+    [super onSuccess:object forRT:rt andParamObject:params];
+    return YES;
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
