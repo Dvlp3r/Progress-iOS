@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "JASidePanelController.h"
+#import "UIViewController+JASidePanel.h"
 @interface SignUpViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UIView *viewUserName;
@@ -29,6 +30,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *textFieldPassword;
 
 
+@property (strong, nonatomic) JASidePanelController *sidePanelObj;
 
 
 @property (weak, nonatomic) IBOutlet UITextField *textFieldContact;
