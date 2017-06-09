@@ -165,7 +165,7 @@
 {
     [super viewWillAppear:animated];
     
-    _scrollViewMain.contentSize = _mainView.frame.size;
+    _scrollViewMain.contentSize = CGSizeMake(0, 620);
 
 }
 - (void)didReceiveMemoryWarning {

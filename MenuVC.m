@@ -19,18 +19,18 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSDictionary *dic =[[NSUserDefaults standardUserDefaults] valueForKey:@"userdata"];
-    if (![[dic valueForKeyPath:@"userprofile.role"] isEqualToString:@"EMPLOYEE"]) {
+    NSString *roleAdmin=[[NSUserDefaults standardUserDefaults]objectForKey:@"role"];
+    if ([roleAdmin isEqualToString:@"1"]) {
+        arrayData=[NSArray arrayWithObjects:@"Dashboard",@"Create Events",@"Logout" ,nil];
+        arrayImages=[NSArray arrayWithObjects:@"account",@"my_events",@"logout-512.png" ,nil];
+    }
+    else
+    {
         arrayData=[NSArray arrayWithObjects:@"Events",@"My Events",  @"Account", @"Support",@"Logout" ,nil];
         arrayImages=[NSArray arrayWithObjects:@"events",@"my_events",  @"account", @"2017-03-3",@"logout-512.png" ,nil];
 
     }
-    else
-    {
-    
-        arrayData=[NSArray arrayWithObjects:@"Dashboard",@"My Profile",  @"Society Bill", @"Calender" ,@"Parking Allotment",@"Directory",@"Residents",@"Notice Board",@"Invitation",@"Videos",@"Complaints",@"Logout",nil];
-        arrayImages=[NSArray arrayWithObjects:@"di_dashboard",@"di_residents",  @"di_residents", @"di_calender" ,@"di_parking",@"di_directry",@"di_residents",@"di_noticeboard",@"di_invitation",@"di_communication",@"di_complains",@"logout",nil];
-}
+   
    
     // Do any additional setup after loading the view.
 }
@@ -160,22 +160,25 @@
         }
 
     }
-   /* else  if ([[arrayData objectAtIndex:indexPath.row]  isEqualToString:@"EasyPoll"])
+    else  if ([[arrayData objectAtIndex:indexPath.row]  isEqualToString:@"Dashboard"])
   {
-      EasyPollViewController *objEasyPollViewController=[self.storyboard instantiateViewControllerWithIdentifier:@"easyPollView"];
-      objEasyPollViewController.strType = @"EasyPoll";
-      self.sidePanelController.centerPanel = [[UINavigationController alloc]initWithRootViewController:objEasyPollViewController];
+      UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+      
+      UIViewController *vc = [sb instantiateViewControllerWithIdentifier:@"AdminDashboardViewController"];
+      
+      self.sidePanelController.centerPanel = [[UINavigationController alloc]initWithRootViewController:vc];
 
 
   }
-    else  if ([[arrayData objectAtIndex:indexPath.row]  isEqualToString:@"Parking Allotment"])
+    else  if ([[arrayData objectAtIndex:indexPath.row]  isEqualToString:@"Create Events"])
   {
-      EasyPollViewController *objEasyPollViewController=[self.storyboard instantiateViewControllerWithIdentifier:@"easyPollView"];
-      objEasyPollViewController.strType = @"Parking";
-      self.sidePanelController.centerPanel = [[UINavigationController alloc]initWithRootViewController:objEasyPollViewController];
+      UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+      
+      UIViewController *vc = [sb instantiateViewControllerWithIdentifier:@"CreateEventScreenViewController"];
+      self.sidePanelController.centerPanel = [[UINavigationController alloc]initWithRootViewController:vc];
       
   }
-    else  if ([[arrayData objectAtIndex:indexPath.row]  isEqualToString:@"Directory"])
+/*    else  if ([[arrayData objectAtIndex:indexPath.row]  isEqualToString:@"Directory"])
   {
       
       ResidentsVC *objEasyPollViewController=[self.storyboard instantiateViewControllerWithIdentifier:@"ResidentsVC"];
