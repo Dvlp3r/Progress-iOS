@@ -50,7 +50,11 @@
     _vwCredentials.layer.shadowRadius = 10;
     
 }
+-(void)viewWillAppear:(BOOL)animated
+{
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
 
+}
 -(void)loginApi:(NSString *)username password:(NSString *)password{
     NSMutableDictionary *dict = [[NSMutableDictionary alloc]init];
     [dict setValue:username forKey:@"username"];
@@ -255,14 +259,27 @@
     [[NSUserDefaults standardUserDefaults]setValue:@"1" forKey:@"hidepopupmessage"];
     [[NSUserDefaults standardUserDefaults]synchronize];
     UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    UIViewController *vc = [sb instantiateViewControllerWithIdentifier:@"AdminDashboardViewController"];
+ /*   UIViewController *vc = [sb instantiateViewControllerWithIdentifier:@"AdminDashboardViewController"];
     [self.navigationController pushViewController:vc animated:YES];
+    */
+    UIViewController *objHomeVC=[sb instantiateViewControllerWithIdentifier:@"AdminDashboardViewController"];
+    self.sidePanelObj = [[JASidePanelController alloc]init];
+    self.sidePanelObj.shouldDelegateAutorotateToVisiblePanel = NO;
+    self.sidePanelObj.leftPanel = [sb instantiateViewControllerWithIdentifier:@"menuView"];
+    self.sidePanelObj.centerPanel = [[UINavigationController alloc] initWithRootViewController:objHomeVC];
+    [[[UIApplication sharedApplication].delegate window] setRootViewController:self.sidePanelObj];
 }
 
 -(void)moveToUserDashboard{
     UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    UIViewController *vc = [sb instantiateViewControllerWithIdentifier:@"DashBoradViewController"];
-    [self.navigationController pushViewController:vc animated:YES];
+   /* UIViewController *vc = [sb instantiateViewControllerWithIdentifier:@"DashBoradViewController"];
+    [self.navigationController pushViewController:vc animated:YES];*/
+    DashBoradViewController *objHomeVC=[sb instantiateViewControllerWithIdentifier:@"DashBoradViewController"];
+    self.sidePanelObj = [[JASidePanelController alloc]init];
+    self.sidePanelObj.shouldDelegateAutorotateToVisiblePanel = NO;
+    self.sidePanelObj.leftPanel = [sb instantiateViewControllerWithIdentifier:@"menuView"];
+    self.sidePanelObj.centerPanel = [[UINavigationController alloc] initWithRootViewController:objHomeVC];
+    [[[UIApplication sharedApplication].delegate window] setRootViewController:self.sidePanelObj];
 }
 
 

@@ -376,9 +376,16 @@
                 
                 UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
                 
-                UIViewController *vc = [sb instantiateViewControllerWithIdentifier:@"DashBoradViewController"];
+              /*  UIViewController *vc = [sb instantiateViewControllerWithIdentifier:@"DashBoradViewController"];
                 
-                [self.navigationController pushViewController:vc animated:YES];
+                [self.navigationController pushViewController:vc animated:YES];*/
+                
+                UIViewController *objHomeVC=[sb instantiateViewControllerWithIdentifier:@"DashBoradViewController"];
+                self.sidePanelObj = [[JASidePanelController alloc]init];
+                self.sidePanelObj.shouldDelegateAutorotateToVisiblePanel = NO;
+                self.sidePanelObj.leftPanel = [sb instantiateViewControllerWithIdentifier:@"menuView"];
+                self.sidePanelObj.centerPanel = [[UINavigationController alloc] initWithRootViewController:objHomeVC];
+                [[[UIApplication sharedApplication].delegate window] setRootViewController:self.sidePanelObj];
                 
                 
             }

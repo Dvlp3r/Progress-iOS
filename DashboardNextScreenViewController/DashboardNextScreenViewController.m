@@ -192,7 +192,12 @@
     CLLocationCoordinate2D zoomLocation;
     zoomLocation.latitude = value;
     zoomLocation.longitude= value2;
-    
+    if (value > 90 ) {
+        value = 85;
+    }
+    else if (value < -90 ) {
+        value = -85;
+    }
     // 2
     //    MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(zoomLocation, 0.5*METERS_PER_MILE, 0.5*METERS_PER_MILE);
     //
@@ -203,6 +208,7 @@
     CLLocationCoordinate2D coord = CLLocationCoordinate2DMake(value, value2);
     
     MKCoordinateSpan span = MKCoordinateSpanMake(0.1, 0.1);
+    
     MKCoordinateRegion region = {coord, span};
     
     MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
