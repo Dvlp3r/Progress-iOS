@@ -7,6 +7,7 @@
 //
 
 #import "APIGenerator.h"
+#import "Model.h"
 
 @implementation APIGenerator
 
@@ -19,6 +20,12 @@
 }
 +(HttpObject *)getAllEvents:(NSMutableDictionary *)params{
     return [self postWithUrlEncoded:params url:getallevents taskCode:getallevents];
+}
+
++(HttpObject *)bookEvent:(NSMutableDictionary *)params{
+    HttpObject *obj = [self postWithUrlEncoded:params url:booktoevent taskCode:booktoevent];
+    [obj addAuthHeader];
+    return obj;
 }
 
 +(HttpObject *)postWithUrlEncoded:(NSMutableDictionary *)params url:(NSString *)url taskCode:(NSString *)taskCode{

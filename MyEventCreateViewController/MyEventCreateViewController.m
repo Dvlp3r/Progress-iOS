@@ -130,13 +130,7 @@
         
         
     }
-    
-    
-    [self.viewonImage.layer setBorderWidth:1.0];
-    _viewonImage.layer.borderColor=[[UIColor colorWithRed:(213.0/255.0) green:(215.0/255.0) blue:(216.0/255.0) alpha:1.0]CGColor];
-    
-    
-    
+    [PastEventTableViewCell setShadowView:self.viewonImage];
     
     _indicator.hidden=YES;
     arrayNameMyEvent=[[NSMutableArray alloc]init];
@@ -183,20 +177,20 @@
     arraydescriptionPastEvent=[[NSMutableArray alloc]init];
 
     
-    self.scrollView.delegate=self;
-    int width=0;
-
-    self.scrollView.delaysContentTouches = YES;
-    self.scrollView.canCancelContentTouches = NO;
-    
-    width+=300;
-    
-    
-    
-    _scrollView.pagingEnabled = YES;
-    _scrollView.directionalLockEnabled = YES;
-    
-    _scrollView.contentSize = CGSizeMake(self.view.bounds.size.width*2, self.view.bounds.size.height-98);
+//    self.scrollView.delegate=self;
+//    int width=0;
+//
+//    self.scrollView.delaysContentTouches = YES;
+//    self.scrollView.canCancelContentTouches = NO;
+//    
+//    width+=300;
+//    
+//    
+//    
+//    _scrollView.pagingEnabled = YES;
+//    _scrollView.directionalLockEnabled = YES;
+//    
+//    _scrollView.contentSize = CGSizeMake(self.view.bounds.size.width*2, self.view.bounds.size.height-98);
     
     [self myEventFutureApi];
     
@@ -214,54 +208,6 @@
     
     NSLog(@"%f", scrollView.contentOffset.x);
     NSLog(@"%f", scrollView.contentOffset.y);
-    
-    if (page == 0) {
-        
-        
-        //        [_buttonNearest setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        //        [_buttonCategories setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        //        [_buttonFeatured setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
-        
-        
-        //        [viewLine setFrame:CGRectMake(x + (viewLine.frame.size.width), viewLine.frame.origin.y, viewLine.frame.size.width, viewLine.frame.size.height)];
-        //
-        
-        
-        
-        //      _indicator.hidden=YES;
-        //        _viewTableHide.hidden=YES;
-        
-        
-        
-        
-        //        NSString *pagevalue = [[NSUserDefaults standardUserDefaults] objectForKey:@"PageNumber"];
-        //        if ([pagevalue isEqualToString:@"0"]) {
-        //
-        //        }else{
-        //            [self callFeaturedApi];
-        //        }
-        //        [[NSUserDefaults standardUserDefaults] setObject:@"0" forKey:@"PageNumber"];
-        //        [[NSUserDefaults standardUserDefaults] synchronize];
-        //
-        
-    }else {
-        
-        //   x=6;
-        
-        //        [_buttonNearest setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
-        //        [_buttonCategories setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        //        [_buttonFeatured setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        //
-        //
-        //        [_buttonNearest setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
-        //
-        //        [viewLine setFrame:CGRectMake(x + (viewLine.frame.size.width), viewLine.frame.origin.y, viewLine.frame.size.width, viewLine.frame.size.height)];
-        
-        
-      
-        
-        
-    }
     
 }
 
@@ -295,81 +241,109 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    if (tableView == _tableViewMyEvent) {
-        
+//    if (tableView == _tableViewMyEvent) {
+//        
+//    
+//    
+//    static NSString *simpleTableIdentifier = @"MyEventCreateTableViewCell";
+//    
+//    MyEventCreateTableViewCell *cell = (MyEventCreateTableViewCell *)[tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
+//    if (cell == nil)
+//    {
+//        //        cell = [[FeaturedTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
+//        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:simpleTableIdentifier owner:self options:nil];
+//        cell = (MyEventCreateTableViewCell *)[nib objectAtIndex:0];
+//        
+//    }
+//    
+//    //cell.imageViewEvent.image=[ev]
+//    
+//    NSString *imageUrl = [@"http://122.180.254.6/progressbackend/public/eventpics/" stringByAppendingString:[arrayPicMyEvent objectAtIndex:indexPath.row]];
+//    
+//    
+//    [cell.imageViewMyEvent sd_setImageWithURL:[NSURL URLWithString:imageUrl] placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
+//    
+//    cell.labelMyEventName.text=[arrayNameMyEvent objectAtIndex:indexPath.row];
+//    
+//    cell.labelEventTime.text=[arrayStartTimeMyEvent objectAtIndex:indexPath.row];
+//    
+//    cell.labelMyEventDate.text=[arrayDateMyEvent objectAtIndex:indexPath.row];
+//    
+//    cell.labelAMyEventddress.text=[arrayAddressMyEvent objectAtIndex:indexPath.row];
+//    
+//    //    if (!isFiltered) {
+//    
+//    //    cell.labelFriendList.text=[arrayName objectAtIndex:indexPath.row];
+//    
+//    return cell;
+//        
+//        
+//    }else{
+//        
+//        
+//        
+//        static NSString *simpleTableIdentifier = @"PastEventTableViewCell";
+//        
+//        PastEventTableViewCell *cell = (PastEventTableViewCell *)[tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
+//        if (cell == nil)
+//        {
+//            //        cell = [[FeaturedTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
+//            NSArray *nib = [[NSBundle mainBundle] loadNibNamed:simpleTableIdentifier owner:self options:nil];
+//            
+//            cell = (PastEventTableViewCell *)[nib objectAtIndex:0];
+//            
+//        }
+//        
+//        //cell.imageViewEvent.image=[ev]
+//        
+//        NSString *imageUrl = [@"http://122.180.254.6/progressbackend/public/eventpics/" stringByAppendingString:[arrayPicPastEvent objectAtIndex:indexPath.row]];
+//        
+//        [cell.imageViewPastEvents sd_setImageWithURL:[NSURL URLWithString:imageUrl] placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
+//        
+//        cell.labelTitleNamePast.text=[arrayNameMyEvent objectAtIndex:indexPath.row];
+//        
+//        cell.labelTimePast.text=[arrayStartTimeMyEvent objectAtIndex:indexPath.row];
+//        
+//        cell.labelDatePastEvent.text=[arrayDateMyEvent objectAtIndex:indexPath.row];
+//        
+//        cell.labelAddressPast.text = [arrayAddressMyEvent objectAtIndex:indexPath.row];
+//        
+//        //    if (!isFiltered) {
+//        
+//        //    cell.labelFriendList.text=[arrayName objectAtIndex:indexPath.row];
+//        
+//        return cell;
+//        
+//    }
+    static NSString *simpleTableIdentifier = @"PastEventTableViewCell";
     
-    
-    static NSString *simpleTableIdentifier = @"MyEventCreateTableViewCell";
-    
-    MyEventCreateTableViewCell *cell = (MyEventCreateTableViewCell *)[tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
+    PastEventTableViewCell *cell = (PastEventTableViewCell *)[tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
     if (cell == nil)
     {
         //        cell = [[FeaturedTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
         NSArray *nib = [[NSBundle mainBundle] loadNibNamed:simpleTableIdentifier owner:self options:nil];
-        cell = (MyEventCreateTableViewCell *)[nib objectAtIndex:0];
+        
+        cell = (PastEventTableViewCell *)[nib objectAtIndex:0];
         
     }
     
     //cell.imageViewEvent.image=[ev]
-    
-    NSString *imageUrl = [@"http://122.180.254.6/progressbackend/public/eventpics/" stringByAppendingString:[arrayPicMyEvent objectAtIndex:indexPath.row]];
-    
-    
-    [cell.imageViewMyEvent sd_setImageWithURL:[NSURL URLWithString:imageUrl] placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
-    
-    cell.labelMyEventName.text=[arrayNameMyEvent objectAtIndex:indexPath.row];
-    
-    cell.labelEventTime.text=[arrayStartTimeMyEvent objectAtIndex:indexPath.row];
-    
-    cell.labelMyEventDate.text=[arrayDateMyEvent objectAtIndex:indexPath.row];
-    
-    cell.labelAMyEventddress.text=[arrayAddressMyEvent objectAtIndex:indexPath.row];
-    
-    //    if (!isFiltered) {
-    
-    //    cell.labelFriendList.text=[arrayName objectAtIndex:indexPath.row];
-    
-    return cell;
-        
-        
-    }else{
-        
-        
-        
-        static NSString *simpleTableIdentifier = @"PastEventTableViewCell";
-        
-        PastEventTableViewCell *cell = (PastEventTableViewCell *)[tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
-        if (cell == nil)
-        {
-            //        cell = [[FeaturedTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
-            NSArray *nib = [[NSBundle mainBundle] loadNibNamed:simpleTableIdentifier owner:self options:nil];
-            
-            cell = (PastEventTableViewCell *)[nib objectAtIndex:0];
-            
-        }
-        
-        //cell.imageViewEvent.image=[ev]
-        
-        NSString *imageUrl = [@"http://122.180.254.6/progressbackend/public/eventpics/" stringByAppendingString:[arrayPicPastEvent objectAtIndex:indexPath.row]];
-        
+    if (tableView == _tableViewMyEvent) {
+        NSString *imageUrl = [@"http://122.180.254.6/progressbackend/public/eventpics/" stringByAppendingString:[arrayPicMyEvent objectAtIndex:indexPath.row]];
         [cell.imageViewPastEvents sd_setImageWithURL:[NSURL URLWithString:imageUrl] placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
-        
         cell.labelTitleNamePast.text=[arrayNameMyEvent objectAtIndex:indexPath.row];
-        
         cell.labelTimePast.text=[arrayStartTimeMyEvent objectAtIndex:indexPath.row];
-        
         cell.labelDatePastEvent.text=[arrayDateMyEvent objectAtIndex:indexPath.row];
-        
         cell.labelAddressPast.text = [arrayAddressMyEvent objectAtIndex:indexPath.row];
-        
-        //    if (!isFiltered) {
-        
-        //    cell.labelFriendList.text=[arrayName objectAtIndex:indexPath.row];
-        
-        return cell;
-        
+    }else{
+        NSString *imageUrl = [@"http://122.180.254.6/progressbackend/public/eventpics/" stringByAppendingString:[arrayPicPastEvent objectAtIndex:indexPath.row]];
+        [cell.imageViewPastEvents sd_setImageWithURL:[NSURL URLWithString:imageUrl] placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
+        cell.labelTitleNamePast.text=[arrayNamePastEvent objectAtIndex:indexPath.row];
+        cell.labelTimePast.text=[arrayStartTimePastEvent objectAtIndex:indexPath.row];
+        cell.labelDatePastEvent.text=[arrayDatePastEvent objectAtIndex:indexPath.row];
+        cell.labelAddressPast.text = [arrayAddressPastEvent objectAtIndex:indexPath.row];
     }
-    return nil;
+    return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -628,63 +602,10 @@
                 
                 
             }
-            
+            [_tableViewMyEvent setHidden:false];
+            [_tabloeViewPastEvent setHidden:true];
             [_tableViewMyEvent reloadData];
-            
-            
-            //            if (errors!=nil) {
-            //
-            //
-            //                [self callAlert:@"Warning" message:@"Incorrect username or password"];
-            //
-            //
-            //            }
-            
-            
-            
-            //            else{
-            
-            //                [Model sharedInstance].accessToken= [json objectForKey:@"access_token"];
-            //
-            //                NSLog(@"access token %@",[Model sharedInstance].accessToken);
-            //
-            //                NSArray *valueData = [json objectForKey:@"user"];
-            //
-            //                NSLog(@"%@ data",valueData);
-            //
-            //                NSArray *username1=[valueData valueForKey:@"username"];
-            //
-            //                NSString *contact=[valueData valueForKey:@"contact"];
-            //
-            //                NSString *email1=[valueData valueForKey:@"email"];
-            //
-            //                //   [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(setButtonEnabled) userInfo:nil repeats:NO];
-            //
-            //
-            //                [[NSUserDefaults standardUserDefaults]setObject:username1 forKey:@"username1"];
-            //
-            //                //   [[NSUserDefaults standardUserDefaults]setObject:_textFieldPassword.text forKey:@"Password"];
-            //
-            //                [[NSUserDefaults standardUserDefaults]setObject:contact forKey:@"contact"];
-            //
-            //                [[NSUserDefaults standardUserDefaults]setObject:email1 forKey:@"email"];
-            //                [[NSUserDefaults standardUserDefaults]synchronize];
-            //
-            //                UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-            //
-            //                UIViewController *vc = [sb instantiateViewControllerWithIdentifier:@"DashBoradViewController"];
-            //
-            //                [self.navigationController pushViewController:vc animated:YES];
-            //
-            
-            //                __textFieldUserNameLogin.text=nil;
-            //
-            //                __textFieldPasswordLogin.text=nil;
-            
-            
-            
-            //  }
-        }
+                    }
     }];
 }
 
@@ -812,63 +733,11 @@
                 
                 
             }
-            
+            [_tableViewMyEvent setHidden:true];
+            [_tabloeViewPastEvent setHidden:false];
             [_tabloeViewPastEvent reloadData];
             
-            
-            //            if (errors!=nil) {
-            //
-            //
-            //                [self callAlert:@"Warning" message:@"Incorrect username or password"];
-            //
-            //
-            //            }
-            
-            
-            
-            //            else{
-            
-            //                [Model sharedInstance].accessToken= [json objectForKey:@"access_token"];
-            //
-            //                NSLog(@"access token %@",[Model sharedInstance].accessToken);
-            //
-            //                NSArray *valueData = [json objectForKey:@"user"];
-            //
-            //                NSLog(@"%@ data",valueData);
-            //
-            //                NSArray *username1=[valueData valueForKey:@"username"];
-            //
-            //                NSString *contact=[valueData valueForKey:@"contact"];
-            //
-            //                NSString *email1=[valueData valueForKey:@"email"];
-            //
-            //                //   [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(setButtonEnabled) userInfo:nil repeats:NO];
-            //
-            //
-            //                [[NSUserDefaults standardUserDefaults]setObject:username1 forKey:@"username1"];
-            //
-            //                //   [[NSUserDefaults standardUserDefaults]setObject:_textFieldPassword.text forKey:@"Password"];
-            //
-            //                [[NSUserDefaults standardUserDefaults]setObject:contact forKey:@"contact"];
-            //
-            //                [[NSUserDefaults standardUserDefaults]setObject:email1 forKey:@"email"];
-            //                [[NSUserDefaults standardUserDefaults]synchronize];
-            //
-            //                UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-            //
-            //                UIViewController *vc = [sb instantiateViewControllerWithIdentifier:@"DashBoradViewController"];
-            //
-            //                [self.navigationController pushViewController:vc animated:YES];
-            //
-            
-            //                __textFieldUserNameLogin.text=nil;
-            //
-            //                __textFieldPasswordLogin.text=nil;
-            
-            
-            
-            //  }
-        }
+                    }
     }];
 }
 
@@ -915,13 +784,13 @@
     
     [self myEventFutureApi];
     
-  
-    
-    CGRect frame = _scrollView.frame;
-    frame.origin.x = frame.size.width * 0;
-    frame.origin.y = 0;
-    [_scrollView scrollRectToVisible:frame animated:NO];
-    
+//  
+//    
+//    CGRect frame = _scrollView.frame;
+//    frame.origin.x = frame.size.width * 0;
+//    frame.origin.y = 0;
+//    [_scrollView scrollRectToVisible:frame animated:NO];
+//    
     
     
 }
@@ -937,12 +806,12 @@
 //    _buttonFutureEvents.backgroundColor=[UIColor whiteColor];
     
     [_buttonFutureEvents setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
-    
-    
-    CGRect frame = _scrollView.frame;
-    frame.origin.x = frame.size.width * 1;
-    frame.origin.y = 0;
-    [_scrollView scrollRectToVisible:frame animated:NO];
+//    
+//    
+//    CGRect frame = _scrollView.frame;
+//    frame.origin.x = frame.size.width * 1;
+//    frame.origin.y = 0;
+//    [_scrollView scrollRectToVisible:frame animated:NO];
     
     [self myEventPastApi];
     

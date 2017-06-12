@@ -12,7 +12,9 @@
 @property (weak, nonatomic) IBOutlet UIImageView *imageViewPastEvents;
 @property (weak, nonatomic) IBOutlet UILabel *labelTitleNamePast;
 
-
+@property (weak, nonatomic) IBOutlet UIView *cardView;
+-(void)setCardView;
++(void)setShadowView:(UIView *)shadowView;
 @property (weak, nonatomic) IBOutlet UILabel *labelDatePastEvent;
 
 

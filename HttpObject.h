@@ -37,6 +37,6 @@ typedef enum : NSUInteger {
 -(void)setMethod:(NSString *)method;
 -(void)setTaskCodeValue:(NSString *)taskCodeValue;
 -(void)addParam:(NSString *)key andValue:(NSString *)value;
-
-
+-(void)addHeader:(NSString *)key withValue:(NSString *)value;
+-(void)addAuthHeader;
 @end

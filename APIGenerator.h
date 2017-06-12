@@ -10,7 +10,7 @@
 #import "HttpObject.h"
 #import "Constant.h"
 @interface APIGenerator : NSObject
-
++(HttpObject *) bookEvent:(NSMutableDictionary *)params;
 +(HttpObject *) loginApi:(NSMutableDictionary *)params;
 +(HttpObject *) signupApi:(NSMutableDictionary *)params;
 +(HttpObject *) getAllEvents:(NSMutableDictionary *)params;

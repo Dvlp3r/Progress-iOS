@@ -8,6 +8,7 @@
 
 #import "HttpObject.h"
 #import "Constant.h"
+#import "Model.h"
 
 @implementation HttpObject
 
@@ -38,6 +39,12 @@
 -(void)addHeader:(NSString *)key withValue:(NSString *)value{
     [self.headers setValue:value forKey:key];
 }
+-(void)addAuthHeader{
+    NSString *strAccessToken = [Model sharedInstance].accessToken;
+    strAccessToken = [NSString stringWithFormat:@"Bearer %@",strAccessToken];
+    [self addHeader:@"Authorization" withValue:strAccessToken];
+}
+
 -(void)setMethod:(NSString *)method{
     self.methodType = method;
 }

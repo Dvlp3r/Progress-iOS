@@ -10,6 +10,7 @@
 #import "UIImageView+WebCache.h"
 #import "Constant.h"
 #import "Model.h"
+#import "APIGenerator.h"
 
 
 @interface DashboardNextScreenViewController ()
@@ -230,6 +231,34 @@
     
     
     [self.navigationController popViewControllerAnimated:true];
+    
+}
+
+-(void)bookEvent{
+    NSString *eventid = [[NSUserDefaults standardUserDefaults]objectForKey:@"valueidMain"];
+    NSMutableDictionary *dict = [[NSMutableDictionary alloc]init];
+    [dict setValue:eventid forKey:@"event_id"];
+    [self executeTask:[APIGenerator bookEvent:dict]];
+}
+
+-(BOOL)onSuccess:(id)object forRT:(NSString *)rt andParamObject:(HttpObject *)params{
+    [self onBookEventResponseReceived:object];
+    return YES;
+}
+
+-(void)onBookEventResponseReceived:(NSDictionary *)json{
+    if(json != nil){
+        NSString *msg = [json objectForKey:@"message"];
+        NSString *error = [json objectForKey:@"error"];
+        if(msg != nil && [@"success" isEqualToString:msg]){
+            [self showAlert:@"Event booked successfully"];
+        }else if(error != nil){
+            [self showAlert:error];
+        }
+    }
+}
+
+-(void)onFailure:(HttpObject *)paramObject forRT:(NSString *)rt{
     
 }
 

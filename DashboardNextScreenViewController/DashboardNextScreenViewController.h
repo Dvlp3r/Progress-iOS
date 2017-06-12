@@ -9,10 +9,10 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 #import <PassKit/PassKit.h>
+#import "BaseVC.h"
 
 
-
-@interface DashboardNextScreenViewController : UIViewController<PKPaymentAuthorizationViewControllerDelegate>
+@interface DashboardNextScreenViewController : BaseVC<PKPaymentAuthorizationViewControllerDelegate>
 
 
 @property (weak, nonatomic) IBOutlet UILabel *labelEventName;
