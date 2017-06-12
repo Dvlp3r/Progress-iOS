@@ -23,6 +23,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+   
+    
+    // add another button
+    
+    // now create a Bar button item
+    UIBarButtonItem *mailbutton =[[UIBarButtonItem alloc] initWithCustomView:_btnEdit];
+    
+    // set the nav bar's right button item
+    self.navigationItem.rightBarButtonItem = mailbutton;
     // Do any additional setup after loading the view.
     
     [self.viewShowdata.layer setBorderWidth:0.5];
@@ -62,7 +71,7 @@
     
     _labelTimeAdmin.text=valueStartTimeAdmin;
     
-    
+    self.title =@"Progress";
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -79,7 +88,13 @@
     CLLocationCoordinate2D zoomLocation;
     zoomLocation.latitude = value;
     zoomLocation.longitude= value2;
-    
+    if (value > 90 ) {
+        value = 85;
+    }
+    else if (value < -90 ) {
+        value = -85;
+    }
+
     // 2
     //    MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(zoomLocation, 0.5*METERS_PER_MILE, 0.5*METERS_PER_MILE);
     //

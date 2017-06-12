@@ -14,6 +14,7 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *labelNameAdmin;
 
+@property (strong, nonatomic) IBOutlet UIButton *btnEdit;
 
 @property (weak, nonatomic) IBOutlet UILabel *labelDateAdmin;
 
