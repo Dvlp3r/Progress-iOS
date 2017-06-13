@@ -1,20 +1,18 @@
 //
-//  AdminDashboardTableViewCell.m
+//  AdminDashboardCell.m
 //  Events
 //
-//  Created by user on 2/14/17.
+//  Created by Nitin Bansal on 13/06/17.
 //  Copyright © 2017 user. All rights reserved.
 //
 
-#import "AdminDashboardTableViewCell.h"
-#import "PastEventTableViewCell.h"
+#import "AdminDashboardCell.h"
 
-@implementation AdminDashboardTableViewCell
+@implementation AdminDashboardCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
-    [PastEventTableViewCell setShadowView:self.vw];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

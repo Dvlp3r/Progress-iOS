@@ -157,6 +157,8 @@
 		81CA72241E659C2200700A40 /* time.png in Resources */ = {isa = PBXBuildFile; fileRef = 81CA721F1E659C2200700A40 /* time.png */; };
 		81CA72251E659C2200700A40 /* upload.png in Resources */ = {isa = PBXBuildFile; fileRef = 81CA72201E659C2200700A40 /* upload.png */; };
 		81CA72271E659CF100700A40 /* my_events.png in Resources */ = {isa = PBXBuildFile; fileRef = 81CA72261E659CF100700A40 /* my_events.png */; };
+		BB2068B71EF0351500887276 /* AdminDashboardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BB2068B51EF0351500887276 /* AdminDashboardCell.m */; };
+		BB2068B81EF0351600887276 /* AdminDashboardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB2068B61EF0351500887276 /* AdminDashboardCell.xib */; };
 		BB63E6641EE6C67F00470DA3 /* DownloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BB63E65F1EE6C67F00470DA3 /* DownloadManager.m */; };
 		BB63E6651EE6C67F00470DA3 /* HttpObject.m in Sources */ = {isa = PBXBuildFile; fileRef = BB63E6611EE6C67F00470DA3 /* HttpObject.m */; };
 		BB63E6661EE6C67F00470DA3 /* RestClient.m in Sources */ = {isa = PBXBuildFile; fileRef = BB63E6631EE6C67F00470DA3 /* RestClient.m */; };
@@ -406,6 +408,9 @@
 		81CA721F1E659C2200700A40 /* time.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = time.png; sourceTree = "<group>"; };
 		81CA72201E659C2200700A40 /* upload.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = upload.png; sourceTree = "<group>"; };
 		81CA72261E659CF100700A40 /* my_events.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = my_events.png; sourceTree = "<group>"; };
+		BB2068B41EF0351500887276 /* AdminDashboardCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdminDashboardCell.h; sourceTree = "<group>"; };
+		BB2068B51EF0351500887276 /* AdminDashboardCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdminDashboardCell.m; sourceTree = "<group>"; };
+		BB2068B61EF0351500887276 /* AdminDashboardCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AdminDashboardCell.xib; sourceTree = "<group>"; };
 		BB63E65E1EE6C67F00470DA3 /* DownloadManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadManager.h; sourceTree = "<group>"; };
 		BB63E65F1EE6C67F00470DA3 /* DownloadManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadManager.m; sourceTree = "<group>"; };
 		BB63E6601EE6C67F00470DA3 /* HttpObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpObject.h; sourceTree = "<group>"; };
@@ -732,6 +737,7 @@
 		811B821D1E54712E00F19261 /* AdminDashnoardUserTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				BB2068B31EF034D700887276 /* AdminDashboardCell */,
 				811B821E1E54718200F19261 /* AdminDashBoardUserTableViewCell.h */,
 				811B821F1E54718200F19261 /* AdminDashBoardUserTableViewCell.m */,
 				811B82201E54718200F19261 /* AdminDashBoardUserTableViewCell.xib */,
@@ -1056,6 +1062,16 @@
 			path = UserAdminEventTableViewCell;
 			sourceTree = "<group>";
 		};
+		BB2068B31EF034D700887276 /* AdminDashboardCell */ = {
+			isa = PBXGroup;
+			children = (
+				BB2068B41EF0351500887276 /* AdminDashboardCell.h */,
+				BB2068B51EF0351500887276 /* AdminDashboardCell.m */,
+				BB2068B61EF0351500887276 /* AdminDashboardCell.xib */,
+			);
+			name = AdminDashboardCell;
+			sourceTree = "<group>";
+		};
 		BB63E65D1EE6C61B00470DA3 /* RestFramework */ = {
 			isa = PBXGroup;
 			children = (
@@ -1260,6 +1276,7 @@
 				182172781EC5D9E000FAB472 /* placeholder.png in Resources */,
 				8130D3D91E43106C00DA7995 /* Logo.png in Resources */,
 				1862BCC31EBC993B004A1E19 /* KICamera@2x.png in Resources */,
+				BB2068B81EF0351600887276 /* AdminDashboardCell.xib in Resources */,
 				811D94D11E55B4C100EA4C9E /* ApplePay.png in Resources */,
 				811A6DCB1E4D849800365966 /* background.png in Resources */,
 				810D32C01E5F1BD1009137E6 /* AttendUserTableViewCell.xib in Resources */,
@@ -1344,6 +1361,7 @@
 				106FA42F1EE7277E00921B84 /* MenuVC.m in Sources */,
 				810792E81E4EEC1D00B4121F /* SDWebImageCompat.m in Sources */,
 				810D32BA1E5F1BA0009137E6 /* AttendUserViewController.m in Sources */,
+				BB2068B71EF0351500887276 /* AdminDashboardCell.m in Sources */,
 				811074411E51D02A00611546 /* MyEventCreateViewController.m in Sources */,
 				810D32B11E5EE80B009137E6 /* PastEventTableViewCell.m in Sources */,
 				BB63E6661EE6C67F00470DA3 /* RestClient.m in Sources */,

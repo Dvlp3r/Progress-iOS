@@ -121,9 +121,9 @@
     [self eventgetAllApi];
     
     [PastEventTableViewCell setShadowView:self.viewEventUser];
-//    [self.viewEventUser.layer setBorderWidth:1.0];
-//    
-//    _viewEventUser.layer.borderColor=[[UIColor darkGrayColor]CGColor];
+    //    [self.viewEventUser.layer setBorderWidth:1.0];
+    //
+    //    _viewEventUser.layer.borderColor=[[UIColor darkGrayColor]CGColor];
     
     [_buttonFilter.layer setBorderWidth:1.0];
     
@@ -216,64 +216,6 @@
     
     
 }
-
-
-//- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-//    CGFloat width = scrollView.frame.size.width;
-//    CGFloat x1 = scrollView.contentOffset.x;
-//    NSInteger page = (x1 + (0.5f * width)) / width;
-//    // NSLog(@"Page number is %li", (long)page);
-//
-//    NSLog(@"%f", scrollView.contentOffset.x);
-//    NSLog(@"%f", scrollView.contentOffset.y);
-//
-//    if (page == 0) {
-//
-//
-////        [_buttonNearest setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-////        [_buttonCategories setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-////        [_buttonFeatured setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
-//
-//
-////        [viewLine setFrame:CGRectMake(x + (viewLine.frame.size.width), viewLine.frame.origin.y, viewLine.frame.size.width, viewLine.frame.size.height)];
-////
-//
-//
-//  //      _indicator.hidden=YES;
-////        _viewTableHide.hidden=YES;
-//
-//
-////        NSString *pagevalue = [[NSUserDefaults standardUserDefaults] objectForKey:@"PageNumber"];
-////        if ([pagevalue isEqualToString:@"0"]) {
-////
-////        }else{
-////            [self callFeaturedApi];
-////        }
-////        [[NSUserDefaults standardUserDefaults] setObject:@"0" forKey:@"PageNumber"];
-////        [[NSUserDefaults standardUserDefaults] synchronize];
-////
-//
-//    }else {
-//
-//     //   x=6;
-//
-////        [_buttonNearest setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
-////        [_buttonCategories setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-////        [_buttonFeatured setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-////
-////
-////        [_buttonNearest setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
-////
-////        [viewLine setFrame:CGRectMake(x + (viewLine.frame.size.width), viewLine.frame.origin.y, viewLine.frame.size.width, viewLine.frame.size.height)];
-//
-//
-//        [[NSUserDefaults standardUserDefaults] setObject:@"1" forKey:@"PageNumber"];
-//        [[NSUserDefaults standardUserDefaults] synchronize];
-//
-//
-//    }
-//
-//}
 
 -(void)viewWillAppear:(BOOL)animated{
     
@@ -462,7 +404,7 @@
     
     if (tableView == _tableViewAdminDashboard) {
         
-        [_tableViewAdminDashboard setHidden:false];
+        //        [_tableViewAdminDashboard setHidden:false];
         
         static NSString *simpleTableIdentifier = @"AdminDashboardTableViewCell";
         
@@ -481,7 +423,7 @@
         //
         //
         [cell.imageViewAdmineEvent sd_setImageWithURL:[NSURL URLWithString:imageUrl] placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
-        
+        cell.imageViewAdmineEvent.clipsToBounds=YES;
         cell.labelAdminEventName.text=[arrayNameaAdminEvent objectAtIndex:indexPath.row];
         
         cell.labelAdminEventRate.text=[arrayMaxAttend objectAtIndex:indexPath.row];
@@ -490,13 +432,13 @@
         
         cell.labelAdminEventAddress.text=[arrayAddressAdminEvent objectAtIndex:indexPath.row];
         
-//        
-//        
-//        //    if (!isFiltered) {
-//        
-//        //    cell.labelFriendList.text=[arrayName objectAtIndex:indexPath.row];
-//        cell.layer.borderWidth = 1;
-//        cell.layer.borderColor =[[UIColor grayColor] CGColor];
+        //
+        //
+        //        //    if (!isFiltered) {
+        //
+        //        //    cell.labelFriendList.text=[arrayName objectAtIndex:indexPath.row];
+        //        cell.layer.borderWidth = 1;
+        //        cell.layer.borderColor =[[UIColor grayColor] CGColor];
         return cell;
         
     }else{
@@ -535,11 +477,11 @@
         //        cell.labelAdminEventRate.text=[arrayRateAdminEvent objectAtIndex:indexPath.row];
         //
         //        cell.labelAdminEventDate.text=[arrayDateAdminEvent objectAtIndex:indexPath.row];
-//        //
-//        
-//        
-//        cell.layer.borderWidth = 1;
-//        cell.layer.borderColor =[[UIColor grayColor] CGColor];
+        //        //
+        //
+        //
+        //        cell.layer.borderWidth = 1;
+        //        cell.layer.borderColor =[[UIColor grayColor] CGColor];
         return cell;
         
         
@@ -884,8 +826,8 @@
                 
                 
             }
-            [_tableViewUser setHidden:YES];
-            [_tableViewAdminDashboard setHidden:NO];
+            //            [_tableViewUser setHidden:YES];
+            //            [_tableViewAdminDashboard setHidden:NO];
             [_tableViewAdminDashboard reloadData];
             
         }
@@ -997,8 +939,8 @@
                 //                [arrayEndTimeAdminEvent addObject:endtime];
                 
             }
-            [_tableViewAdminDashboard setHidden:YES];
-            [_tableViewUser setHidden:NO];
+            //            [_tableViewAdminDashboard setHidden:YES];
+            //            [_tableViewUser setHidden:NO];
             [_tableViewUser reloadData];
             
         }
@@ -1209,20 +1151,11 @@
 
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
-    
-    
-    
     return arrayFilter.count;
-    
-    
 }
 
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
-    
-    
     return [arrayFilter objectAtIndex:row];
-    
-    
 }
 
 
@@ -1230,13 +1163,6 @@
 
 - (void)pickerView:(UIPickerView *)PickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
-    
-    
-    //        _labelSelectCategory.textColor=[UIColor blackColor];
-    //             _pickerViewCategory.hidden=YES;
-    //             _pickerViewSelectExperience.hidden=YES;
-    
-    
     NSString *eventsSelectKey=[arrayFilter objectAtIndex:row];
     
     NSLog( @"filter value %@",eventsSelectKey);
@@ -1245,11 +1171,6 @@
     [[NSUserDefaults standardUserDefaults]setObject:eventsSelectKey forKey:@"eventsSelectKey"];
     
     [[NSUserDefaults standardUserDefaults]synchronize];
-    
-    
-    //        _labelSelectExperience.textColor=[UIColor blackColor];
-    
-    
 }
 
 
