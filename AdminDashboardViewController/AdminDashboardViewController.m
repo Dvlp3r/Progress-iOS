@@ -24,7 +24,7 @@
 
 #import "UserAdminEventTableViewCell.h"
 
-
+#import "PastEventTableViewCell.h"
 
 
 @interface AdminDashboardViewController (){
@@ -35,12 +35,12 @@
     NSMutableArray *arrayAddressAdminEvent;
     
     NSMutableArray *arrayMaxAttend;
-
+    
     
     
     
     NSMutableArray *arrayidAdminEvent;
-
+    
     NSMutableArray *arrayRateAdminEvent;
     NSMutableArray *arrayPicAdminEvent;
     NSMutableArray *arrayDateAdminEvent;
@@ -48,13 +48,13 @@
     NSMutableArray *arrayEndTimeAdminEvent;
     
     NSMutableArray *arrayDescriptionAdminEvent;
-
+    
     
     NSMutableArray *arraylatAdminEvent;
-
+    
     
     NSMutableArray *arraylonAdminEvent;
-
+    
     
     NSMutableArray *arrayAdminName;
     
@@ -64,9 +64,9 @@
     NSMutableArray *arrayTotalAttend;
     
     NSMutableArray *arrayUserId;
-
+    
     int x1;
-
+    
     NSInteger updatedIndex;
     NSInteger currentIndex;
     
@@ -76,7 +76,7 @@
     NSString *indexPage;
     
     NSMutableArray *arrayFilter;
-
+    
     
 }
 
@@ -87,18 +87,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-//    NSString *hidepopupmessage=[[NSUserDefaults standardUserDefaults]objectForKey:@"hidepopupmessage"];
-//    
-//    if ([hidepopupmessage isEqualToString:@"1"]) {
-//        
-//        _customViewPopUp.hidden=NO;
-//    }else{
-//        
-//        _customViewPopUp.hidden=YES;
-//
-//        
-//    }
-self.title =@"Progress";
+    //    NSString *hidepopupmessage=[[NSUserDefaults standardUserDefaults]objectForKey:@"hidepopupmessage"];
+    //
+    //    if ([hidepopupmessage isEqualToString:@"1"]) {
+    //
+    //        _customViewPopUp.hidden=NO;
+    //    }else{
+    //
+    //        _customViewPopUp.hidden=YES;
+    //
+    //
+    //    }
+    self.title =@"Progress";
     _tableViewUser.hidden=YES;
     
     _imageViewDeletePopUp.layer.backgroundColor=[[UIColor clearColor] CGColor];
@@ -119,15 +119,15 @@ self.title =@"Progress";
     [_labelMessagePop sizeToFit];
     
     [self eventgetAllApi];
-
     
-    [self.viewEventUser.layer setBorderWidth:1.0];
-    
-    _viewEventUser.layer.borderColor=[[UIColor darkGrayColor]CGColor];
+    [PastEventTableViewCell setShadowView:self.viewEventUser];
+//    [self.viewEventUser.layer setBorderWidth:1.0];
+//    
+//    _viewEventUser.layer.borderColor=[[UIColor darkGrayColor]CGColor];
     
     [_buttonFilter.layer setBorderWidth:1.0];
     
-    _buttonFilter.layer.borderColor=[[UIColor darkGrayColor]CGColor];
+    _buttonFilter.layer.borderColor=[[UIColor lightGrayColor]CGColor];
     
     _viewDone.hidden=YES;
     
@@ -147,7 +147,7 @@ self.title =@"Progress";
     arraylatAdminEvent =[[NSMutableArray alloc]init];
     
     arraylonAdminEvent =[[NSMutableArray alloc]init];
-   
+    
     arrayPicAdminEvent =[[NSMutableArray alloc]init];
     
     arrayRateAdminEvent =[[NSMutableArray alloc]init];
@@ -167,54 +167,54 @@ self.title =@"Progress";
     arrayUserId = [[NSMutableArray alloc]init];
     
     arrayMaxAttend = [[NSMutableArray alloc]init];
-
+    
     
     
     x1=0;
     
     
-  //  [self eventCountUserApi];
-
- 
-    
-   // int width=0;
+    //  [self eventCountUserApi];
     
     
-
-   // [_scrollView addSubview:_tableView];
     
-//    self.scrollView.delaysContentTouches = YES;
-//    self.scrollView.canCancelContentTouches = NO;
-//    
-//    width+=300;
-//    
-//        _scrollView.pagingEnabled = YES;
-//    _scrollView.directionalLockEnabled = YES;
-//    
-//    _scrollView.contentSize = CGSizeMake(self.view.bounds.size.width*2, self.view.bounds.size.height-98);
+    // int width=0;
     
     
-//    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
-//                                   initWithTarget:self
-//                                   action:@selector(dismissKeyboard)];
-//    
-//    [self.view addGestureRecognizer:tap];
-
-
+    
+    // [_scrollView addSubview:_tableView];
+    
+    //    self.scrollView.delaysContentTouches = YES;
+    //    self.scrollView.canCancelContentTouches = NO;
+    //
+    //    width+=300;
+    //
+    //        _scrollView.pagingEnabled = YES;
+    //    _scrollView.directionalLockEnabled = YES;
+    //
+    //    _scrollView.contentSize = CGSizeMake(self.view.bounds.size.width*2, self.view.bounds.size.height-98);
+    
+    
+    //    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
+    //                                   initWithTarget:self
+    //                                   action:@selector(dismissKeyboard)];
+    //
+    //    [self.view addGestureRecognizer:tap];
+    
+    
 }
 
 
 #pragma gesture methods
 
 -(void)dismissKeyboard {
-
-
+    
+    
     _pickerViewEvent.hidden=YES;
     
     
     _viewDone.hidden=YES;
-
-
+    
+    
 }
 
 
@@ -223,54 +223,54 @@ self.title =@"Progress";
 //    CGFloat x1 = scrollView.contentOffset.x;
 //    NSInteger page = (x1 + (0.5f * width)) / width;
 //    // NSLog(@"Page number is %li", (long)page);
-//    
+//
 //    NSLog(@"%f", scrollView.contentOffset.x);
 //    NSLog(@"%f", scrollView.contentOffset.y);
-//    
+//
 //    if (page == 0) {
-//        
-//        
+//
+//
 ////        [_buttonNearest setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
 ////        [_buttonCategories setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
 ////        [_buttonFeatured setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
-//        
-//        
+//
+//
 ////        [viewLine setFrame:CGRectMake(x + (viewLine.frame.size.width), viewLine.frame.origin.y, viewLine.frame.size.width, viewLine.frame.size.height)];
-////        
-//        
-//        
+////
+//
+//
 //  //      _indicator.hidden=YES;
 ////        _viewTableHide.hidden=YES;
-//        
-//        
+//
+//
 ////        NSString *pagevalue = [[NSUserDefaults standardUserDefaults] objectForKey:@"PageNumber"];
 ////        if ([pagevalue isEqualToString:@"0"]) {
-////            
+////
 ////        }else{
 ////            [self callFeaturedApi];
 ////        }
 ////        [[NSUserDefaults standardUserDefaults] setObject:@"0" forKey:@"PageNumber"];
 ////        [[NSUserDefaults standardUserDefaults] synchronize];
-////        
-//        
+////
+//
 //    }else {
-//        
+//
 //     //   x=6;
-//        
+//
 ////        [_buttonNearest setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
 ////        [_buttonCategories setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
 ////        [_buttonFeatured setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-////        
-////        
+////
+////
 ////        [_buttonNearest setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
-////        
+////
 ////        [viewLine setFrame:CGRectMake(x + (viewLine.frame.size.width), viewLine.frame.origin.y, viewLine.frame.size.width, viewLine.frame.size.height)];
-//        
+//
 //
 //        [[NSUserDefaults standardUserDefaults] setObject:@"1" forKey:@"PageNumber"];
 //        [[NSUserDefaults standardUserDefaults] synchronize];
-//        
-//        
+//
+//
 //    }
 //
 //}
@@ -278,7 +278,7 @@ self.title =@"Progress";
 -(void)viewWillAppear:(BOOL)animated{
     
     
-
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -333,18 +333,18 @@ self.title =@"Progress";
     
     _tableViewUser.hidden=YES;
     
-  //  _buttonUser.backgroundColor=[UIColor whiteColor];
+    //  _buttonUser.backgroundColor=[UIColor whiteColor];
     
     [_buttonUser setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
     
-   // _buttonEvent.backgroundColor=[UIColor blackColor];
+    // _buttonEvent.backgroundColor=[UIColor blackColor];
     
     [_buttonEvent setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     
-//    CGRect frame = _scrollView.frame;
-//    frame.origin.x = frame.size.width * 0;
-//    frame.origin.y = 0;
-//    [_scrollView scrollRectToVisible:frame animated:NO];
+    //    CGRect frame = _scrollView.frame;
+    //    frame.origin.x = frame.size.width * 0;
+    //    frame.origin.y = 0;
+    //    [_scrollView scrollRectToVisible:frame animated:NO];
     
     
     
@@ -358,25 +358,25 @@ self.title =@"Progress";
     
     
     
-   // _buttonUser.backgroundColor=[UIColor blackColor];
+    // _buttonUser.backgroundColor=[UIColor blackColor];
     
     [_buttonUser setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     
-  //  _buttonEvent.backgroundColor=[UIColor whiteColor];
+    //  _buttonEvent.backgroundColor=[UIColor whiteColor];
     
     [_buttonEvent setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
-
+    
     _buttonFilter.hidden=YES;
     
     
-//    
-//    CGRect frame = _scrollView.frame;
-//    frame.origin.x = frame.size.width * 1;
-//    frame.origin.y = 0;
-//    [_scrollView scrollRectToVisible:frame animated:NO];
+    //
+    //    CGRect frame = _scrollView.frame;
+    //    frame.origin.x = frame.size.width * 1;
+    //    frame.origin.y = 0;
+    //    [_scrollView scrollRectToVisible:frame animated:NO];
     
     [self usergetAllApi];
-
+    
 }
 
 
@@ -416,7 +416,7 @@ self.title =@"Progress";
         }];
         x1=0;
     }
-
+    
     
     
 }
@@ -447,10 +447,10 @@ self.title =@"Progress";
     
     if (tableView == _tableViewAdminDashboard) {
         return [arrayNameaAdminEvent count];
-
+        
     }else{
         
-    return [arrayusername count];
+        return [arrayusername count];
         
     }
     
@@ -462,46 +462,46 @@ self.title =@"Progress";
     
     if (tableView == _tableViewAdminDashboard) {
         
-    
-    
-    static NSString *simpleTableIdentifier = @"AdminDashboardTableViewCell";
-    
-    AdminDashboardTableViewCell *cell = (AdminDashboardTableViewCell *)[tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
-    if (cell == nil)
-    {
-        //        cell = [[FeaturedTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
-        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:simpleTableIdentifier owner:self options:nil];
-        cell = (AdminDashboardTableViewCell *)[nib objectAtIndex:0];
+        [_tableViewAdminDashboard setHidden:false];
         
-    }
-    
-    //cell.imageViewEvent.image=[ev]
-    
-    NSString *imageUrl = [@"http://122.180.254.6/progressbackend/public/eventpics/" stringByAppendingString:[arrayPicAdminEvent objectAtIndex:indexPath.row]];
-//
-//    
-    [cell.imageViewAdmineEvent sd_setImageWithURL:[NSURL URLWithString:imageUrl] placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
-    
-    cell.labelAdminEventName.text=[arrayNameaAdminEvent objectAtIndex:indexPath.row];
-    
-    cell.labelAdminEventRate.text=[arrayMaxAttend objectAtIndex:indexPath.row];
-    
-    cell.labelAdminEventDate.text=[arrayDateAdminEvent objectAtIndex:indexPath.row];
+        static NSString *simpleTableIdentifier = @"AdminDashboardTableViewCell";
+        
+        AdminDashboardTableViewCell *cell = (AdminDashboardTableViewCell *)[tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
+        if (cell == nil)
+        {
+            //        cell = [[FeaturedTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
+            NSArray *nib = [[NSBundle mainBundle] loadNibNamed:simpleTableIdentifier owner:self options:nil];
+            cell = (AdminDashboardTableViewCell *)[nib objectAtIndex:0];
+            
+        }
+        
+        //cell.imageViewEvent.image=[ev]
+        
+        NSString *imageUrl = [@"http://122.180.254.6/progressbackend/public/eventpics/" stringByAppendingString:[arrayPicAdminEvent objectAtIndex:indexPath.row]];
+        //
+        //
+        [cell.imageViewAdmineEvent sd_setImageWithURL:[NSURL URLWithString:imageUrl] placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
+        
+        cell.labelAdminEventName.text=[arrayNameaAdminEvent objectAtIndex:indexPath.row];
+        
+        cell.labelAdminEventRate.text=[arrayMaxAttend objectAtIndex:indexPath.row];
+        
+        cell.labelAdminEventDate.text=[arrayDateAdminEvent objectAtIndex:indexPath.row];
         
         cell.labelAdminEventAddress.text=[arrayAddressAdminEvent objectAtIndex:indexPath.row];
-    
-    
-    
-    //    if (!isFiltered) {
-    
-    //    cell.labelFriendList.text=[arrayName objectAtIndex:indexPath.row];
-        cell.layer.borderWidth = 1;
-        cell.layer.borderColor =[[UIColor grayColor] CGColor];
-    return cell;
+        
+//        
+//        
+//        //    if (!isFiltered) {
+//        
+//        //    cell.labelFriendList.text=[arrayName objectAtIndex:indexPath.row];
+//        cell.layer.borderWidth = 1;
+//        cell.layer.borderColor =[[UIColor grayColor] CGColor];
+        return cell;
         
     }else{
         
-
+        
         static NSString *simpleTableIdentifier = @"UserAdminEventTableViewCell";
         
         UserAdminEventTableViewCell *cell = (UserAdminEventTableViewCell *)[tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
@@ -513,47 +513,47 @@ self.title =@"Progress";
             
         }
         
-
         
-    
+        
+        
         cell.labelNameUserAdmin.text=[arrayusername objectAtIndex:indexPath.row];
         
         
-  
+        
         //cell.imageViewUserAdmin.layer.cornerRadius=cell.imageViewUserAdmin.frame.size.width / 2;
         
         cell.imageViewUserAdmin.clipsToBounds=YES;
         
         
-       // NSString *imageUrl = [@"http://122.180.254.6/progressbackend/public/profilepics/" stringByAppendingString:[arrayProfilePic objectAtIndex:indexPath.row]];
+        // NSString *imageUrl = [@"http://122.180.254.6/progressbackend/public/profilepics/" stringByAppendingString:[arrayProfilePic objectAtIndex:indexPath.row]];
         
         //[cell.imageViewUserAdmin sd_setImageWithURL:[NSURL URLWithString:imageUrl] placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
         
-
         
-//
-//        cell.labelAdminEventRate.text=[arrayRateAdminEvent objectAtIndex:indexPath.row];
+        
+        //
+        //        cell.labelAdminEventRate.text=[arrayRateAdminEvent objectAtIndex:indexPath.row];
+        //
+        //        cell.labelAdminEventDate.text=[arrayDateAdminEvent objectAtIndex:indexPath.row];
+//        //
 //        
-//        cell.labelAdminEventDate.text=[arrayDateAdminEvent objectAtIndex:indexPath.row];
 //        
-        
-        
-        cell.layer.borderWidth = 1;
-        cell.layer.borderColor =[[UIColor grayColor] CGColor];
+//        cell.layer.borderWidth = 1;
+//        cell.layer.borderColor =[[UIColor grayColor] CGColor];
         return cell;
-
+        
         
         
     }
-
+    
     return nil;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     if (tableView==_tableViewAdminDashboard) {
-        return 80;
-
+        return 100;
+        
     }else{
         
         return 76;
@@ -565,100 +565,100 @@ self.title =@"Progress";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-   if (tableView == _tableViewAdminDashboard) {
-    NSArray *valueNameAdmin=[arrayNameaAdminEvent objectAtIndex:indexPath.row];
-    NSArray *valueImageAdmin=[arrayPicAdminEvent objectAtIndex:indexPath.row];
-    NSArray *valueDateAdmin=[arrayDateAdminEvent objectAtIndex:indexPath.row];
-    
-    NSArray *valuePriceAdmin=[arrayRateAdminEvent objectAtIndex:indexPath.row];
-    
-    NSArray *valueStartTimeAdmin=[arrayStartTimeAdminEvent objectAtIndex:indexPath.row];
-    
-    NSArray *valueEndTimeAdmin=[arrayEndTimeAdminEvent objectAtIndex:indexPath.row];
-    
-    NSArray *valuelatAdmin=[arraylatAdminEvent objectAtIndex:indexPath.row];
-    
-    NSArray *valuelonAdmin=[arraylonAdminEvent objectAtIndex:indexPath.row];
-    
-    NSArray *valuedescriptionAdmin=[arrayDescriptionAdminEvent objectAtIndex:indexPath.row];
-    
-    NSArray *valueTotalAttend=[arrayTotalAttend objectAtIndex:indexPath.row];
-       
-       NSArray *valueidAttend=[arrayidAdminEvent objectAtIndex:indexPath.row];
-       
-       NSArray *address=[arrayAddressAdminEvent objectAtIndex:indexPath.row];
-       
-       NSArray *maxattend=[arrayMaxAttend objectAtIndex:indexPath.row];
-       
-       [[NSUserDefaults standardUserDefaults]setObject:maxattend forKey:@"MaxAttendEvent"];
-
-
-       
-       
-       [[NSUserDefaults standardUserDefaults]setObject:valueidAttend forKey:@"valueidAttend"];
-
-    
-
-    [[NSUserDefaults standardUserDefaults]setObject:valueTotalAttend forKey:@"valueTotalAttend"];
-
-    
-    
-    [[NSUserDefaults standardUserDefaults]setObject:valueNameAdmin forKey:@"valueNameAdmin"];
-    
-    
-    
-    [[NSUserDefaults standardUserDefaults]setObject:valueImageAdmin forKey:@"valueImageAdmin"];
-    
-    
-    [[NSUserDefaults standardUserDefaults]setObject:valueDateAdmin forKey:@"valueDateAdmin"];
-    
-    
-    [[NSUserDefaults standardUserDefaults]setObject:valuePriceAdmin forKey:@"valuePriceAdmin"];
-    
-    
-    [[NSUserDefaults standardUserDefaults]setObject:valuedescriptionAdmin forKey:@"valuedescriptionAdmin"];
-    
-    
-    [[NSUserDefaults standardUserDefaults]setObject:valueStartTimeAdmin forKey:@"valueStartTimeAdmin"];
-    
-    [[NSUserDefaults standardUserDefaults]setObject:valueEndTimeAdmin forKey:@"valueEndTimeAdmin"];
-       
-    [[NSUserDefaults standardUserDefaults]setObject:address forKey:@"address"];
-
-       
-    
-    [[NSUserDefaults standardUserDefaults]setObject:valuelatAdmin forKey:@"valuelatAdmin"];
-    
-    [[NSUserDefaults standardUserDefaults]setObject:valuelonAdmin forKey:@"valuelonAdmin"];
-       
-       
-    
-    
-    [[NSUserDefaults standardUserDefaults]synchronize];
-    
-    
-    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    UINavigationController *init4inchViewController = [storyBoard instantiateViewControllerWithIdentifier:@"AdminDashBoardNextScreenViewController"];
-    //[UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
-    [self.navigationController pushViewController:init4inchViewController animated:NO];
-
-    
-   }else{
-       
-       
-       
-       NSArray *UserId=[arrayUserId objectAtIndex:indexPath.row];
-       
-       [[NSUserDefaults standardUserDefaults]setObject:UserId forKey:@"UserId"];
-       
-       
-       
-       
-       [[NSUserDefaults standardUserDefaults]synchronize];
-       
-       
-       
-   }
+    if (tableView == _tableViewAdminDashboard) {
+        NSArray *valueNameAdmin=[arrayNameaAdminEvent objectAtIndex:indexPath.row];
+        NSArray *valueImageAdmin=[arrayPicAdminEvent objectAtIndex:indexPath.row];
+        NSArray *valueDateAdmin=[arrayDateAdminEvent objectAtIndex:indexPath.row];
+        
+        NSArray *valuePriceAdmin=[arrayRateAdminEvent objectAtIndex:indexPath.row];
+        
+        NSArray *valueStartTimeAdmin=[arrayStartTimeAdminEvent objectAtIndex:indexPath.row];
+        
+        NSArray *valueEndTimeAdmin=[arrayEndTimeAdminEvent objectAtIndex:indexPath.row];
+        
+        NSArray *valuelatAdmin=[arraylatAdminEvent objectAtIndex:indexPath.row];
+        
+        NSArray *valuelonAdmin=[arraylonAdminEvent objectAtIndex:indexPath.row];
+        
+        NSArray *valuedescriptionAdmin=[arrayDescriptionAdminEvent objectAtIndex:indexPath.row];
+        
+        NSArray *valueTotalAttend=[arrayTotalAttend objectAtIndex:indexPath.row];
+        
+        NSArray *valueidAttend=[arrayidAdminEvent objectAtIndex:indexPath.row];
+        
+        NSArray *address=[arrayAddressAdminEvent objectAtIndex:indexPath.row];
+        
+        NSArray *maxattend=[arrayMaxAttend objectAtIndex:indexPath.row];
+        
+        [[NSUserDefaults standardUserDefaults]setObject:maxattend forKey:@"MaxAttendEvent"];
+        
+        
+        
+        
+        [[NSUserDefaults standardUserDefaults]setObject:valueidAttend forKey:@"valueidAttend"];
+        
+        
+        
+        [[NSUserDefaults standardUserDefaults]setObject:valueTotalAttend forKey:@"valueTotalAttend"];
+        
+        
+        
+        [[NSUserDefaults standardUserDefaults]setObject:valueNameAdmin forKey:@"valueNameAdmin"];
+        
+        
+        
+        [[NSUserDefaults standardUserDefaults]setObject:valueImageAdmin forKey:@"valueImageAdmin"];
+        
+        
+        [[NSUserDefaults standardUserDefaults]setObject:valueDateAdmin forKey:@"valueDateAdmin"];
+        
+        
+        [[NSUserDefaults standardUserDefaults]setObject:valuePriceAdmin forKey:@"valuePriceAdmin"];
+        
+        
+        [[NSUserDefaults standardUserDefaults]setObject:valuedescriptionAdmin forKey:@"valuedescriptionAdmin"];
+        
+        
+        [[NSUserDefaults standardUserDefaults]setObject:valueStartTimeAdmin forKey:@"valueStartTimeAdmin"];
+        
+        [[NSUserDefaults standardUserDefaults]setObject:valueEndTimeAdmin forKey:@"valueEndTimeAdmin"];
+        
+        [[NSUserDefaults standardUserDefaults]setObject:address forKey:@"address"];
+        
+        
+        
+        [[NSUserDefaults standardUserDefaults]setObject:valuelatAdmin forKey:@"valuelatAdmin"];
+        
+        [[NSUserDefaults standardUserDefaults]setObject:valuelonAdmin forKey:@"valuelonAdmin"];
+        
+        
+        
+        
+        [[NSUserDefaults standardUserDefaults]synchronize];
+        
+        
+        UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        UINavigationController *init4inchViewController = [storyBoard instantiateViewControllerWithIdentifier:@"AdminDashBoardNextScreenViewController"];
+        //[UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+        [self.navigationController pushViewController:init4inchViewController animated:NO];
+        
+        
+    }else{
+        
+        
+        
+        NSArray *UserId=[arrayUserId objectAtIndex:indexPath.row];
+        
+        [[NSUserDefaults standardUserDefaults]setObject:UserId forKey:@"UserId"];
+        
+        
+        
+        
+        [[NSUserDefaults standardUserDefaults]synchronize];
+        
+        
+        
+    }
     
 }
 
@@ -673,31 +673,31 @@ self.title =@"Progress";
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         
-         if (tableView == _tableViewAdminDashboard) {
-        
-        [self deleteEventApi];
-             
-         }else{
-             
-             NSArray *UserId=[arrayUserId objectAtIndex:indexPath.row];
-             
-             [[NSUserDefaults standardUserDefaults]setObject:UserId forKey:@"UserId"];
-             
-             [[NSUserDefaults standardUserDefaults]synchronize];
-             
-             [self deleteUserApi];
-             
-             
-         }
+        if (tableView == _tableViewAdminDashboard) {
+            
+            [self deleteEventApi];
+            
+        }else{
+            
+            NSArray *UserId=[arrayUserId objectAtIndex:indexPath.row];
+            
+            [[NSUserDefaults standardUserDefaults]setObject:UserId forKey:@"UserId"];
+            
+            [[NSUserDefaults standardUserDefaults]synchronize];
+            
+            [self deleteUserApi];
+            
+            
+        }
         
         //remove the deleted object from your data source.
         //If your data source is an NSMutableArray, do this
-//        [arrayNameaAdminEvent removeAllObjects];
-//        [arrayRateAdminEvent removeAllObjects];
-//        [arrayDateAdminEvent removeAllObjects];
-//        [arrayPicAdminEvent removeAllObjects];
-//        [arrayStartTimeAdminEvent removeAllObjects];
-//        [arrayEndTimeAdminEvent removeAllObjects];
+        //        [arrayNameaAdminEvent removeAllObjects];
+        //        [arrayRateAdminEvent removeAllObjects];
+        //        [arrayDateAdminEvent removeAllObjects];
+        //        [arrayPicAdminEvent removeAllObjects];
+        //        [arrayStartTimeAdminEvent removeAllObjects];
+        //        [arrayEndTimeAdminEvent removeAllObjects];
         
     }
 }
@@ -721,23 +721,6 @@ self.title =@"Progress";
     [theRequest setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     
     
-    
-    //    NSString *username_ = @"username=";
-    //
-    //    NSString *password_ = @"&password=";
-    //
-    //    NSString *concatenate1 = [username_ stringByAppendingString:email];
-    //
-    //    NSString *concatenate2 = [password_ stringByAppendingString:password];
-    //
-    //    NSString *concatenate3 = [concatenate1 stringByAppendingString:concatenate2];
-    
-    
-    //NSString *post = [URL stringByAppendingString:stringWithoutSpaces];
-    
-    //    NSData *postData = [@"" dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
-    //    [theRequest setHTTPBody:postData];
-    
     [NSURLConnection sendAsynchronousRequest:theRequest queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         // if(data != nil){
         
@@ -748,7 +731,7 @@ self.title =@"Progress";
         //        [_indicatorLogin stopAnimating];
         //        _indicatorLogin.hidden=YES;
         
-  
+        
         
         if(data!=nil){
             
@@ -770,11 +753,11 @@ self.title =@"Progress";
             [arrayTotalAttend removeAllObjects];
             
             [arrayidAdminEvent removeAllObjects];
-
+            
             [arrayAddressAdminEvent removeAllObjects];
             
             [arrayMaxAttend removeAllObjects];
-
+            
             
             NSError *jsonError;
             
@@ -824,14 +807,14 @@ self.title =@"Progress";
             
             NSString *fullYearEvent=[[yearEvent1 stringByAppendingString:@" "]stringByAppendingString:events];
             
-       
+            
             _labelEventToday.text=fullTodayEvent;
             _labelEventThisWeek.text=fullWeekEvent;
             _labelEventThisMonth.text=fullMonthEvent;
             
             _labelEventThisYear.text=fullYearEvent;
             
-     
+            
             NSArray *Data = [json objectForKey:@"Data"];
             
             NSArray *allData=[Data valueForKey:@"data"];
@@ -861,7 +844,7 @@ self.title =@"Progress";
                 
                 
                 NSString *addressEvent=[dict valueForKey:@"address"];
-
+                
                 NSString *eventpic=[dict valueForKey:@"event_pic"];
                 NSString *starttime=[dict valueForKey:@"start_time"];
                 NSString *endtime=[dict valueForKey:@"end_time"];
@@ -898,67 +881,13 @@ self.title =@"Progress";
                 [arrayAddressAdminEvent addObject:addressEvent];
                 
                 [arrayMaxAttend addObject:maxAttend];
-
+                
                 
             }
-            
+            [_tableViewUser setHidden:YES];
+            [_tableViewAdminDashboard setHidden:NO];
             [_tableViewAdminDashboard reloadData];
             
-
-            
-            
-            //            if (errors!=nil) {
-            //
-            //
-            //                [self callAlert:@"Warning" message:@"Incorrect username or password"];
-            //
-            //
-            //            }
-            
-            
-            
-            //            else{
-            
-            //                [Model sharedInstance].accessToken= [json objectForKey:@"access_token"];
-            //
-            //                NSLog(@"access token %@",[Model sharedInstance].accessToken);
-            //
-            //                NSArray *valueData = [json objectForKey:@"user"];
-            //
-            //                NSLog(@"%@ data",valueData);
-            //
-            //                NSArray *username1=[valueData valueForKey:@"username"];
-            //
-            //                NSString *contact=[valueData valueForKey:@"contact"];
-            //
-            //                NSString *email1=[valueData valueForKey:@"email"];
-            //
-            //                //   [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(setButtonEnabled) userInfo:nil repeats:NO];
-            //
-            //
-            //                [[NSUserDefaults standardUserDefaults]setObject:username1 forKey:@"username1"];
-            //
-            //                //   [[NSUserDefaults standardUserDefaults]setObject:_textFieldPassword.text forKey:@"Password"];
-            //
-            //                [[NSUserDefaults standardUserDefaults]setObject:contact forKey:@"contact"];
-            //
-            //                [[NSUserDefaults standardUserDefaults]setObject:email1 forKey:@"email"];
-            //                [[NSUserDefaults standardUserDefaults]synchronize];
-            //
-            //                UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-            //
-            //                UIViewController *vc = [sb instantiateViewControllerWithIdentifier:@"DashBoradViewController"];
-            //
-            //                [self.navigationController pushViewController:vc animated:YES];
-            //
-            
-            //                __textFieldUserNameLogin.text=nil;
-            //
-            //                __textFieldPasswordLogin.text=nil;
-            
-            
-            
-            //  }
         }
     }];
 }
@@ -984,21 +913,6 @@ self.title =@"Progress";
     [theRequest setValue:[strBearer stringByAppendingString:strAccessToken] forHTTPHeaderField:@"Authorization"];
     [theRequest setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     
-    //    NSString *username_ = @"username=";
-    //
-    //    NSString *password_ = @"&password=";
-    //
-    //    NSString *concatenate1 = [username_ stringByAppendingString:email];
-    //
-    //    NSString *concatenate2 = [password_ stringByAppendingString:password];
-    //
-    //    NSString *concatenate3 = [concatenate1 stringByAppendingString:concatenate2];
-    
-    
-    //NSString *post = [URL stringByAppendingString:stringWithoutSpaces];
-    
-    //    NSData *postData = [@"" dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
-    //    [theRequest setHTTPBody:postData];
     
     [NSURLConnection sendAsynchronousRequest:theRequest queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         // if(data != nil){
@@ -1037,23 +951,23 @@ self.title =@"Progress";
                 NSDictionary *dict=[allData objectAtIndex:i];
                 
                 NSArray *username=[dict valueForKey:@"username"];
-       
+                
                 NSString *profilepic=[dict valueForKey:@"profile_pic"];
                 
                 NSString *idUser=[NSString stringWithFormat:@"%@",[dict valueForKey:@"id"]];
-
-
+                
+                
                 
                 if ([profilepic isKindOfClass:[NSNull class]]){
                     
                     NSString *data1=@"";
                     
-//                    UIImage *image=[UIImage imageNamed:@"special-events-hero-image.jpg"];
-//                    
-//                     NSData *imageData = UIImageJPEGRepresentation(image, 1.0);
-//                    
-//                    NSString *base64 = [[NSString alloc] initWithData:imageData encoding:NSUTF8StringEncoding] ;
-
+                    //                    UIImage *image=[UIImage imageNamed:@"special-events-hero-image.jpg"];
+                    //
+                    //                     NSData *imageData = UIImageJPEGRepresentation(image, 1.0);
+                    //
+                    //                    NSString *base64 = [[NSString alloc] initWithData:imageData encoding:NSUTF8StringEncoding] ;
+                    
                     
                     [arrayProfilePic addObject:data1];
                     
@@ -1077,68 +991,16 @@ self.title =@"Progress";
                 [arrayUserId addObject:idUser];
                 
                 
-//                [arrayDateAdminEvent addObject:eventdate];
-//                [arrayPicAdminEvent addObject:eventpic];
-//                [arrayStartTimeAdminEvent addObject:starttime];
-//                [arrayEndTimeAdminEvent addObject:endtime];
+                //                [arrayDateAdminEvent addObject:eventdate];
+                //                [arrayPicAdminEvent addObject:eventpic];
+                //                [arrayStartTimeAdminEvent addObject:starttime];
+                //                [arrayEndTimeAdminEvent addObject:endtime];
                 
             }
-            
+            [_tableViewAdminDashboard setHidden:YES];
+            [_tableViewUser setHidden:NO];
             [_tableViewUser reloadData];
             
-            
-            //            if (errors!=nil) {
-            //
-            //
-            //                [self callAlert:@"Warning" message:@"Incorrect username or password"];
-            //
-            //
-            //            }
-            
-            
-            
-            //            else{
-            
-            //                [Model sharedInstance].accessToken= [json objectForKey:@"access_token"];
-            //
-            //                NSLog(@"access token %@",[Model sharedInstance].accessToken);
-            //
-            //                NSArray *valueData = [json objectForKey:@"user"];
-            //
-            //                NSLog(@"%@ data",valueData);
-            //
-            //                NSArray *username1=[valueData valueForKey:@"username"];
-            //
-            //                NSString *contact=[valueData valueForKey:@"contact"];
-            //
-            //                NSString *email1=[valueData valueForKey:@"email"];
-            //
-            //                //   [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(setButtonEnabled) userInfo:nil repeats:NO];
-            //
-            //
-            //                [[NSUserDefaults standardUserDefaults]setObject:username1 forKey:@"username1"];
-            //
-            //                //   [[NSUserDefaults standardUserDefaults]setObject:_textFieldPassword.text forKey:@"Password"];
-            //
-            //                [[NSUserDefaults standardUserDefaults]setObject:contact forKey:@"contact"];
-            //
-            //                [[NSUserDefaults standardUserDefaults]setObject:email1 forKey:@"email"];
-            //                [[NSUserDefaults standardUserDefaults]synchronize];
-            //
-            //                UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-            //
-            //                UIViewController *vc = [sb instantiateViewControllerWithIdentifier:@"DashBoradViewController"];
-            //
-            //                [self.navigationController pushViewController:vc animated:YES];
-            //
-            
-            //                __textFieldUserNameLogin.text=nil;
-            //
-            //                __textFieldPasswordLogin.text=nil;
-            
-            
-            
-            //  }
         }
     }];
 }
@@ -1164,11 +1026,11 @@ self.title =@"Progress";
     [theRequest setValue:[strBearer stringByAppendingString:strAccessToken] forHTTPHeaderField:@"Authorization"];
     [theRequest setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     
-        NSString *eventid = @"event_id=";
+    NSString *eventid = @"event_id=";
     //
     //    NSString *password_ = @"&password=";
     //
-        NSString *concatenate1 = [eventid stringByAppendingString:valueidAttend];
+    NSString *concatenate1 = [eventid stringByAppendingString:valueidAttend];
     //
     //    NSString *concatenate2 = [password_ stringByAppendingString:password];
     //
@@ -1177,8 +1039,8 @@ self.title =@"Progress";
     
     //NSString *post = [URL stringByAppendingString:stringWithoutSpaces];
     
-        NSData *postData = [concatenate1 dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
-        [theRequest setHTTPBody:postData];
+    NSData *postData = [concatenate1 dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+    [theRequest setHTTPBody:postData];
     
     [NSURLConnection sendAsynchronousRequest:theRequest queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         // if(data != nil){
@@ -1209,85 +1071,20 @@ self.title =@"Progress";
                 
                 
                 
-             
+                
                 [self eventgetAllApi];
-
-
+                
+                
                 
                 
             }
             
-
-                
- 
-                
-                
-            
-                
-                
-                
-                //                [arrayDateAdminEvent addObject:eventdate];
-                //                [arrayPicAdminEvent addObject:eventpic];
-                //                [arrayStartTimeAdminEvent addObject:starttime];
-                //                [arrayEndTimeAdminEvent addObject:endtime];
-                
-            
-            
- 
-            
-            
-            //            if (errors!=nil) {
-            //
-            //
-            //                [self callAlert:@"Warning" message:@"Incorrect username or password"];
-            //
-            //
-            //            }
             
             
             
-            //            else{
-            
-            //                [Model sharedInstance].accessToken= [json objectForKey:@"access_token"];
-            //
-            //                NSLog(@"access token %@",[Model sharedInstance].accessToken);
-            //
-            //                NSArray *valueData = [json objectForKey:@"user"];
-            //
-            //                NSLog(@"%@ data",valueData);
-            //
-            //                NSArray *username1=[valueData valueForKey:@"username"];
-            //
-            //                NSString *contact=[valueData valueForKey:@"contact"];
-            //
-            //                NSString *email1=[valueData valueForKey:@"email"];
-            //
-            //                //   [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(setButtonEnabled) userInfo:nil repeats:NO];
-            //
-            //
-            //                [[NSUserDefaults standardUserDefaults]setObject:username1 forKey:@"username1"];
-            //
-            //                //   [[NSUserDefaults standardUserDefaults]setObject:_textFieldPassword.text forKey:@"Password"];
-            //
-            //                [[NSUserDefaults standardUserDefaults]setObject:contact forKey:@"contact"];
-            //
-            //                [[NSUserDefaults standardUserDefaults]setObject:email1 forKey:@"email"];
-            //                [[NSUserDefaults standardUserDefaults]synchronize];
-            //
-            //                UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-            //
-            //                UIViewController *vc = [sb instantiateViewControllerWithIdentifier:@"DashBoradViewController"];
-            //
-            //                [self.navigationController pushViewController:vc animated:YES];
-            //
-            
-            //                __textFieldUserNameLogin.text=nil;
-            //
-            //                __textFieldPasswordLogin.text=nil;
             
             
             
-            //  }
         }
     }];
 }
@@ -1368,75 +1165,6 @@ self.title =@"Progress";
             
             
             
-            
-            
-            
-            
-            
-            
-            
-            //                [arrayDateAdminEvent addObject:eventdate];
-            //                [arrayPicAdminEvent addObject:eventpic];
-            //                [arrayStartTimeAdminEvent addObject:starttime];
-            //                [arrayEndTimeAdminEvent addObject:endtime];
-            
-            
-            
-            
-            
-            
-            //            if (errors!=nil) {
-            //
-            //
-            //                [self callAlert:@"Warning" message:@"Incorrect username or password"];
-            //
-            //
-            //            }
-            
-            
-            
-            //            else{
-            
-            //                [Model sharedInstance].accessToken= [json objectForKey:@"access_token"];
-            //
-            //                NSLog(@"access token %@",[Model sharedInstance].accessToken);
-            //
-            //                NSArray *valueData = [json objectForKey:@"user"];
-            //
-            //                NSLog(@"%@ data",valueData);
-            //
-            //                NSArray *username1=[valueData valueForKey:@"username"];
-            //
-            //                NSString *contact=[valueData valueForKey:@"contact"];
-            //
-            //                NSString *email1=[valueData valueForKey:@"email"];
-            //
-            //                //   [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(setButtonEnabled) userInfo:nil repeats:NO];
-            //
-            //
-            //                [[NSUserDefaults standardUserDefaults]setObject:username1 forKey:@"username1"];
-            //
-            //                //   [[NSUserDefaults standardUserDefaults]setObject:_textFieldPassword.text forKey:@"Password"];
-            //
-            //                [[NSUserDefaults standardUserDefaults]setObject:contact forKey:@"contact"];
-            //
-            //                [[NSUserDefaults standardUserDefaults]setObject:email1 forKey:@"email"];
-            //                [[NSUserDefaults standardUserDefaults]synchronize];
-            //
-            //                UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-            //
-            //                UIViewController *vc = [sb instantiateViewControllerWithIdentifier:@"DashBoradViewController"];
-            //
-            //                [self.navigationController pushViewController:vc animated:YES];
-            //
-            
-            //                __textFieldUserNameLogin.text=nil;
-            //
-            //                __textFieldPasswordLogin.text=nil;
-            
-            
-            
-            //  }
         }
     }];
 }
@@ -1492,7 +1220,7 @@ self.title =@"Progress";
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
     
     
-        return [arrayFilter objectAtIndex:row];
+    return [arrayFilter objectAtIndex:row];
     
     
 }
@@ -1503,34 +1231,34 @@ self.title =@"Progress";
 - (void)pickerView:(UIPickerView *)PickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
     
- 
-//        _labelSelectCategory.textColor=[UIColor blackColor];
-//             _pickerViewCategory.hidden=YES;
-//             _pickerViewSelectExperience.hidden=YES;
+    
+    //        _labelSelectCategory.textColor=[UIColor blackColor];
+    //             _pickerViewCategory.hidden=YES;
+    //             _pickerViewSelectExperience.hidden=YES;
     
     
-        NSString *eventsSelectKey=[arrayFilter objectAtIndex:row];
+    NSString *eventsSelectKey=[arrayFilter objectAtIndex:row];
     
-         NSLog( @"filter value %@",eventsSelectKey);
+    NSLog( @"filter value %@",eventsSelectKey);
     
     
     [[NSUserDefaults standardUserDefaults]setObject:eventsSelectKey forKey:@"eventsSelectKey"];
     
-        [[NSUserDefaults standardUserDefaults]synchronize];
+    [[NSUserDefaults standardUserDefaults]synchronize];
     
     
-//        _labelSelectExperience.textColor=[UIColor blackColor];
+    //        _labelSelectExperience.textColor=[UIColor blackColor];
     
-
+    
 }
 
 
 
 -(void)eventAccordingToDayApi {
     
-//        _indicatorLogin.hidden=NO;
-//        [_indicatorLogin startAnimating];
-//    
+    //        _indicatorLogin.hidden=NO;
+    //        [_indicatorLogin startAnimating];
+    //
     
     
     NSString *eventsSelectKey=[[NSUserDefaults standardUserDefaults]objectForKey:@"eventsSelectKey"];
@@ -1572,7 +1300,7 @@ self.title =@"Progress";
         //        _indicatorLogin.hidden=YES;
         
         
-   
+        
         
         if(data!=nil){
             
@@ -1597,7 +1325,7 @@ self.title =@"Progress";
             [arrayAddressAdminEvent removeAllObjects];
             
             [arrayMaxAttend removeAllObjects];
-
+            
             
             
             NSError *jsonError;
@@ -1618,10 +1346,10 @@ self.title =@"Progress";
                 NSArray *nameEvent=[dict valueForKey:@"name"];
                 NSString *price=[dict valueForKey:@"price"];
                 NSString *addressEvent=[dict valueForKey:@"address"];
-
+                
                 NSString *eventdate=[dict valueForKey:@"event_date"];
                 
-            NSString *maxAttend=[NSString stringWithFormat:@"%@",[dict valueForKey:@"max_attend"]];
+                NSString *maxAttend=[NSString stringWithFormat:@"%@",[dict valueForKey:@"max_attend"]];
                 
                 
                 
@@ -1681,7 +1409,7 @@ self.title =@"Progress";
             
             
             
-     
+            
         }
     }];
 }
@@ -1692,7 +1420,7 @@ self.title =@"Progress";
     
     [self eventgetAllApi];
     
-
+    
     
 }
 
@@ -1703,7 +1431,7 @@ self.title =@"Progress";
     _customViewPopUp.hidden=YES;
     
     [[NSUserDefaults standardUserDefaults]removeObjectForKey:@"hidepopupmessage"];
-
+    
     
 }
 
@@ -1713,15 +1441,15 @@ self.title =@"Progress";
     
     NSLog(@"heyy%d",x1);
     if (x1 == 1) {
-    [UIView animateWithDuration:0.4 animations:^{
-        _viewMenuDashBoard.frame=CGRectMake(-417,self.viewMenuDashBoard.frame.origin.y,self.viewMenuDashBoard.frame.size.width,self.viewMenuDashBoard.frame.size.height);
-        //            _transperant_view.frame=CGRectMake(-500,self.transperant_view.frame.origin.y,self.transperant_view.frame.size.width,self.transperant_view.frame.size.height);
-        
-        
-        //            _transperant_view.hidden=YES;
-        NSLog(@"right");
-    }];
-    x1=0;
+        [UIView animateWithDuration:0.4 animations:^{
+            _viewMenuDashBoard.frame=CGRectMake(-417,self.viewMenuDashBoard.frame.origin.y,self.viewMenuDashBoard.frame.size.width,self.viewMenuDashBoard.frame.size.height);
+            //            _transperant_view.frame=CGRectMake(-500,self.transperant_view.frame.origin.y,self.transperant_view.frame.size.width,self.transperant_view.frame.size.height);
+            
+            
+            //            _transperant_view.hidden=YES;
+            NSLog(@"right");
+        }];
+        x1=0;
     }
 }
 
