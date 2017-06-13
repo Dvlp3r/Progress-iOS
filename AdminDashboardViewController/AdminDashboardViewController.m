@@ -98,7 +98,7 @@
 //
 //        
 //    }
-
+self.title =@"Progress";
     _tableViewUser.hidden=YES;
     
     _imageViewDeletePopUp.layer.backgroundColor=[[UIColor clearColor] CGColor];
@@ -123,7 +123,7 @@
     
     [self.viewEventUser.layer setBorderWidth:1.0];
     
-    _viewEventUser.layer.borderColor=[[UIColor lightGrayColor]CGColor];
+    _viewEventUser.layer.borderColor=[[UIColor darkGrayColor]CGColor];
     
     [_buttonFilter.layer setBorderWidth:1.0];
     
@@ -495,7 +495,8 @@
     //    if (!isFiltered) {
     
     //    cell.labelFriendList.text=[arrayName objectAtIndex:indexPath.row];
-    
+        cell.layer.borderWidth = 1;
+        cell.layer.borderColor =[[UIColor grayColor] CGColor];
     return cell;
         
     }else{
@@ -537,7 +538,8 @@
 //        
         
         
-        
+        cell.layer.borderWidth = 1;
+        cell.layer.borderColor =[[UIColor grayColor] CGColor];
         return cell;
 
         
@@ -849,7 +851,7 @@
                 NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
                 dateFormatter.dateFormat = @"yyyy-MM-dd";
                 NSDate *yourDate = [dateFormatter dateFromString:eventdate];
-                dateFormatter.dateFormat = @"dd-MMM-yyyy";
+                dateFormatter.dateFormat = @"dd/MM/yyyy";
                 
                 NSString *eventDateCorrectFormate= [NSString stringWithFormat:@"%@",
                                                     [dateFormatter stringFromDate:yourDate]];
@@ -1626,7 +1628,7 @@
                 NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
                 dateFormatter.dateFormat = @"yyyy-MM-dd";
                 NSDate *yourDate = [dateFormatter dateFromString:eventdate];
-                dateFormatter.dateFormat = @"dd-MMM-yyyy";
+                dateFormatter.dateFormat = @"dd/MM/yyyy";
                 
                 NSString *eventDateCorrectFormate= [NSString stringWithFormat:@"%@",
                                                     [dateFormatter stringFromDate:yourDate]];

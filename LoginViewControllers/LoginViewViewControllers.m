@@ -24,15 +24,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    NSString *userName=[[NSUserDefaults standardUserDefaults]objectForKey:@"username1"];
+   // NSString *userName=[[NSUserDefaults standardUserDefaults]objectForKey:@"username1"];
     
-    NSString *password=[[NSUserDefaults standardUserDefaults]objectForKey:@"Password"];
+  //  NSString *password=[[NSUserDefaults standardUserDefaults]objectForKey:@"Password"];
     
     
-    __textFieldUserNameLogin.text=userName;
-    
-    __textFieldPasswordLogin.text=password;
-    
+//    __textFieldUserNameLogin.text=userName;
+//    
+//    __textFieldPasswordLogin.text=password;
+//    
     
     _indicatorLogin.hidden=YES;
     

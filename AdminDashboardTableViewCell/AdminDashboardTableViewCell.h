@@ -10,6 +10,7 @@
 
 @interface AdminDashboardTableViewCell : UITableViewCell
 
+@property (strong, nonatomic) IBOutlet UIView *vw;
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageViewAdmineEvent;
 
