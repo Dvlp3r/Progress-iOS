@@ -20,7 +20,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="85"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wJ0-DU-TDX" id="KbK-gv-e4m">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="84.666666666666671"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="85"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7hL-MF-RNh">
@@ -36,13 +36,13 @@
                                 <rect key="frame" x="102" y="0.0" width="265" height="76.666666666666671"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ghX-eh-E7t">
-                                        <rect key="frame" x="4" y="4" width="257" height="20"/>
+                                        <rect key="frame" x="4" y="4" width="257" height="17.666666666666668"/>
                                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZXE-qo-FIn">
-                                        <rect key="frame" x="4" y="25.000000000000004" width="257" height="17.333333333333339"/>
+                                        <rect key="frame" x="4" y="22.666666666666671" width="257" height="15.333333333333329"/>
                                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="13"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -76,7 +76,7 @@
                                                 </constraints>
                                             </imageView>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="time.png" translatesAutoresizingMaskIntoConstraints="NO" id="Rrz-Sp-zGS">
-                                                <rect key="frame" x="155" y="8" width="16" height="16.000000000000007"/>
+                                                <rect key="frame" x="155" y="9" width="16" height="16.000000000000007"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="16" id="a6f-Ec-qxo"/>
                                                     <constraint firstAttribute="width" constant="16" id="mwq-wJ-7wy"/>

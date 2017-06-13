@@ -22,6 +22,9 @@
 
 
 
+- (IBAction)onRSVPClicked:(UIButton *)sender {
+    [self bookEvent];
+}
 
 
 - (void)paymentAuthorizationViewController:(PKPaymentAuthorizationViewController *)controller
