@@ -26,10 +26,10 @@
 
 @implementation CreateEventScreenViewController
 
-//- (void)viewDidLayoutSubviews
-//{
-//    //[self.scrollViewMain setContentSize:CGSizeMake(self.scrollViewMain.contentSize.width, 880)];
-//}
+- (void)viewDidLayoutSubviews
+{
+    [self.scrollViewMain setContentSize:CGSizeMake(self.scrollViewMain.contentSize.width, 1300)];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -37,20 +37,20 @@
     [[UITapGestureRecognizer alloc] initWithTarget:self
                                             action:@selector(openMapForLocationSelection)];
     [_vwMap addGestureRecognizer:singleFingerTap];
+    //    [self.scrollViewMain setContentSize:CGSizeMake(self.scrollViewMain.contentSize.width, 880)];
+    //[self.view bringSubviewToFront:_mainView];
     
-        //[self.view bringSubviewToFront:_mainView];
-  
     //    _vwMap.layer.shadowColor = [UIColor blackColor].CGColor;
-//    _vwMap.layer.shadowOpacity = 1;
-//    _vwMap.layer.shadowOffset = CGSizeZero;
-//    _vwMap.layer.shadowRadius = 10;
-
-//    _vwMap.layer.borderColor = [[UIColor whiteColor] CGColor];
-//    _vwMap.layer.borderWidth = 2.0;
+    //    _vwMap.layer.shadowOpacity = 1;
+    //    _vwMap.layer.shadowOffset = CGSizeZero;
+    //    _vwMap.layer.shadowRadius = 10;
+    
+    //    _vwMap.layer.borderColor = [[UIColor whiteColor] CGColor];
+    //    _vwMap.layer.borderWidth = 2.0;
     
     dateFormatter = [[NSDateFormatter alloc] init];
     dateFormatter.dateFormat = @"dd-MMM-yyyy";
-
+    
     
     datePicker = [UIDatePicker new];
     _txtEventDate.delegate = self;
@@ -60,11 +60,11 @@
     if ([Createventdataedit isEqualToString:@"1"]) {
         
         
-       // _buttonSubmit.hidden=NO;
+        // _buttonSubmit.hidden=NO;
         
         
         _buttonCreateEvent.hidden=YES;
-
+        
         
         NSString *valueStartTimeAdmin=[[NSUserDefaults standardUserDefaults]objectForKey:@"valueStartTimeAdmin"];
         NSString *valueEndTimeAdmin=[[NSUserDefaults standardUserDefaults]objectForKey:@"valueEndTimeAdmin"];
@@ -89,7 +89,7 @@
         
         [_imageViewEventImage sd_setImageWithURL:[NSURL URLWithString:imageUrl] placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
         
-      //  _textFieldSelectPrice.text=valuePrice;
+        //  _textFieldSelectPrice.text=valuePrice;
         
         _txtEventDate.text=valueDate;
         _textFieldEventDescription.text=valueDescription;
@@ -131,10 +131,10 @@
         
         
     }else{
-    
-   // _buttonSubmit.hidden=YES;
-    
-    _buttonCreateEvent.hidden=NO;
+        
+        // _buttonSubmit.hidden=YES;
+        
+        _buttonCreateEvent.hidden=NO;
         
     }
     
@@ -143,7 +143,7 @@
     
     //_datePickerView.hidden=YES;
     
-   // _datePickerViewBackground.hidden=YES;
+    // _datePickerViewBackground.hidden=YES;
     
     _viewstartTimeBackground.hidden=YES;
     
@@ -166,7 +166,7 @@
     [super viewWillAppear:animated];
     
     _scrollViewMain.contentSize = CGSizeMake(0, 620);
-
+    
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -394,20 +394,20 @@
 -(void)dismissKeyboard {
     
     [_textFieldEventName resignFirstResponder];
-        
+    
     [_textFieldEventDescription resignFirstResponder];
     
-  //  _datePickerViewBackground.hidden=YES;
+    //  _datePickerViewBackground.hidden=YES;
     
     _viewstartTimeBackground.hidden=YES;
     
     _viewEndTimeBackground.hidden=YES;
     
     _mapViewEventLocation.hidden=YES;
-
+    
     _SearchBarLocation.hidden=YES;
-
-  //  [_textFieldSelectPrice resignFirstResponder];
+    
+    //  [_textFieldSelectPrice resignFirstResponder];
     
     [_textFieldSelectMaxAttendes resignFirstResponder];
     
@@ -428,13 +428,13 @@
     
     //UIToolbar *toolBar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 44)];
     //UIBarButtonItem *doItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doDone)];
-//    self.navigationItem.rightBarButtonItem = doItem;
-
-    
-   // [toolBar setItems:@[doItem]];
+    //    self.navigationItem.rightBarButtonItem = doItem;
     
     
-   // _textFieldSelectMaxAttendes.inputAccessoryView = toolBar;
+    // [toolBar setItems:@[doItem]];
+    
+    
+    // _textFieldSelectMaxAttendes.inputAccessoryView = toolBar;
     
     //_textFieldSelectPrice.inputAccessoryView=toolBar;
     
@@ -456,7 +456,7 @@
     [_textFieldSelectMaxAttendes resignFirstResponder];
     
     //[_textFieldSelectPrice resignFirstResponder];
-
+    
     
     
     
@@ -482,7 +482,7 @@
         [_textFieldEventName resignFirstResponder];
         [_textFieldEventDescription becomeFirstResponder];
     }
-   
+    
     
     
     
@@ -493,8 +493,8 @@
         
         [_textFieldEventDescription setReturnKeyType:UIReturnKeyDone];
         //[_textFieldEventDescription addTarget:self
-                                //action:@selector(textFieldFinished:)
-                    //  forControlEvents:UIControlEventEditingDidEndOnExit];
+        //action:@selector(textFieldFinished:)
+        //  forControlEvents:UIControlEventEditingDidEndOnExit];
         
     }
     return YES;
@@ -507,32 +507,32 @@
 
 
 //- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
-//    
+//
 //    if (textField==_textFieldContactNo) {
 //        NSString *newString = [_textFieldContactNo.text stringByReplacingCharactersInRange:range withString:string];
 //        return !([newString length] > 10);
 //    }else{
 //        return YES;
 //    }
-//    
+//
 //}
 
 //-(void)uploadPhoto :(UIImage*)image{
- - (IBAction)uploadPhoto:(id)sender {
+- (IBAction)uploadPhoto:(id)sender {
     //    [SVProgressHUD showWithStatus:@"Please Wait..." maskType:SVProgressHUDMaskTypeBlack];
     
     _indicatorEvent.hidden=NO;
     
     [_indicatorEvent startAnimating];
-
+    
     
     NSString *fulladdressevent=[[NSUserDefaults standardUserDefaults]objectForKey:@"fulladdressevent"];
     NSString *eventlat=[[NSUserDefaults standardUserDefaults]objectForKey:@"eventlat"];
-
+    
     NSString *eventlong=[[NSUserDefaults standardUserDefaults]objectForKey:@"eventlong"];
     
     NSString *dateStartString=[[NSUserDefaults standardUserDefaults]objectForKey:@"dateStartString"];
-
+    
     
     NSString *dateEndString=[[NSUserDefaults standardUserDefaults]objectForKey:@"dateEndString"];
     
@@ -554,51 +554,51 @@
         
     }
     
-//    _textFieldEventName.text = @"abc";
-//    _textFieldEventDescription.text = @"Descriptions";
-//    fulladdressevent = @"Full address";
-//    eventlong = @"22.12321";
-//    eventlat = @"33.44432";
-//    _txtEventDate.text= @"22/01/2018";
-//    dateEndString = @"24/01/2018";
-//    _textFieldSelectMaxAttendes.text = @"1200";
+    //    _textFieldEventName.text = @"abc";
+    //    _textFieldEventDescription.text = @"Descriptions";
+    //    fulladdressevent = @"Full address";
+    //    eventlong = @"22.12321";
+    //    eventlat = @"33.44432";
+    //    _txtEventDate.text= @"22/01/2018";
+    //    dateEndString = @"24/01/2018";
+    //    _textFieldSelectMaxAttendes.text = @"1200";
     
     
     [aParametersDic setObject:_textFieldEventName.text forKey:@"name"];
     [aParametersDic setObject:_textFieldEventDescription.text forKey:@"description"];
     
-     
+    
     //[aParametersDic setObject:fulladdressevent forKey:@"address"];
-     [aParametersDic setObject:@"Dummy Address" forKey:@"address"];
-     
-//    [aParametersDic setObject:eventlong forKey:@"longitude"];
-//    [aParametersDic setObject:eventlat forKey:@"latitude"];
-      [aParametersDic setObject:@"22.222222" forKey:@"longitude"];
-      [aParametersDic setObject:@"33.333333" forKey:@"latitude"];
-
+    [aParametersDic setObject:@"Dummy Address" forKey:@"address"];
+    
+    //    [aParametersDic setObject:eventlong forKey:@"longitude"];
+    //    [aParametersDic setObject:eventlat forKey:@"latitude"];
+    [aParametersDic setObject:@"22.222222" forKey:@"longitude"];
+    [aParametersDic setObject:@"33.333333" forKey:@"latitude"];
+    
     
     [aParametersDic setObject:_txtEventDate.text forKey:@"event_date"];
-   // [aParametersDic setObject:dateStartString forKey:@"start_time"];
-     [aParametersDic setObject:@"11:11" forKey:@"start_time"];
-     //[aParametersDic setObject:dateEndString forKey:@"end_time"];
-     [aParametersDic setObject:@"12:12p" forKey:@"end_time"];
+    // [aParametersDic setObject:dateStartString forKey:@"start_time"];
+    [aParametersDic setObject:@"11:11" forKey:@"start_time"];
+    //[aParametersDic setObject:dateEndString forKey:@"end_time"];
+    [aParametersDic setObject:@"12:12p" forKey:@"end_time"];
     [aParametersDic setObject:_textFieldSelectMaxAttendes.text forKey:@"max_attend"];
-     [aParametersDic setObject:_cost.text forKey:@"price"];
+    [aParametersDic setObject:_cost.text forKey:@"price"];
     
     //[aParametersDic setObject:_textFieldSelectPrice.text forKey:@"price"];
-
-   
-
+    
+    
+    
     
     [request setURL:url];
     aImageDic = [[NSMutableDictionary alloc]init];
-//    
-//    CGFloat scaleSize = 0.2f;
-//    UIImage *smallImage = [UIImage imageWithCGImage:image.CGImage
-//                                              scale:scaleSize
-//                                        orientation:image.imageOrientation];
+    //
+    //    CGFloat scaleSize = 0.2f;
+    //    UIImage *smallImage = [UIImage imageWithCGImage:image.CGImage
+    //                                              scale:scaleSize
+    //                                        orientation:image.imageOrientation];
     
-     
+    
     NSData *imageData = UIImageJPEGRepresentation(_imageViewEventImage.image, 0.035);
     
     if(imageData){
@@ -646,9 +646,9 @@
                                        NSLog(@"%@",requestReply);
                                        //    [SVProgressHUD dismiss];
                                        
-                        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:@"Event Created Successfully!" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles: nil];
+                                       UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:@"Event Created Successfully!" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles: nil];
                                        [alert show];
-
+                                       
                                        
                                        [_indicatorEvent stopAnimating];
                                        
@@ -671,15 +671,15 @@
                                            [self.navigationController pushViewController:vc animated:YES];
                                        }
                                        
-
+                                       
                                        
                                    }
                                    else
                                    {
-                                   
+                                       
                                        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"OOOpppssss!" message:@"Something Went Wrong! Try again" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles: nil];
                                        [alert show];
-}
+                                   }
                                }
                                
                                
@@ -708,7 +708,7 @@
     NSString *dateEndString=[[NSUserDefaults standardUserDefaults]objectForKey:@"dateEndString"];
     
     NSString *valueidAttend=[[NSUserDefaults standardUserDefaults]objectForKey:@"valueidAttend"];
-
+    
     
     
     NSMutableDictionary*aParametersDic;
@@ -745,7 +745,7 @@
     //[aParametersDic setObject:_textFieldSelectPrice.text forKey:@"price"];
     
     [aParametersDic setObject:valueidAttend forKey:@"id"];
-
+    
     
     
     
@@ -831,115 +831,6 @@
                                            [self.navigationController pushViewController:vc animated:YES];
                                        }
                                        
-                                       //                                       NSArray *error = [result valueForKey:@"error"];
-                                       //
-                                       //
-                                       //                                       NSArray *emailrepeat=[error valueForKey:@"email"];
-                                       //
-                                       //                                       NSArray *emailRepear1=[emailrepeat objectAtIndex:0];
-                                       //
-                                       //                                       NSArray *usernamerepeat=[error valueForKey:@"username"];
-                                       //
-                                       //                                       NSArray *usernamerepeat1=[usernamerepeat objectAtIndex:0];
-                                       //
-                                       //                                       NSArray *contactRepeat=[error valueForKey:@"contact"];
-                                       //
-                                       //                                       NSArray *contactRepeat1=[contactRepeat objectAtIndex:0];
-                                       
-                                       //                                       if ([emailRepear1 isEqual:@"The email has already been taken."]) {
-                                       //
-                                       //
-                                       //                                           [self callAlert:@"Warning" message:@"The email has already been taken."];
-                                       //
-                                       //
-                                       ////                                           _textFieldEventName.text=nil;
-                                       ////                                           _textFieldEventDescription.text=nil;
-                                       //
-                                       //
-                                       //
-                                       //                                       }else if ([usernamerepeat1 isEqual:@"The username has already been taken."]){
-                                       
-                                       //
-                                       //                                           [self callAlert:@"Warning" message:@"The username has already been taken."];
-                                       //
-                                       ////
-                                       ////                                           _textFieldUserName.text=nil;
-                                       ////                                           _textFieldEmail.text=nil;
-                                       ////                                           _textFieldContactNo.text=nil;
-                                       
-                                       
-                                       //    }
-                                       
-                                       //                                       else if ([contactRepeat1 isEqual:@"The contact has already been taken."]){
-                                       //
-                                       //
-                                       //                                           [self callAlert:@"Warning" message:@"The contact has already been taken."];
-                                       //
-                                       //
-                                       ////                                           _textFieldUserName.text=nil;
-                                       ////                                           _textFieldEmail.text=nil;
-                                       ////                                           _textFieldContactNo.text=nil;
-                                       //
-                                       //
-                                       //                                       }
-                                       // else{
-                                       
-                                       //                                           NSArray *Message = [result valueForKey:@"message"];
-                                       //
-                                       //
-                                       //                                           NSString *imageProfile = [result valueForKey:@"new_image"];
-                                       //
-                                       //                                           [[NSUserDefaults standardUserDefaults]setObject:imageProfile forKey:@"imageProfile"];
-                                       
-                                       //                                       [[NSUserDefaults standardUserDefaults]setObject:image forKey:@"imageProfileChange"];
-                                       
-                                       //
-                                       //                                           if([Message isEqual:@"success"]){
-                                       //
-                                       //
-                                       //                                               //                                           [[NSUserDefaults standardUserDefaults]setValue:@"1" forKey:@"profilepicchange"];
-                                       //                                               //                                           [[NSUserDefaults standardUserDefaults]synchronize];
-                                       //
-                                       //
-                                       //                                               [self callAlert:@"Message" message:@"Update Successfully"];
-                                       
-                                       
-                                       
-                                       
-                                       
-                                       
-                                       //    [SVProgressHUD dismiss];
-                                       
-                                       //                                           SCLAlertView *alert = [[SCLAlertView alloc] init];
-                                       //                                           UIColor *color = [UIColor colorWithRed:255.0/255.0 green:38.0/255.0 blue:28.0/255.0 alpha:1.0];
-                                       //                                           [alert showCustom:self image:[UIImage imageNamed:@"success_icon"] color:color title:@"Success!!" subTitle:@"Your data have been successfully posted" closeButtonTitle:@"OK" duration:1.5f];
-                                       //
-                                       //                                           double delayInSeconds = 1.5f;
-                                       //                                           dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
-                                       //                                           dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-                                       //
-                                       //                                               CATransition* transition = [CATransition animation];
-                                       //                                               transition.duration = 0.5f;
-                                       //                                               transition.type = kCATransitionReveal;
-                                       //                                               transition.subtype = kCATransitionFromLeft;
-                                       //                                               [self.navigationController.view.layer addAnimation:transition
-                                       //                                                                                           forKey:kCATransition];
-                                       //                                               [self.navigationController popViewControllerAnimated:YES];
-                                       //
-                                       //
-                                       //                                           });
-                                       // }
-                                       // }
-                                       
-                                       //                                       else if([Message isEqualToString:@"failure"]){
-                                       //
-                                       //                                         //  [SVProgressHUD dismiss];
-                                       //                                           UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:
-                                       //                                                                     @"Error" message:@"Error" delegate:self
-                                       //                                                                                    cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-                                       //                                           [alertView show];
-                                       //
-                                       //                                       }
                                        
                                    }
                                }
@@ -998,34 +889,34 @@
     
     df.dateFormat = @"dd-MMM-yyyy";
     
-  //  _labelEventDate.text = [NSString stringWithFormat:@"%@",
-                   //   [df stringFromDate:_datePickerView.date]];
+    //  _labelEventDate.text = [NSString stringWithFormat:@"%@",
+    //   [df stringFromDate:_datePickerView.date]];
     
     
     
-  //  NSLog(@"%@",[df stringFromDate:_datePickerView.date]);
-
+    //  NSLog(@"%@",[df stringFromDate:_datePickerView.date]);
+    
     
 }
 
 - (IBAction)buttonOpenDatePickerAction:(id)sender {
     
     _viewdatetimeHidder.hidden=NO;
-
     
     
-//    _datePickerView.hidden=NO;
-//    _datePickerViewBackground.hidden=NO;
-//    
     
-
+    //    _datePickerView.hidden=NO;
+    //    _datePickerViewBackground.hidden=NO;
+    //
+    
+    
 }
 
 - (IBAction)buttonStartTimeAction:(id)sender {
     
     
     _viewdatetimeHidder.hidden=NO;
-
+    
     
     _viewstartTimeBackground.hidden=NO;
     
@@ -1037,9 +928,9 @@
 - (IBAction)buttonEndTimeAction:(id)sender {
     
     _viewdatetimeHidder.hidden=NO;
-
+    
     _viewEndTimeBackground.hidden=NO;
-
+    
     
     
 }
@@ -1048,7 +939,7 @@
     
     
     
-   
+    
     NSDateFormatter *outputFormatter = [[NSDateFormatter alloc] init]; [outputFormatter setDateFormat:@"HH:mm"];
     NSString *dateStartString = [outputFormatter stringFromDate:self.datePickerStartTime.date];
     
@@ -1061,48 +952,48 @@
     
     
     
-//    NSDateFormatter *df = [[NSDateFormatter alloc] init];
-//    df.dateStyle = NSDateFormatterMediumStyle;
-//    
-//    //[df setDateStyle:NSDateFormatterMediumStyle];
-//    [df setDateFormat:@"HH:mm:ss"];
-////    NSDate *date1 = [df dateFromString:df];
-////    NSLog(@"date1 : %@", df);
-//    
-//    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-//    [formatter setDateFormat:@"hh:mm a"];
-////    NSLog(@"Current Date: %@", [formatter stringFromDate:date1]);
-//    
-//    _labelStartTime.text = [NSString stringWithFormat:@"%@",
-//                            [df stringFromDate:_datePickerView.timeZone]];
+    //    NSDateFormatter *df = [[NSDateFormatter alloc] init];
+    //    df.dateStyle = NSDateFormatterMediumStyle;
+    //
+    //    //[df setDateStyle:NSDateFormatterMediumStyle];
+    //    [df setDateFormat:@"HH:mm:ss"];
+    ////    NSDate *date1 = [df dateFromString:df];
+    ////    NSLog(@"date1 : %@", df);
+    //
+    //    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    //    [formatter setDateFormat:@"hh:mm a"];
+    ////    NSLog(@"Current Date: %@", [formatter stringFromDate:date1]);
+    //
+    //    _labelStartTime.text = [NSString stringWithFormat:@"%@",
+    //                            [df stringFromDate:_datePickerView.timeZone]];
     
     
-//    NSDate *currDate = [NSDate date];
-//    
-//    
-//    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
-//    [dateFormatter setDateFormat:@"HH:mm:ss"];
-//    
-//    NSString *dateString = [dateFormatter stringFromDate:currDate];
-//    _labelStartTime.text = [dateFormatter stringFromDate:currDate];
+    //    NSDate *currDate = [NSDate date];
+    //
+    //
+    //    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
+    //    [dateFormatter setDateFormat:@"HH:mm:ss"];
+    //
+    //    NSString *dateString = [dateFormatter stringFromDate:currDate];
+    //    _labelStartTime.text = [dateFormatter stringFromDate:currDate];
     
     
     
-//
-//    [[NSUserDefaults standardUserDefaults] setObject:dateString forKey:@"time_backgorund"];
-//    [[NSUserDefaults standardUserDefaults] synchronize];
-
+    //
+    //    [[NSUserDefaults standardUserDefaults] setObject:dateString forKey:@"time_backgorund"];
+    //    [[NSUserDefaults standardUserDefaults] synchronize];
+    
     
 }
 
 
 - (IBAction)datePickerEndTimeAction:(id)sender {
     
-//    NSDateFormatter *df = [[NSDateFormatter alloc] init];
-//    df.dateStyle = NSDateFormatterMediumStyle;
-//    
-//    _labelEventDate.text = [NSString stringWithFormat:@"%@",
-//                            [df stringFromDate:_datePickerView.timeZone]];
+    //    NSDateFormatter *df = [[NSDateFormatter alloc] init];
+    //    df.dateStyle = NSDateFormatterMediumStyle;
+    //
+    //    _labelEventDate.text = [NSString stringWithFormat:@"%@",
+    //                            [df stringFromDate:_datePickerView.timeZone]];
     
     
     NSDateFormatter *outputFormatter = [[NSDateFormatter alloc] init]; [outputFormatter setDateFormat:@"HH:mm"];
@@ -1172,15 +1063,15 @@
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
-//    
-//    NSString *firstLetter= searchBar.text;
-//    
-////    [[NSUserDefaults standardUserDefaults]setObject:firstLetter forKey:@"firstLetter"];
-////    [[NSUserDefaults standardUserDefaults]synchronize];
-//    
-
-//    
-//    [searchBar resignFirstResponder];
+    //
+    //    NSString *firstLetter= searchBar.text;
+    //
+    ////    [[NSUserDefaults standardUserDefaults]setObject:firstLetter forKey:@"firstLetter"];
+    ////    [[NSUserDefaults standardUserDefaults]synchronize];
+    //
+    
+    //
+    //    [searchBar resignFirstResponder];
     
     
     
@@ -1208,7 +1099,7 @@
         [[NSUserDefaults standardUserDefaults]setObject:valuelong forKey:@"eventlong"];
         
         [[NSUserDefaults standardUserDefaults]synchronize];
-
+        
         
         
         NSDictionary *addressDictinary = placemark.addressDictionary;
@@ -1236,16 +1127,16 @@
         [[NSUserDefaults standardUserDefaults]synchronize];
         
         
-//        NSString *sameline=[mainAddress stringByReplacingOccurrencesOfString:@"\\n" withString:@"\n"];
-//        
-//        NSLog(@"%@ sameline",sameline);
+        //        NSString *sameline=[mainAddress stringByReplacingOccurrencesOfString:@"\\n" withString:@"\n"];
+        //
+        //        NSLog(@"%@ sameline",sameline);
         
         
         NSLog(@"Address %@",addressDictinary);
         
-//        NSString *address=[[NSString alloc]initWithString:placemark.addressDictionary];
-//        
-//        NSLog(@"Address %@",address);
+        //        NSString *address=[[NSString alloc]initWithString:placemark.addressDictionary];
+        //
+        //        NSLog(@"Address %@",address);
         
         MKCoordinateSpan span;
         double radius = placemark.region.radius / 1000; // convert to km
@@ -1316,14 +1207,14 @@
 //    [doneButton setImage:[UIImage imageNamed:@"doneButtonNormal.png"] forState:UIControlStateNormal];
 //    [doneButton setImage:[UIImage imageNamed:@"doneButtonPressed.png"] forState:UIControlStateHighlighted];
 //    [doneButton addTarget:self action:@selector(doneButton:) forControlEvents:UIControlEventTouchUpInside];
-//    
+//
 //    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
 //        dispatch_async(dispatch_get_main_queue(), ^{
 //            UIView *keyboardView = [[[[[UIApplication sharedApplication] windows] lastObject] subviews] firstObject];
 //            [doneButton setFrame:CGRectMake(0, keyboardView.frame.size.height - 53, 106, 53)];
 //            [keyboardView addSubview:doneButton];
 //            [keyboardView bringSubviewToFront:doneButton];
-//            
+//
 //            [UIView animateWithDuration:[[note.userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey] floatValue]-.02
 //                                  delay:.0
 //                                options:[[note.userInfo objectForKey:UIKeyboardAnimationCurveUserInfoKey] intValue]
@@ -1347,7 +1238,7 @@
 //}
 
 //-(void)textFieldDidBeginEditing:(UITextField *)textField {
-//    
+//
 //    [[NSNotificationCenter defaultCenter] addObserver:self
 //                                             selector:@selector(keyboardWillShow:)
 //                                                 name:UIKeyboardWillShowNotification
@@ -1371,7 +1262,7 @@
     if ([textField isEqual:_txtEventDate]) {
         [datePicker setDatePickerMode:UIDatePickerModeDate];
         [datePicker addTarget:self action:@selector(onDatePickerValueChanged:) forControlEvents:UIControlEventValueChanged];
-
+        
     }
     return YES;
 }
@@ -1390,7 +1281,7 @@
 
 - (void)openMapForLocationSelection
 {
-    [self performSegueWithIdentifier:@"openLocationView" sender:self];
+//    [self performSegueWithIdentifier:@"openLocationView" sender:self];
 }
 
 @end
