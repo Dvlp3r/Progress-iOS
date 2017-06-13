@@ -19,7 +19,7 @@
 
 #import "ViewController.h"
 #import "LoginViewViewControllers.h"
-
+#import "AdminDashBoardNextScreenViewController.h"
 
 @interface DashBoradViewController ()
 {
@@ -320,55 +320,56 @@
     NSArray *valuelon=[arraylongEvent objectAtIndex:indexPath.row];
     
     NSArray *startTime=[arrayStartTimeEvent objectAtIndex:indexPath.row];
-    
+    NSArray *endtime=[arrayEndTimeEvent objectAtIndex:indexPath.row];
+
     
     NSArray *maxAttend=[arraymaxAttendevent objectAtIndex:indexPath.row];
-    
-    [[NSUserDefaults standardUserDefaults]setObject:maxAttend forKey:@"maxAttend"];
-    
-    [[NSUserDefaults standardUserDefaults]setObject:startTime forKey:@"startTime"];
+   
     
     
     
-    [[NSUserDefaults standardUserDefaults]setObject:valuelat forKey:@"valuelat"];
-    
-    [[NSUserDefaults standardUserDefaults]setObject:valuelon forKey:@"valuelon"];
     
     
-    [[NSUserDefaults standardUserDefaults]setObject:valueidMain forKey:@"valueidMain"];
-
-    [[NSUserDefaults standardUserDefaults]setObject:valueName forKey:@"valueName"];
     
-    [[NSUserDefaults standardUserDefaults]setObject:valuePrice forKey:@"valuePrice"];
 
     
-    
-    [[NSUserDefaults standardUserDefaults]setObject:valueAddress forKey:@"valueAddress"];
-    
-    
-    [[NSUserDefaults standardUserDefaults]setObject:valueImage forKey:@"valueImage"];
+
     
     
     [[NSUserDefaults standardUserDefaults]setObject:valueDate forKey:@"valueDate"];
     
     
-    [[NSUserDefaults standardUserDefaults]setObject:valueDescription forKey:@"valueDescription"];
-    [[NSUserDefaults standardUserDefaults]synchronize];
+
     
+    NSMutableDictionary *dic=[[NSMutableDictionary alloc] init];
+    [dic setValue:valuelon forKey:@"valuelonAdmin"];
+    [dic setValue:valuelat forKey:@"valuelatAdmin"];
+    [dic setValue:valueAddress forKey:@"address"];
+    [dic setValue:endtime forKey:@"valueEndTimeAdmin"];
+    [dic setValue:startTime forKey:@"valueStartTimeAdmin"];
+    [dic setValue:valueDescription forKey:@"valuedescriptionAdmin"];
+    [dic setValue:valuePrice forKey:@"valuePriceAdmin"];
+    [dic setValue:valueDate forKey:@"valueDateAdmin"];
+    [dic setValue:valueImage forKey:@"valueImageAdmin"];
+    [dic setValue:maxAttend forKey:@"MaxAttendEvent"];
     
-//    NSArray *valueLat=[latArray3 objectAtIndex:indexPath.row];
-//    NSArray *valueLong=[longitudeArray3 objectAtIndex:indexPath.row];
-//    
-//    NSArray *valueCity=[cityArray3 objectAtIndex:indexPath.row];
-//    NSArray *valueDescription=[descriptionArray3 objectAtIndex:indexPath.row];
-    
-    
+       [dic setValue:valueName forKey:@"valueNameAdmin"];
+    [dic setValue:maxAttend forKey:@"valueTotalAttend"];
+    [dic setValue:valueidMain forKey:@"valueidAttend"];
     
     UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    UINavigationController *init4inchViewController = [storyBoard instantiateViewControllerWithIdentifier:@"DashboardNextScreenViewController"];
+    AdminDashBoardNextScreenViewController *init4inchViewController = [storyBoard instantiateViewControllerWithIdentifier:@"AdminDashBoardNextScreenViewController"];
+    init4inchViewController.dicdata = dic;
+    init4inchViewController.strpage = @"detail";
     //[UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
     [self.navigationController pushViewController:init4inchViewController animated:NO];
     
+  /*
+    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    DashboardNextScreenViewController *init4inchViewController = [storyBoard instantiateViewControllerWithIdentifier:@"DashboardNextScreenViewController"];
+    //[UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+    [self.navigationController pushViewController:init4inchViewController animated:NO];
+    */
     
     
     

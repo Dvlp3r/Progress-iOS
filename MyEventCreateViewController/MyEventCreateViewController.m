@@ -16,7 +16,7 @@
 #import "FutureDetailViewController.h"
 #import "PastEventTableViewCell.h"
 #import "PastEventDetailViewController.h"
-
+#import "AdminDashBoardNextScreenViewController.h"
 #import "ProfileAccountViewController.h"
 
 
@@ -198,7 +198,20 @@
 
     
 
+    UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    UIImage *backBtnImage = [UIImage imageNamed:@"Back-1"]  ;
+    [backBtn setImage:backBtnImage forState:UIControlStateNormal];
+    [backBtn addTarget:self action:@selector(goback) forControlEvents:UIControlEventTouchUpInside];
+    backBtn.frame = CGRectMake(0, 0, 40, 30);
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithCustomView:backBtn] ;
+   // self.navigationItem.leftBarButtonItem = backButton;
+    
 }
+- (void)goback
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     CGFloat width = scrollView.frame.size.width;
@@ -377,40 +390,40 @@
 
 
 
-    [[NSUserDefaults standardUserDefaults]setObject:valueNameFuture forKey:@"valueNameFuture"];
-    
-    [[NSUserDefaults standardUserDefaults]setObject:valueAddressFuture forKey:@"valueAddressFuture"];
     
     
     
-    [[NSUserDefaults standardUserDefaults]setObject:valueImageFuture forKey:@"valueImageFuture"];
     
     
-    [[NSUserDefaults standardUserDefaults]setObject:valueDateFuture forKey:@"valueDateFuture"];
+       [[NSUserDefaults standardUserDefaults]synchronize];
     
     
-    [[NSUserDefaults standardUserDefaults]setObject:valuePriceFuture forKey:@"valuePriceFuture"];
-    
-    
-    [[NSUserDefaults standardUserDefaults]setObject:valuedescriptionFuture forKey:@"valuedescriptionFuture"];
-    
-    
-    [[NSUserDefaults standardUserDefaults]setObject:valueStartTimeFuture forKey:@"valueStartTimeFuture"];
-    
-    [[NSUserDefaults standardUserDefaults]setObject:valueEndTimeFuture forKey:@"valueEndTimeFuture"];
-    
-    [[NSUserDefaults standardUserDefaults]setObject:valuelatFuture forKey:@"valuelatFuture"];
-    
-    [[NSUserDefaults standardUserDefaults]setObject:valuelonFuture forKey:@"valuelonFuture"];
-
-    
-    [[NSUserDefaults standardUserDefaults]synchronize];
-    
-    
-    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+  /*  UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     UINavigationController *init4inchViewController = [storyBoard instantiateViewControllerWithIdentifier:@"FutureDetailViewController"];
     //[UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
-    [self.navigationController pushViewController:init4inchViewController animated:NO];
+    [self.navigationController pushViewController:init4inchViewController animated:NO];*/
+        
+        NSMutableDictionary *dic=[[NSMutableDictionary alloc] init];
+        [dic setValue:valuelonFuture forKey:@"valuelonAdmin"];
+        [dic setValue:valuelatFuture forKey:@"valuelatAdmin"];
+        [dic setValue:valueAddressFuture forKey:@"address"];
+        [dic setValue:valueEndTimeFuture forKey:@"valueEndTimeAdmin"];
+        [dic setValue:valueStartTimeFuture forKey:@"valueStartTimeAdmin"];
+        [dic setValue:valuedescriptionFuture forKey:@"valuedescriptionAdmin"];
+        [dic setValue:valuePriceFuture forKey:@"valuePriceAdmin"];
+        [dic setValue:valueDateFuture forKey:@"valueDateAdmin"];
+        [dic setValue:valueImageFuture forKey:@"valueImageAdmin"];
+        [dic setValue:@"" forKey:@"MaxAttendEvent"];
+        
+        [dic setValue:valueNameFuture forKey:@"valueNameAdmin"];
+        [dic setValue:@"" forKey:@"valueTotalAttend"];
+        [dic setValue:@"" forKey:@"valueidAttend"];
+        
+        UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        AdminDashBoardNextScreenViewController *init4inchViewController = [storyBoard instantiateViewControllerWithIdentifier:@"AdminDashBoardNextScreenViewController"];
+        init4inchViewController.dicdata = dic;
+        //[UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+        [self.navigationController pushViewController:init4inchViewController animated:NO];
     
     }
     else{
@@ -435,43 +448,34 @@
         
         NSArray *valuedescriptionPast=[arraydescriptionPastEvent objectAtIndex:indexPath.row];
         
+     
         
-        
-        [[NSUserDefaults standardUserDefaults]setObject:valueNamePast forKey:@"valueNamePast"];
-        
-        [[NSUserDefaults standardUserDefaults]setObject:valueAddressPast forKey:@"valueAddressPast"];
-        
-        
-        
-        [[NSUserDefaults standardUserDefaults]setObject:valueImagePast forKey:@"valueImagePast"];
-        
-        
-        [[NSUserDefaults standardUserDefaults]setObject:valueDatePast forKey:@"valueDatePast"];
-        
-        
-        [[NSUserDefaults standardUserDefaults]setObject:valuePricePast forKey:@"valuePricePast"];
-        
-        
-        [[NSUserDefaults standardUserDefaults]setObject:valuedescriptionPast forKey:@"valuedescriptionPast"];
-        
-        
-        [[NSUserDefaults standardUserDefaults]setObject:valueStartTimePast forKey:@"valueStartTimePast"];
-        
-        [[NSUserDefaults standardUserDefaults]setObject:valueEndTimePast forKey:@"valueEndTimePast"];
-        
-        [[NSUserDefaults standardUserDefaults]setObject:valuelatPast forKey:@"valuelatPast"];
-        
-        [[NSUserDefaults standardUserDefaults]setObject:valuelonPast forKey:@"valuelonPast"];
-        
-        [[NSUserDefaults standardUserDefaults]synchronize];
-        
-      
-        
-        UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+      /*  UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         UINavigationController *init4inchViewController = [storyBoard instantiateViewControllerWithIdentifier:@"PastEventDetailViewController"];
         //[UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
         [self.navigationController pushViewController:init4inchViewController animated:NO];
+        */
+        NSMutableDictionary *dic=[[NSMutableDictionary alloc] init];
+        [dic setValue:valuelonPast forKey:@"valuelonAdmin"];
+        [dic setValue:valuelatPast forKey:@"valuelatAdmin"];
+        [dic setValue:valueAddressPast forKey:@"address"];
+        [dic setValue:valueEndTimePast forKey:@"valueEndTimeAdmin"];
+        [dic setValue:valueStartTimePast forKey:@"valueStartTimeAdmin"];
+        [dic setValue:valuedescriptionPast forKey:@"valuedescriptionAdmin"];
+        [dic setValue:valuePricePast forKey:@"valuePriceAdmin"];
+        [dic setValue:valueDatePast forKey:@"valueDateAdmin"];
+        [dic setValue:valueImagePast forKey:@"valueImageAdmin"];
+        [dic setValue:@"" forKey:@"MaxAttendEvent"];
         
+        [dic setValue:valueNamePast forKey:@"valueNameAdmin"];
+        [dic setValue:@"" forKey:@"valueTotalAttend"];
+        [dic setValue:@"" forKey:@"valueidAttend"];
+        
+        UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        AdminDashBoardNextScreenViewController *init4inchViewController = [storyBoard instantiateViewControllerWithIdentifier:@"AdminDashBoardNextScreenViewController"];
+        init4inchViewController.dicdata = dic;
+        //[UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+        [self.navigationController pushViewController:init4inchViewController animated:NO];
         
         
         

@@ -38,5 +38,7 @@
 
 @property (strong, nonatomic) IBOutlet UIView *viewShowdata;
 
+@property (strong, nonatomic)  NSMutableDictionary *dicdata;
+@property (strong, nonatomic)  NSString *strpage;
 
 @end

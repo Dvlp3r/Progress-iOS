@@ -84,6 +84,11 @@
     cell.imageView.image=[UIImage imageNamed:[arrayImages objectAtIndex:indexPath.row]];
     cell.imageView.contentMode = UIViewContentModeScaleAspectFit;
     tableView.backgroundColor = [UIColor whiteColor];
+    cell.selectionStyle = UITableViewCellSelectionStyleDefault;
+
+    UIView *bgColorView = [[UIView alloc] init];
+    bgColorView.backgroundColor = [UIColor colorWithRed:238/255.0 green:239.0/255.0 blue:240.0/255.0 alpha:1.0];
+    [cell setSelectedBackgroundView:bgColorView];
     return cell;
 }
 
