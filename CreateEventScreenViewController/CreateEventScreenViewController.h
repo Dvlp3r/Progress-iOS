@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *indicatorEvent;
 
 @property (weak, nonatomic) IBOutlet UITextField *textFieldEventName;
+- (IBAction)btnActionselectLocation:(id)sender;
 
 @property (weak, nonatomic) IBOutlet UITextView *textFieldEventDescription;
 

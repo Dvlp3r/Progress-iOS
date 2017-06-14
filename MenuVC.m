@@ -177,6 +177,7 @@
   }
     else  if ([[arrayData objectAtIndex:indexPath.row]  isEqualToString:@"Create Events"])
   {
+      [[NSUserDefaults standardUserDefaults] setValue:@"2" forKey:@"Createventdataedit"];
       UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
       
       UIViewController *vc = [sb instantiateViewControllerWithIdentifier:@"CreateEventScreenViewController"];

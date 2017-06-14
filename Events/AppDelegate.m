@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "IQKeyboardManager.h"
 
+@import GooglePlaces;
 
 @interface AppDelegate ()
 
@@ -19,7 +20,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-    
+    [GMSPlacesClient provideAPIKey:@"AIzaSyAWERnbH-gsqbtz3fXE7WEUH3tNGJTpRLI"];
+
     [IQKeyboardManager sharedManager].enable = YES;
     [IQKeyboardManager sharedManager].shouldShowTextFieldPlaceholder = NO;
     //[IQKeyboardManager sharedManager].toolbarTintColor = [UIColor colorWithRed:(18.0/255.0) green:(131/255.0) blue:(151/255.0) alpha:1.0];

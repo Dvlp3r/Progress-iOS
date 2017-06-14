@@ -13,13 +13,19 @@
 #import "Model.h"
 #import "MyEventCreateViewController.h"
 #import "AdminDashboardViewController.h"
+@import GooglePlaces;
+#import "AFNetworking.h"
+#import "JASidePanelController.h"
+#import "UIViewController+JASidePanel.h"
+
 #define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
 
-@interface CreateEventScreenViewController ()<UITextFieldDelegate>{
+@interface CreateEventScreenViewController ()<UITextFieldDelegate,GMSAutocompleteViewControllerDelegate>{
     
     UIImage *selectedImage;
     UIDatePicker* datePicker;
     NSDateFormatter* dateFormatter;
+    NSString *strlat,*strlon,*stradd;
 }
 
 @end
@@ -179,7 +185,7 @@
 {
     [super viewWillAppear:animated];
     
-    _scrollViewMain.contentSize = CGSizeMake(0, 620);
+    [self.scrollViewMain setContentSize:CGSizeMake(self.scrollViewMain.contentSize.width, 1300)];
     
 }
 - (void)didReceiveMemoryWarning {
@@ -532,13 +538,120 @@
 //}
 
 //-(void)uploadPhoto :(UIImage*)image{
+- (void)sendImageToServer {
+    NSString* strUrl = [NSString stringWithFormat:@"%@%@",Api_Server_Url,addevent];
+    
+    NSMutableDictionary *aParametersDic =[[NSMutableDictionary alloc] init];
+    [aParametersDic setObject:_textFieldEventName.text forKey:@"name"];
+    [aParametersDic setObject:_textFieldEventDescription.text forKey:@"description"];
+    
+    
+    //[aParametersDic setObject:fulladdressevent forKey:@"address"];
+    [aParametersDic setObject:stradd forKey:@"address"];
+    
+    //    [aParametersDic setObject:eventlong forKey:@"longitude"];
+    //    [aParametersDic setObject:eventlat forKey:@"latitude"];
+    [aParametersDic setObject:strlon forKey:@"longitude"];
+    [aParametersDic setObject:strlat forKey:@"latitude"];
+    
+    
+    [aParametersDic setObject:_txtEventDate.text forKey:@"event_date"];
+    // [aParametersDic setObject:dateStartString forKey:@"start_time"];
+    [aParametersDic setObject:@"11:11" forKey:@"start_time"];
+    //[aParametersDic setObject:dateEndString forKey:@"end_time"];
+    [aParametersDic setObject:@"12:12p" forKey:@"end_time"];
+    [aParametersDic setObject:_textFieldSelectMaxAttendes.text forKey:@"max_attend"];
+    [aParametersDic setObject:_cost.text forKey:@"price"];
+
+    
+    AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:[NSURL URLWithString:strUrl]];
+    
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html",@"application/json",@"multipart/form-data", nil];
+    NSString * barrer_token=@"Bearer ";
+    barrer_token=[barrer_token stringByAppendingString:[Model sharedInstance].accessToken];
+    [manager.requestSerializer setValue:barrer_token forHTTPHeaderField:@"Authorization"];
+    NSData *imageData = UIImageJPEGRepresentation(_imageViewEventImage.image, 0.5);
+    
+    
+    AFHTTPRequestOperation *op = [manager POST:strUrl parameters:aParametersDic constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+        if (imageData) {
+            [formData appendPartWithFileData:imageData name:@"event_pic" fileName:@"Image.jpeg" mimeType:@"image/png"];
+            
+        }
+        
+        //do not put image inside parameters dictionary as I did, but append it!
+        
+    } success:^(AFHTTPRequestOperation *operation, id responseObject) {
+       
+            
+         //   NSString *requestReply = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+            NSLog(@"%@",responseObject);
+            //    [SVProgressHUD dismiss];
+            
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:@"Event Created Successfully!" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles: nil];
+            [alert show];
+            
+            
+            [_indicatorEvent stopAnimating];
+            
+            
+            _indicatorEvent.hidden=YES;
+        NSError *error;
+        
+        
+            
+            NSArray *message=[responseObject objectForKey:@"message"];
+            
+            
+            if ([message isEqual:@"Success"]) {
+                
+                
+                UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+                
+                UIViewController *vc = [sb instantiateViewControllerWithIdentifier:@"AdminDashboardViewController"];
+                
+                self.sidePanelController.centerPanel = [[UINavigationController alloc]initWithRootViewController:vc];
+            }
+            
+            
+            
+        
+       
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [_indicatorEvent stopAnimating];
+
+        NSLog(@"Error: %@ ***** %@", operation.responseString, error);
+    }];
+    [op start];
+}
 - (IBAction)uploadPhoto:(id)sender {
     //    [SVProgressHUD showWithStatus:@"Please Wait..." maskType:SVProgressHUDMaskTypeBlack];
     
+    
+    if (_textFieldEventName.text.length == 0) {
+        [self callAlert:@"" message:@"Please enter Name."];
+
+    }
+    else  if (_textFieldEventDescription.text.length == 0) {
+        [self callAlert:@"" message:@"Please enter Description."];
+        
+    }
+    else  if (_textFieldSelectMaxAttendes.text.length == 0) {
+        [self callAlert:@"" message:@"Please enter Attendes."];
+        
+    }
+    else  if (stradd.length == 0) {
+        [self callAlert:@"" message:@"Please select Address."];
+        
+    }
+    else
+    {
     _indicatorEvent.hidden=NO;
     
     [_indicatorEvent startAnimating];
-    
+        [self sendImageToServer];
    /*
     NSString *fulladdressevent=[[NSUserDefaults standardUserDefaults]objectForKey:@"fulladdressevent"];
     NSString *eventlat=[[NSUserDefaults standardUserDefaults]objectForKey:@"eventlat"];
@@ -551,6 +664,9 @@
     NSString *dateEndString=[[NSUserDefaults standardUserDefaults]objectForKey:@"dateEndString"];
     
     */
+        
+        
+        /*
     NSMutableDictionary*aParametersDic;
     NSMutableDictionary*aImageDic;
     NSString *URL = [NSString stringWithFormat:@"%@%@",Api_Server_Url,addevent];
@@ -583,12 +699,12 @@
     
     
     //[aParametersDic setObject:fulladdressevent forKey:@"address"];
-    [aParametersDic setObject:@"Dummy Address" forKey:@"address"];
+    [aParametersDic setObject:stradd forKey:@"address"];
     
     //    [aParametersDic setObject:eventlong forKey:@"longitude"];
     //    [aParametersDic setObject:eventlat forKey:@"latitude"];
-    [aParametersDic setObject:@"22.222222" forKey:@"longitude"];
-    [aParametersDic setObject:@"33.333333" forKey:@"latitude"];
+    [aParametersDic setObject:strlon forKey:@"longitude"];
+    [aParametersDic setObject:strlat forKey:@"latitude"];
     
     
     [aParametersDic setObject:_txtEventDate.text forKey:@"event_date"];
@@ -606,14 +722,14 @@
     
     [request setURL:url];
     aImageDic = [[NSMutableDictionary alloc]init];
-    //
-    //    CGFloat scaleSize = 0.2f;
-    //    UIImage *smallImage = [UIImage imageWithCGImage:image.CGImage
-    //                                              scale:scaleSize
-    //                                        orientation:image.imageOrientation];
+    
+//        CGFloat scaleSize = 0.2f;
+//        UIImage *smallImage = [UIImage imageWithCGImage:image.CGImage
+//                                                  scale:scaleSize
+//                                            orientation:image.imageOrientation];
     
     
-    NSData *imageData = UIImageJPEGRepresentation(_imageViewEventImage.image, 0.035);
+    NSData *imageData = UIImageJPEGRepresentation(_imageViewEventImage.image, 0.5);
     
     if(imageData){
         [aImageDic setObject:imageData forKey:[NSString stringWithFormat:@"image%d.jpg",0]];
@@ -697,7 +813,10 @@
                                }
                                
                                
-                           }];
+                           }];*/
+    }
+         
+        
     
 }
 
@@ -705,7 +824,25 @@
 -(void)uploadPhotoedit :(UIImage*)image{
     
     //    [SVProgressHUD showWithStatus:@"Please Wait..." maskType:SVProgressHUDMaskTypeBlack];
-    
+    if (_textFieldEventName.text.length == 0) {
+        [self callAlert:@"" message:@"Please enter Name."];
+        
+    }
+    else  if (_textFieldEventDescription.text.length == 0) {
+        [self callAlert:@"" message:@"Please enter Description."];
+        
+    }
+    else  if (_textFieldSelectMaxAttendes.text.length == 0) {
+        [self callAlert:@"" message:@"Please enter Attendes."];
+        
+    }
+    else  if (stradd.length == 0) {
+        [self callAlert:@"" message:@"Please select Address."];
+        
+    }
+    else
+    {
+
     _indicatorEvent.hidden=NO;
     
     [_indicatorEvent startAnimating];
@@ -744,9 +881,9 @@
     [aParametersDic setObject:_textFieldEventName.text forKey:@"name"];
     [aParametersDic setObject:_textFieldEventDescription.text forKey:@"description"];
     
-    [aParametersDic setObject:fulladdressevent forKey:@"address"];
-    [aParametersDic setObject:eventlong forKey:@"longitude"];
-    [aParametersDic setObject:eventlat forKey:@"latitude"];
+    [aParametersDic setObject:stradd forKey:@"address"];
+    [aParametersDic setObject:strlon forKey:@"longitude"];
+    [aParametersDic setObject:strlat forKey:@"latitude"];
     
     
     [aParametersDic setObject:_txtEventDate.text forKey:@"event_date"];
@@ -774,7 +911,7 @@
                                               scale:scaleSize
                                         orientation:image.imageOrientation];
     
-    NSData *imageData = UIImageJPEGRepresentation(smallImage, 0.035);
+    NSData *imageData = UIImageJPEGRepresentation(smallImage, 6);
     
     if(imageData){
         [aImageDic setObject:imageData forKey:[NSString stringWithFormat:@"image%d.jpg",0]];
@@ -851,6 +988,7 @@
                                
                                
                            }];
+    }
     
 }
 
@@ -1298,4 +1436,65 @@
 //    [self performSegueWithIdentifier:@"openLocationView" sender:self];
 }
 
+- (void)viewController:(GMSAutocompleteViewController *)viewController
+didAutocompleteWithPlace:(GMSPlace *)place {
+    [self dismissViewControllerAnimated:YES completion:nil];
+    // Do something with the selected place.
+    NSLog(@"Place name %@", place.name);
+    NSLog(@"Place address %@", place.formattedAddress);
+    NSLog(@"Place attributions %@", place.attributions.string);
+    [self geoCodeUsingAddress:place.name];
+    stradd = place.name;
+}
+
+- (void)viewController:(GMSAutocompleteViewController *)viewController
+didFailAutocompleteWithError:(NSError *)error {
+    [self dismissViewControllerAnimated:YES completion:nil];
+    // TODO: handle the error.
+    NSLog(@"Error: %@", [error description]);
+}
+
+// User canceled the operation.
+- (void)wasCancelled:(GMSAutocompleteViewController *)viewController {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+// Turn the network activity indicator on and off again.
+- (void)didRequestAutocompletePredictions:(GMSAutocompleteViewController *)viewController {
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+}
+
+- (void)didUpdateAutocompletePredictions:(GMSAutocompleteViewController *)viewController {
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+}
+- (CLLocationCoordinate2D) geoCodeUsingAddress:(NSString *)address
+{
+   
+    double latitude = 0, longitude = 0;
+    NSString *esc_addr =  [address stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSString *req = [NSString stringWithFormat:@"http://maps.google.com/maps/api/geocode/json?sensor=false&address=%@", esc_addr];
+    NSString *result = [NSString stringWithContentsOfURL:[NSURL URLWithString:req] encoding:NSUTF8StringEncoding error:NULL];
+    if (result) {
+        NSScanner *scanner = [NSScanner scannerWithString:result];
+        if ([scanner scanUpToString:@"\"lat\" :" intoString:nil] && [scanner scanString:@"\"lat\" :" intoString:nil]) {
+            [scanner scanDouble:&latitude];
+            if ([scanner scanUpToString:@"\"lng\" :" intoString:nil] && [scanner scanString:@"\"lng\" :" intoString:nil]) {
+                [scanner scanDouble:&longitude];
+            }
+        }
+    }
+    CLLocationCoordinate2D center;
+    center.latitude = latitude;
+    center.longitude = longitude;
+    strlat =[ NSString stringWithFormat:@"%f",latitude];
+    strlon =[ NSString stringWithFormat:@"%f",longitude];
+
+    return center;
+}
+
+- (IBAction)btnActionselectLocation:(id)sender {
+    GMSAutocompleteViewController *acController = [[GMSAutocompleteViewController alloc] init];
+    acController.delegate = self;
+    [self presentViewController:acController animated:YES completion:nil];
+}
 @end
