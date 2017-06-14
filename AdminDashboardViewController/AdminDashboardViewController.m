@@ -247,8 +247,9 @@
     
     UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     
-    UIViewController *vc = [sb instantiateViewControllerWithIdentifier:@"CreateEventScreenViewController"];
-    
+    CreateEventScreenViewController *vc = [sb instantiateViewControllerWithIdentifier:@"CreateEventScreenViewController"];
+    vc.strpage = @"create";
+
     [self.navigationController pushViewController:vc animated:YES];
     
 }
@@ -416,7 +417,8 @@
             cell = (AdminDashboardTableViewCell *)[nib objectAtIndex:0];
             
         }
-        
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+
         //cell.imageViewEvent.image=[ev]
         
         NSString *imageUrl = [@"http://122.180.254.6/progressbackend/public/eventpics/" stringByAppendingString:[arrayPicAdminEvent objectAtIndex:indexPath.row]];
@@ -455,7 +457,8 @@
             
         }
         
-        
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+
         
         
         cell.labelNameUserAdmin.text=[arrayusername objectAtIndex:indexPath.row];
@@ -531,56 +534,26 @@
         NSArray *address=[arrayAddressAdminEvent objectAtIndex:indexPath.row];
         
         NSArray *maxattend=[arrayMaxAttend objectAtIndex:indexPath.row];
-        
-        [[NSUserDefaults standardUserDefaults]setObject:maxattend forKey:@"MaxAttendEvent"];
-        
-        
-        
-        
-        [[NSUserDefaults standardUserDefaults]setObject:valueidAttend forKey:@"valueidAttend"];
-        
-        
-        
-        [[NSUserDefaults standardUserDefaults]setObject:valueTotalAttend forKey:@"valueTotalAttend"];
-        
-        
-        
-        [[NSUserDefaults standardUserDefaults]setObject:valueNameAdmin forKey:@"valueNameAdmin"];
-        
-        
-        
-        [[NSUserDefaults standardUserDefaults]setObject:valueImageAdmin forKey:@"valueImageAdmin"];
-        
-        
-        [[NSUserDefaults standardUserDefaults]setObject:valueDateAdmin forKey:@"valueDateAdmin"];
-        
-        
-        [[NSUserDefaults standardUserDefaults]setObject:valuePriceAdmin forKey:@"valuePriceAdmin"];
-        
-        
-        [[NSUserDefaults standardUserDefaults]setObject:valuedescriptionAdmin forKey:@"valuedescriptionAdmin"];
-        
-        
-        [[NSUserDefaults standardUserDefaults]setObject:valueStartTimeAdmin forKey:@"valueStartTimeAdmin"];
-        
-        [[NSUserDefaults standardUserDefaults]setObject:valueEndTimeAdmin forKey:@"valueEndTimeAdmin"];
-        
-        [[NSUserDefaults standardUserDefaults]setObject:address forKey:@"address"];
-        
-        
-        
-        [[NSUserDefaults standardUserDefaults]setObject:valuelatAdmin forKey:@"valuelatAdmin"];
-        
-        [[NSUserDefaults standardUserDefaults]setObject:valuelonAdmin forKey:@"valuelonAdmin"];
-        
-        
-        
-        
-        [[NSUserDefaults standardUserDefaults]synchronize];
-        
+ 
+        NSMutableDictionary *dic=[[NSMutableDictionary alloc] init];
+        [dic setValue:valuelonAdmin forKey:@"valuelonAdmin"];
+        [dic setValue:valuelatAdmin forKey:@"valuelatAdmin"];
+        [dic setValue:address forKey:@"address"];
+        [dic setValue:valueEndTimeAdmin forKey:@"valueEndTimeAdmin"];
+        [dic setValue:valueStartTimeAdmin forKey:@"valueStartTimeAdmin"];
+        [dic setValue:valuedescriptionAdmin forKey:@"valuedescriptionAdmin"];
+        [dic setValue:valuePriceAdmin forKey:@"valuePriceAdmin"];
+        [dic setValue:valueDateAdmin forKey:@"valueDateAdmin"];
+        [dic setValue:valueImageAdmin forKey:@"valueImageAdmin"];
+        [dic setValue:maxattend forKey:@"MaxAttendEvent"];
+
+        [dic setValue:valueNameAdmin forKey:@"valueNameAdmin"];
+        [dic setValue:valueTotalAttend forKey:@"valueTotalAttend"];
+        [dic setValue:valueidAttend forKey:@"valueidAttend"];
         
         UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        UINavigationController *init4inchViewController = [storyBoard instantiateViewControllerWithIdentifier:@"AdminDashBoardNextScreenViewController"];
+        AdminDashBoardNextScreenViewController *init4inchViewController = [storyBoard instantiateViewControllerWithIdentifier:@"AdminDashBoardNextScreenViewController"];
+        init4inchViewController.dicdata = dic;
         //[UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
         [self.navigationController pushViewController:init4inchViewController animated:NO];
         

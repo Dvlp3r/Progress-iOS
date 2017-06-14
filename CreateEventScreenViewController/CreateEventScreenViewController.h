@@ -70,5 +70,6 @@
 @property(weak, nonatomic) IBOutlet MKMapView *vwMap;
 
 @property (strong, nonatomic) IBOutlet UIButton *imageViewButton;
+@property (strong, nonatomic)  NSString *strpage;
 
 @end

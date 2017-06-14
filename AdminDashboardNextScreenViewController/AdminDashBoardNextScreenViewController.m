@@ -24,9 +24,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
    
-    
-    // add another button
-    
+        // add another button
+    if ([_strpage isEqualToString:@"detail"]) {
+        _btnEdit.hidden = true;
+    }
+    else
+    {
+        _btnEdit.hidden = false;
+    }
     // now create a Bar button item
     UIBarButtonItem *mailbutton =[[UIBarButtonItem alloc] initWithCustomView:_btnEdit];
     
@@ -39,18 +44,18 @@
     _viewShowdata.layer.borderColor=[[UIColor lightGrayColor]CGColor];
 
     
-    NSString *valueName=[[NSUserDefaults standardUserDefaults]objectForKey:@"valueNameAdmin"];
-    NSString *valuePrice=[[NSUserDefaults standardUserDefaults]objectForKey:@"valuePriceAdmin"];
-    NSString *valueImage=[[NSUserDefaults standardUserDefaults]objectForKey:@"valueImageAdmin"];
-    NSString *valueDate=[[NSUserDefaults standardUserDefaults]objectForKey:@"valueDateAdmin"];
-    NSString *valueDescription=[[NSUserDefaults standardUserDefaults]objectForKey:@"valuedescriptionAdmin"];
+    NSString *valueName=[_dicdata valueForKey:@"valueNameAdmin"];
+    NSString *valuePrice=[_dicdata valueForKey:@"valuePriceAdmin"];
+    NSString *valueImage=[_dicdata valueForKey:@"valueImageAdmin"];
+    NSString *valueDate=[_dicdata valueForKey:@"valueDateAdmin"];
+    NSString *valueDescription=[_dicdata valueForKey:@"valuedescriptionAdmin"];
     
     
     
-    NSString *valueStartTimeAdmin=[[NSUserDefaults standardUserDefaults]objectForKey:@"valueStartTimeAdmin"];
+    NSString *valueStartTimeAdmin=[_dicdata valueForKey:@"valueStartTimeAdmin"];
 
     
-    NSString *valueTotalAteend=[[NSUserDefaults standardUserDefaults]objectForKey:@"valueTotalAttend"];
+    NSString *valueTotalAteend=[_dicdata valueForKey:@"valueTotalAttend"];
 
     
     NSString *imageUrl = [@"http://122.180.254.6/progressbackend/public/eventpics/" stringByAppendingString:valueImage];
@@ -71,15 +76,27 @@
     
     _labelTimeAdmin.text=valueStartTimeAdmin;
     
-    self.title =@"Progress";
-}
+    self.navigationItem.title =@"Progress";
+    
+    UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    UIImage *backBtnImage = [UIImage imageNamed:@"Back-1"]  ;
+    [backBtn setImage:backBtnImage forState:UIControlStateNormal];
+    [backBtn addTarget:self action:@selector(goback) forControlEvents:UIControlEventTouchUpInside];
+    backBtn.frame = CGRectMake(0, 0, 40, 30);
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithCustomView:backBtn] ;
+    self.navigationItem.leftBarButtonItem = backButton;
 
+}
+- (void)goback
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
 - (void)viewWillAppear:(BOOL)animated {
     
     
-    NSString *value4=[[NSUserDefaults standardUserDefaults]objectForKey:@"valuelatAdmin"];
+    NSString *value4=[_dicdata valueForKey:@"valuelatAdmin"];
     
-    NSString *value5=[[NSUserDefaults standardUserDefaults]objectForKey:@"valuelonAdmin"];
+    NSString *value5=[_dicdata valueForKey:@"valuelonAdmin"];
     
     
     double value=[value4 floatValue];
@@ -136,7 +153,7 @@
  //   [self AttendApi];
     NSLog(@"jhj");
     
-    NSString *valueTotalAteend=[[NSUserDefaults standardUserDefaults]objectForKey:@"valueTotalAttend"];
+    NSString *valueTotalAteend=[_dicdata valueForKey:@"valueTotalAttend"];
 
     
     if ([valueTotalAteend isEqualToString:@"0"]) {
@@ -163,7 +180,8 @@
     
     UIStoryboard *str=[UIStoryboard storyboardWithName:@"Main" bundle:nil];
     
-    UINavigationController *init4inchViewController = [str instantiateViewControllerWithIdentifier:@"CreateEventScreenViewController"];
+    CreateEventScreenViewController *init4inchViewController = [str instantiateViewControllerWithIdentifier:@"CreateEventScreenViewController"];
+    init4inchViewController.strpage = @"edit";
     //[UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
     [self.navigationController pushViewController:init4inchViewController animated:NO];
     
