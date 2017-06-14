@@ -71,5 +71,5 @@
 
 @property (strong, nonatomic) IBOutlet UIButton *imageViewButton;
 @property (strong, nonatomic)  NSString *strpage;
-
+@property (strong, nonatomic)  NSMutableDictionary *dicdata;
 @end

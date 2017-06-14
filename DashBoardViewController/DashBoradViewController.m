@@ -358,7 +358,7 @@
     [dic setValue:valueidMain forKey:@"valueidAttend"];
     
     UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    AdminDashBoardNextScreenViewController *init4inchViewController = [storyBoard instantiateViewControllerWithIdentifier:@"AdminDashBoardNextScreenViewController"];
+    DashboardNextScreenViewController *init4inchViewController = [storyBoard instantiateViewControllerWithIdentifier:@"DashboardNextScreenViewController"];
     init4inchViewController.dicdata = dic;
     init4inchViewController.strpage = @"detail";
     //[UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];

@@ -66,22 +66,22 @@
         _buttonCreateEvent.hidden=YES;
         
         
-        NSString *valueStartTimeAdmin=[[NSUserDefaults standardUserDefaults]objectForKey:@"valueStartTimeAdmin"];
-        NSString *valueEndTimeAdmin=[[NSUserDefaults standardUserDefaults]objectForKey:@"valueEndTimeAdmin"];
-        NSString *address=[[NSUserDefaults standardUserDefaults]objectForKey:@"address"];
-        NSString *valuelatAdmin=[[NSUserDefaults standardUserDefaults]objectForKey:@"valuelatAdmin"];
-        NSString *valuelonAdmin=[[NSUserDefaults standardUserDefaults]objectForKey:@"valuelonAdmin"];
+        NSString *valueStartTimeAdmin=[_dicdata valueForKey:@"valueStartTimeAdmin"];
+        NSString *valueEndTimeAdmin=[_dicdata valueForKey:@"valueEndTimeAdmin"];
+        NSString *address=[_dicdata valueForKey:@"address"];
+        NSString *valuelatAdmin=[_dicdata valueForKey:@"valuelatAdmin"];
+        NSString *valuelonAdmin=[_dicdata valueForKey:@"valuelonAdmin"];
         
         
-        NSString *valueName=[[NSUserDefaults standardUserDefaults]objectForKey:@"valueNameAdmin"];
-        NSString *valuePrice=[[NSUserDefaults standardUserDefaults]objectForKey:@"valuePriceAdmin"];
-        NSString *valueImage=[[NSUserDefaults standardUserDefaults]objectForKey:@"valueImageAdmin"];
-        NSString *valueDate=[[NSUserDefaults standardUserDefaults]objectForKey:@"valueDateAdmin"];
-        NSString *valueDescription=[[NSUserDefaults standardUserDefaults]objectForKey:@"valuedescriptionAdmin"];
+        NSString *valueName=[_dicdata valueForKey:@"valueNameAdmin"];
+        NSString *valuePrice=[_dicdata valueForKey:@"valuePriceAdmin"];
+        NSString *valueImage=[_dicdata valueForKey:@"valueImageAdmin"];
+        NSString *valueDate=[_dicdata valueForKey:@"valueDateAdmin"];
+        NSString *valueDescription=[_dicdata valueForKey:@"valuedescriptionAdmin"];
         
-        NSString  *MaxAttendEvent=[[NSUserDefaults standardUserDefaults]objectForKey:@"MaxAttendEvent"];
+        NSString  *MaxAttendEvent=[_dicdata valueForKey:@"MaxAttendEvent"];
         
-        NSString *valueTotalAteend=[[NSUserDefaults standardUserDefaults]objectForKey:@"valueTotalAttend"];
+        NSString *valueTotalAteend=[_dicdata valueForKey:@"valueTotalAttend"];
         
         
         NSString *imageUrl = [@"http://122.180.254.6/progressbackend/public/eventpics/" stringByAppendingString:valueImage];
@@ -539,7 +539,7 @@
     
     [_indicatorEvent startAnimating];
     
-    
+   /*
     NSString *fulladdressevent=[[NSUserDefaults standardUserDefaults]objectForKey:@"fulladdressevent"];
     NSString *eventlat=[[NSUserDefaults standardUserDefaults]objectForKey:@"eventlat"];
     
@@ -550,7 +550,7 @@
     
     NSString *dateEndString=[[NSUserDefaults standardUserDefaults]objectForKey:@"dateEndString"];
     
-    
+    */
     NSMutableDictionary*aParametersDic;
     NSMutableDictionary*aImageDic;
     NSString *URL = [NSString stringWithFormat:@"%@%@",Api_Server_Url,addevent];

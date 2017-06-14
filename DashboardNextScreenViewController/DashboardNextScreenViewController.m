@@ -11,7 +11,7 @@
 #import "Constant.h"
 #import "Model.h"
 #import "APIGenerator.h"
-
+#import "CreateEventScreenViewController.h"
 
 @interface DashboardNextScreenViewController ()
 
@@ -91,7 +91,7 @@
         NSLog(@"Woo! Can make payments!");
         
         
-        NSString *valuePrice=[[NSUserDefaults standardUserDefaults]objectForKey:@"valuePrice"];
+        NSString *valuePrice=[_dicdata valueForKey:@"valuePriceAdmin"];
         
         if ([valuePrice isEqualToString:@"0"]) {
         
@@ -145,16 +145,30 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    if ([_strpage isEqualToString:@"detail"]) {
+        _btnEdit.hidden = true;
+         _btnRSVP.hidden = false;
+    }
+    else
+    {
+        NSString *roleAdmin=[[NSUserDefaults standardUserDefaults]objectForKey:@"role"];
+        if ([roleAdmin isEqualToString:@"1"]) {
+        _btnEdit.hidden = false;
+        }
+        _btnRSVP.hidden = true;
+    }
+    UIBarButtonItem *mailbutton =[[UIBarButtonItem alloc] initWithCustomView:_btnEdit];
     
-    
-    NSString *startTime=[[NSUserDefaults standardUserDefaults]objectForKey:@"startTime"];
+    // set the nav bar's right button item
+    self.navigationItem.rightBarButtonItem = mailbutton;
+    NSString *startTime=[_dicdata valueForKey:@"valueStartTimeAdmin"];
 
     
-    NSString *valueName=[[NSUserDefaults standardUserDefaults]objectForKey:@"valueName"];
-    NSString *valueMaxAttend=[[NSUserDefaults standardUserDefaults]objectForKey:@"maxAttend"];
-    NSString *valueImage=[[NSUserDefaults standardUserDefaults]objectForKey:@"valueImage"];
-    NSString *valueDate=[[NSUserDefaults standardUserDefaults]objectForKey:@"valueDate"];
-    NSString *valueDescription=[[NSUserDefaults standardUserDefaults]objectForKey:@"valueDescription"];
+    NSString *valueName=[_dicdata valueForKey:@"valueNameAdmin"];
+    NSString *valueMaxAttend=[_dicdata valueForKey:@"MaxAttendEvent"];
+    NSString *valueImage=[_dicdata valueForKey:@"valueImageAdmin"];
+    NSString *valueDate=[_dicdata valueForKey:@"valueDateAdmin"];
+    NSString *valueDescription=[_dicdata valueForKey:@"valuedescriptionAdmin"];
     
 //    NSString *imageUrl = [@"http://122.180.254.6/progressbackend/public/eventpics/" stringByAppendingString:valueImage];
 //    
@@ -179,14 +193,27 @@
     self.viewAllData.layer.borderColor = [UIColor colorWithRed:(215.0/255.0) green:(215.0/255.0) blue:(215.0/255.0) alpha:1.0].CGColor;
     self.viewAllData.layer.borderWidth = 1.0f;
     
+    self.navigationItem.title =@"Progress";
     
+    UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    UIImage *backBtnImage = [UIImage imageNamed:@"Back-1"]  ;
+    [backBtn setImage:backBtnImage forState:UIControlStateNormal];
+    [backBtn addTarget:self action:@selector(goback) forControlEvents:UIControlEventTouchUpInside];
+    backBtn.frame = CGRectMake(0, 0, 40, 30);
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithCustomView:backBtn] ;
+    self.navigationItem.leftBarButtonItem = backButton;
+    
+}
+- (void)goback
+{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     
     
-    NSString *value4=[[NSUserDefaults standardUserDefaults]objectForKey:@"valuelat"];
-    NSString *value5=[[NSUserDefaults standardUserDefaults]objectForKey:@"valuelon"];
+    NSString *value4=[_dicdata valueForKey:@"valuelatAdmin"];
+    NSString *value5=[_dicdata valueForKey:@"valuelonAdmin"];
     
 
     
@@ -238,7 +265,8 @@
 }
 
 -(void)bookEvent{
-    NSString *eventid = [[NSUserDefaults standardUserDefaults]objectForKey:@"valueidMain"];
+    
+    NSString *eventid = [_dicdata valueForKey:@"valueidAttend"];
     NSMutableDictionary *dict = [[NSMutableDictionary alloc]init];
     [dict setValue:eventid forKey:@"event_id"];
     [self executeTask:[APIGenerator bookEvent:dict]];
@@ -271,7 +299,7 @@
     //    [_indicatorLogin startAnimating];
     
     
-    NSString *eventid = [[NSUserDefaults standardUserDefaults]objectForKey:@"valueidMain"];
+    NSString *eventid = [_dicdata valueForKey:@"valueidAttend"];
     
     
     NSString *strAccessToken = [Model sharedInstance].accessToken;
@@ -420,4 +448,20 @@
 }
 
 
+- (IBAction)EditAction:(id)sender {
+    [[NSUserDefaults standardUserDefaults]setValue:@"1" forKey:@"Createventdataedit"];
+    
+    [[NSUserDefaults standardUserDefaults]synchronize];
+    
+    
+    
+    UIStoryboard *str=[UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    
+    CreateEventScreenViewController *init4inchViewController = [str instantiateViewControllerWithIdentifier:@"CreateEventScreenViewController"];
+    init4inchViewController.strpage = @"edit";
+    init4inchViewController.dicdata = _dicdata;
+    //[UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+    [self.navigationController pushViewController:init4inchViewController animated:NO];
+
+}
 @end

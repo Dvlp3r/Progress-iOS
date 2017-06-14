@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES" initialViewController="BD9-vM-iRT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES" initialViewController="BD9-vM-iRT">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -418,7 +418,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="BD9-vM-iRT" sceneMemberID="viewController">
                     <toolbarItems/>
                     <nil key="simulatedTopBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="lwL-gp-bhz">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="lwL-gp-bhz">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2787,7 +2787,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This Month" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="r8P-pe-DD3">
-                                                <rect key="frame" x="15" y="28" width="62" height="16"/>
+                                                <rect key="frame" x="15.5" y="28" width="61.5" height="16"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="12"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -2811,7 +2811,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This Year" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="EnL-sC-xiq">
-                                                <rect key="frame" x="21" y="28" width="51" height="16"/>
+                                                <rect key="frame" x="21.5" y="28" width="50.5" height="16"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="12"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -3884,6 +3884,18 @@
                                     <constraint firstItem="2o7-LV-QPd" firstAttribute="centerY" secondItem="RMh-il-eyu" secondAttribute="centerY" constant="8" id="mLi-4v-3nV"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3gq-F7-taN">
+                                <rect key="frame" x="311" y="28" width="52" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Edit">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="EditAction:" destination="1u8-ho-5Kc" eventType="touchUpInside" id="yCo-kK-amC"/>
+                                    <action selector="buttonEditAction:" destination="Gor-li-1de" eventType="touchUpInside" id="4Z7-jH-ONK"/>
+                                </connections>
+                            </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Event-management.png" translatesAutoresizingMaskIntoConstraints="NO" id="l5T-Ae-qB6">
                                 <rect key="frame" x="0.0" y="59" width="375" height="180"/>
                                 <constraints>
@@ -4066,6 +4078,8 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="btnEdit" destination="3gq-F7-taN" id="BgL-iL-8Ca"/>
+                        <outlet property="btnRSVP" destination="GjN-ix-Pj2" id="LFi-Jh-7OF"/>
                         <outlet property="imageViewEvent" destination="l5T-Ae-qB6" id="PXK-jI-OmB"/>
                         <outlet property="labelAmount" destination="x4x-By-o8K" id="HFF-Vd-lIy"/>
                         <outlet property="labelDate" destination="Q3s-gC-BJS" id="ftr-0E-tqd"/>
