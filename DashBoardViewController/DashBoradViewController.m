@@ -84,7 +84,7 @@
     
     arraylongEvent =[[NSMutableArray alloc]init];
     
-    
+    self.navigationItem.title =@"Events";
     x1=0;
     
    [self eventgetAllApi];

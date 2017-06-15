@@ -59,7 +59,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+    self.navigationItem.title=@"My Events";
     //_imageViewMyEvent.layer.cornerRadius = 55.0;
     UIGraphicsBeginImageContextWithOptions(_imageViewMyEvent.bounds.size, NO, [UIScreen mainScreen].scale);
     [[UIBezierPath bezierPathWithRoundedRect:_imageViewMyEvent.bounds

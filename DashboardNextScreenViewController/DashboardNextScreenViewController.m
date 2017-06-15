@@ -156,6 +156,7 @@
         _btnEdit.hidden = false;
         }
         _btnRSVP.hidden = true;
+         self.navigationItem.title=@"Event Detail";
     }
     UIBarButtonItem *mailbutton =[[UIBarButtonItem alloc] initWithCustomView:_btnEdit];
     
@@ -174,7 +175,7 @@
 //    
 //    
 //    [_imageViewEvent sd_setImageWithURL:[NSURL URLWithString:imageUrl] placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
-    
+    _lblPrice.text = [NSString stringWithFormat:@"Cost: %@",[_dicdata valueForKey:@"valuePriceAdmin"]];
     _labelAmount.text=valueMaxAttend;
     _labelDate.text=valueDate;
     _labelDescription.text=valueDescription;

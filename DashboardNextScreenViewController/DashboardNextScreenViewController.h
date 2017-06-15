@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *labelEventName;
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageViewEvent;
+@property (weak, nonatomic) IBOutlet UILabel *lblPrice;
 
 
 @property (weak, nonatomic) IBOutlet UILabel *labelDate;
