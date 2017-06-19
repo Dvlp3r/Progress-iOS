@@ -12,7 +12,7 @@
 #import "Model.h"
 #import "APIGenerator.h"
 #import "CreateEventScreenViewController.h"
-
+#import "AFNetworking.h"
 @interface DashboardNextScreenViewController ()
 
 @end
@@ -270,11 +270,68 @@
     NSString *eventid = [_dicdata valueForKey:@"valueidAttend"];
     NSMutableDictionary *dict = [[NSMutableDictionary alloc]init];
     [dict setValue:eventid forKey:@"event_id"];
+   /* AFHTTPRequestOperationManager *manager=[[AFHTTPRequestOperationManager alloc]init];
+    manager.requestSerializer = [AFHTTPRequestSerializer serializer];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+NSString *strAccessToken = [Model sharedInstance].accessToken;
+    strAccessToken = [NSString stringWithFormat:@"Bearer %@",strAccessToken];
+    [manager.requestSerializer setValue:[NSString stringWithFormat:@"%@",strAccessToken] forHTTPHeaderField:@"Authorization"];
+    manager.requestSerializer = [AFHTTPRequestSerializer serializer];
+    
+    
+    [manager.requestSerializer setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    [manager POST:[NSString stringWithFormat:@"http://54.209.19.2/api/booktoevent"] parameters:dict success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"responseObject %@",responseObject);
+        NSDictionary *dictResult = [NSJSONSerialization JSONObjectWithData:responseObject options:kNilOptions error:nil];
+        NSLog(@"dictResult %@",dictResult);
+       
+        [self stopHudAnimating];
+        NSLog(@"%@",  responseObject);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error)
+     {
+         [self stopHudAnimating];
+     }];
+*/
+  /*  NSString *strAccessToken = [Model sharedInstance].accessToken;
+    strAccessToken = [NSString stringWithFormat:@"Bearer %@",strAccessToken];
+    NSDictionary *headers = @{ @"authorization": strAccessToken,
+                               @"content-type": @"application/x-www-form-urlencoded"
+                               };
+    
+    NSMutableData *postData = [[NSMutableData alloc] initWithData:[[NSString stringWithFormat:@"event_id=8"] dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"http://54.209.19.2/api/booktoevent"]
+                                                           cachePolicy:NSURLRequestUseProtocolCachePolicy
+                                                       timeoutInterval:10.0];
+    [request setHTTPMethod:@"POST"];
+    [request setAllHTTPHeaderFields:headers];
+    [request setHTTPBody:postData];
+    
+    NSURLSession *session = [NSURLSession sharedSession];
+    NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
+                                                completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+                                                    if (error) {
+                                                        NSLog(@"%@", error);
+
+                                                        [self showAlert:error.localizedDescription];
+                                                        [self stopHudAnimating];
+
+                                                    } else {
+                                                        NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
+                                                        NSLog(@"%@", httpResponse);
+                                                        NSDictionary *dictResult = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+                                                        NSLog(@"dictResult %@",dictResult);
+                                                    }
+                                                }];
+    [dataTask resume];
+    */
     [self executeTask:[APIGenerator bookEvent:dict]];
 }
 
 -(BOOL)onSuccess:(id)object forRT:(NSString *)rt andParamObject:(HttpObject *)params{
     [self onBookEventResponseReceived:object];
+    
+
     return YES;
 }
 
@@ -282,7 +339,7 @@
     if(json != nil){
         NSString *msg = [json objectForKey:@"message"];
         NSString *error = [json objectForKey:@"error"];
-        if(msg != nil && [@"success" isEqualToString:msg]){
+        if(error == nil && [@"success" isEqualToString:msg]){
             [self showAlert:@"Event booked successfully"];
         }else if(error != nil){
             [self showAlert:error];
