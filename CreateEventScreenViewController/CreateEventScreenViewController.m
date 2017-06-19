@@ -34,7 +34,6 @@
 
 - (void)viewDidLayoutSubviews
 {
-    [self.scrollViewMain setContentSize:CGSizeMake(self.scrollViewMain.contentSize.width, 1300)];
 }
 
 - (void)viewDidLoad {
@@ -164,9 +163,12 @@
                                    action:@selector(dismissKeyboard)];
     
     [self.view addGestureRecognizer:tap];
+    self.navigationItem.title  = @"Create Event";
+
     if ([_strpage isEqualToString:@"edit"]) {
         
-    
+        self.navigationItem.title  = @"Edit Event";
+
     UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     UIImage *backBtnImage = [UIImage imageNamed:@"Back-1"]  ;
     [backBtn setImage:backBtnImage forState:UIControlStateNormal];
@@ -180,12 +182,15 @@
 {
     [self.navigationController popViewControllerAnimated:YES];
 }
-
+-(void)viewDidAppear:(BOOL)animated
+{
+    self.scrollViewMain.contentOffset = CGPointMake(0, 0);
+}
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     
-    [self.scrollViewMain setContentSize:CGSizeMake(self.scrollViewMain.contentSize.width, 1300)];
+    [self.scrollViewMain setContentSize:CGSizeMake(0, 1300)];
     
 }
 - (void)didReceiveMemoryWarning {

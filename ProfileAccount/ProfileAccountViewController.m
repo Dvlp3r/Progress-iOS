@@ -31,7 +31,7 @@
     [super viewDidLoad];
     
     _indicator.hidden=YES;
-    
+    self.navigationItem.title =@"Profile";
     
 //    NSString *profilepicchangeCheck=[[NSUserDefaults standardUserDefaults]objectForKey:@"profilepicchangeCheck"];
     NSString *profilepicchangeCheck = @"1";

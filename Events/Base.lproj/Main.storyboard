@@ -1145,6 +1145,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="btnsetting" destination="GAM-ui-Fhv" id="HtX-Q0-Guh"/>
                         <outlet property="buttonFutureEvents" destination="ZJg-ud-fbg" id="Jm3-XB-sCz"/>
                         <outlet property="buttonPastEvent" destination="izf-hj-08C" id="5hk-Ax-Dse"/>
                         <outlet property="imageViewBackground" destination="vZQ-7t-gZ4" id="ayf-0v-vc8"/>
@@ -2816,7 +2817,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This Year" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="EnL-sC-xiq">
-                                                <rect key="frame" x="22" y="28" width="50.5" height="16"/>
+                                                <rect key="frame" x="21.5" y="28" width="50.5" height="16"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="12"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -4815,7 +4816,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="156"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder.png" translatesAutoresizingMaskIntoConstraints="NO" id="xTI-4E-pJl">
-                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="131"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="126"/>
                                                     </imageView>
                                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pdX-pC-Cqc">
                                                         <rect key="frame" x="113" y="55" width="14" height="18"/>
@@ -4833,7 +4834,7 @@
                                                     <constraint firstItem="xTI-4E-pJl" firstAttribute="top" secondItem="jOV-hV-BUo" secondAttribute="top" id="36s-lj-mjt"/>
                                                     <constraint firstItem="xTI-4E-pJl" firstAttribute="leading" secondItem="jOV-hV-BUo" secondAttribute="leading" id="WRq-s3-gYD"/>
                                                     <constraint firstAttribute="height" constant="156" id="oXF-Ua-D81"/>
-                                                    <constraint firstAttribute="bottom" secondItem="xTI-4E-pJl" secondAttribute="bottom" constant="25" id="piD-cU-SuM"/>
+                                                    <constraint firstAttribute="bottom" secondItem="xTI-4E-pJl" secondAttribute="bottom" constant="30" id="piD-cU-SuM"/>
                                                     <constraint firstAttribute="trailing" secondItem="xTI-4E-pJl" secondAttribute="trailing" id="zS9-et-N9V"/>
                                                 </constraints>
                                             </view>
@@ -5166,6 +5167,7 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="1000"/>
                     <connections>
+                        <outlet property="btncreateevent" destination="Ttj-Eb-eUa" id="f9w-9B-Ig0"/>
                         <outlet property="cost" destination="Gad-xv-FWP" id="5t8-dm-cAS"/>
                         <outlet property="imageViewButton" destination="pdX-pC-Cqc" id="FN1-re-2my"/>
                         <outlet property="imageViewEventImage" destination="xTI-4E-pJl" id="QZM-DV-VbH"/>
@@ -5247,7 +5249,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ProgressLogo" translatesAutoresizingMaskIntoConstraints="NO" id="5G7-4m-H0q">
-                                        <rect key="frame" x="26" y="54" width="241" height="105"/>
+                                        <rect key="frame" x="26" y="34" width="241" height="105"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                 </subviews>

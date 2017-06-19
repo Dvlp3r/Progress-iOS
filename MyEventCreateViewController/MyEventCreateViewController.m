@@ -78,6 +78,10 @@
     NSString *imageProfile=[[NSUserDefaults standardUserDefaults]objectForKey:@"imageProfile"];
     
     NSString *userName=[[NSUserDefaults standardUserDefaults]objectForKey:@"username1"];
+    UIBarButtonItem *mailbutton =[[UIBarButtonItem alloc] initWithCustomView:_btnsetting];
+    
+    // set the nav bar's right button item
+    self.navigationItem.rightBarButtonItem = mailbutton;
 
     
     if ([profilepicchangeCheck isEqualToString:@"1"]) {
