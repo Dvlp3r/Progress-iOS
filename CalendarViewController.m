@@ -93,7 +93,7 @@
     _vwcal.backgroundColor=[UIColor whiteColor];
     _vwcal.selectedDate = [NSDate date];
     _vwcal.appearance.titlePlaceholderColor=[UIColor whiteColor];
-    _vwcal.appearance.titleDefaultColor=[UIColor orangeColor];
+    _vwcal.appearance.titleDefaultColor=[UIColor blackColor];
     _vwcal.appearance.headerTitleColor=[UIColor lightGrayColor];
     _vwcal.appearance.weekdayFont=[UIFont systemFontOfSize:12.0];
     _vwcal.appearance.titleFont=[UIFont systemFontOfSize:8.0];
@@ -299,14 +299,14 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    static NSString *simpleTableIdentifier = @"DashBoardMenuTableViewCell";
+    static NSString *simpleTableIdentifier = @"DashboardCloneTableViewCell";
     
-    DashBoardMenuTableViewCell *cell = (DashBoardMenuTableViewCell *)[tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
+    DashboardCloneTableViewCell *cell = (DashboardCloneTableViewCell *)[tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
     if (cell == nil)
     {
         //        cell = [[FeaturedTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
         NSArray *nib = [[NSBundle mainBundle] loadNibNamed:simpleTableIdentifier owner:self options:nil];
-        cell = (DashBoardMenuTableViewCell *)[nib objectAtIndex:0];
+        cell = (DashboardCloneTableViewCell *)[nib objectAtIndex:0];
         
     }
     
