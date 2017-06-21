@@ -7,49 +7,44 @@
 //
 
 #import "CalendarViewController.h"
-#import "MyEventCreateTableViewCell.h"
+#import "DashBoardMenuTableViewCell.h"
+#import "FirstScreenViewController.h"
+#import "ProfileAccountViewController.h"
+#import "CreateEventScreenViewController.h"
 #import "Constant.h"
 #import "Model.h"
 #import "UIImageView+WebCache.h"
-#import "DashBoradViewController.h"
-#import "AdminDashboardViewController.h"
-#import "FutureDetailViewController.h"
-#import "PastEventTableViewCell.h"
-#import "PastEventDetailViewController.h"
-#import "AdminDashBoardNextScreenViewController.h"
-#import "ProfileAccountViewController.h"
+#import "MyEventCreateViewController.h"
 #import "DashboardNextScreenViewController.h"
+
+#import "ViewController.h"
+#import "LoginViewViewControllers.h"
+#import "AdminDashBoardNextScreenViewController.h"
 
 @interface CalendarViewController ()
 {
 
-    NSMutableArray *arrayNameMyEvent;
-    NSMutableArray *arrayAddressMyEvent;
-    NSMutableArray *arrayPicMyEvent;
-    NSMutableArray *arrayDateMyEvent;
-    NSMutableArray *arrayStartTimeMyEvent;
-    NSMutableArray *arrayEndTimeMyEvent;
-    NSMutableArray *arraypriceMyEvent;
+    NSMutableArray *arrayNameEvent;
+    NSMutableArray *arrayAddressEvent;
+    NSMutableArray *arrayPicEvent;
+    NSMutableArray *arrayDateEvent;
+    NSMutableArray *arrayStartTimeEvent;
+    NSMutableArray *arrayEndTimeEvent;
+    NSMutableArray *arrayDescriptionEvent;
+    NSMutableArray *arrayPriceEvent;
+    NSMutableArray *arrayidMain;
     
-    NSMutableArray *arraylatMyEvent;
+    NSMutableArray *arraylatEvent;
     
-    NSMutableArray *arraylongMyEvent;
-    NSMutableArray *arraydescriptionMyEvent;
+    NSMutableArray *arraymaxAttendevent;
     
-    NSMutableArray *arrayNamePastEvent;
-    NSMutableArray *arrayAddressPastEvent;
-    NSMutableArray *arrayPicPastEvent;
-    NSMutableArray *arrayDatePastEvent;
-    NSMutableArray *arrayStartTimePastEvent;
-    NSMutableArray *arrayEndTimePastEvent;
-    NSMutableArray *arraypricePastEvent;
+    NSMutableArray *arraylongEvent;
     
-    NSMutableArray *arraylatPastEvent;
     
-    NSMutableArray *arraylongPastEvent;
-    NSMutableArray *arraydescriptionPastEvent;
+    NSMutableArray *arrayName;
     
-
+    
+    int x1;
 }
 @end
 
@@ -59,157 +54,38 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.navigationItem.title=@"My Events";
-    //_imageViewMyEvent.layer.cornerRadius = 55.0;
-    UIGraphicsBeginImageContextWithOptions(_imageViewMyEvent.bounds.size, NO, [UIScreen mainScreen].scale);
-    [[UIBezierPath bezierPathWithRoundedRect:_imageViewMyEvent.bounds
-                                cornerRadius:55.0] addClip];
-    [_imageViewMyEvent.image drawInRect:_imageViewMyEvent.bounds];
+    _baseView.hidden=YES;
     
-    // Get the image, here setting the UIImageView image
-    _imageViewMyEvent.image = UIGraphicsGetImageFromCurrentImageContext();
+    arrayName =[[NSMutableArray alloc]initWithObjects:@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",nil];
     
-    // Lets forget about that we were drawing
-    UIGraphicsEndImageContext();
+    arrayNameEvent =[[NSMutableArray alloc]init];
     
+    arraymaxAttendevent = [[NSMutableArray alloc]init];
     
-    NSString *profilepicchangeCheck=[[NSUserDefaults standardUserDefaults]objectForKey:@"profilepicchangeCheck"];
+    arrayPicEvent =[[NSMutableArray alloc]init];
     
-    NSString *imageProfile=[[NSUserDefaults standardUserDefaults]objectForKey:@"imageProfile"];
+    arrayAddressEvent =[[NSMutableArray alloc]init];
     
-    NSString *userName=[[NSUserDefaults standardUserDefaults]objectForKey:@"username1"];
-    UIBarButtonItem *mailbutton =[[UIBarButtonItem alloc] initWithCustomView:_btnsetting];
+    arrayDateEvent =[[NSMutableArray alloc]init];
     
-    // set the nav bar's right button item
-    self.navigationItem.rightBarButtonItem = mailbutton;
+    arrayStartTimeEvent =[[NSMutableArray alloc]init];
     
+    arrayEndTimeEvent =[[NSMutableArray alloc]init];
     
-    if ([profilepicchangeCheck isEqualToString:@"1"]) {
-        
-        
-        
-        _imageViewMyEvent.layer.backgroundColor=[[UIColor clearColor] CGColor];
-        
-        
-        _imageViewMyEvent.layer.cornerRadius=self.imageViewMyEvent.frame.size.width / 2;
-        _imageViewMyEvent.layer.borderWidth=1.0;
-        _imageViewMyEvent.layer.masksToBounds = YES;
-        
-        _imageViewMyEvent.layer.borderColor=[[UIColor whiteColor] CGColor];
-        
-        NSString *imageUrl = [@"http://122.180.254.6/progressbackend/public/profilepics/" stringByAppendingString:imageProfile];
-        
-        
-        
-        [_imageViewMyEvent sd_setImageWithURL:[NSURL URLWithString:imageUrl] placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
-        
-        
-        NSString *imageUrl1 = [@"http://122.180.254.6/progressbackend/public/profilepics/" stringByAppendingString:imageProfile];
-        
-        
-        
-        [_imageViewBackground sd_setImageWithURL:[NSURL URLWithString:imageUrl1] placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
-        
-        
-        //        _imageViewProfilePic.image
-        
-        //        NSData* data = [imageProfile dataUsingEncoding:NSUTF8StringEncoding];
-        //
-        //        _imageViewProfilePic.image=[UIImage imageWithData:data];
-        //
-        //        _imageViewProfilePic.image=[UIImage imageNamed:@"imageDummy"];
-        
-        
-        
-        
-        
-        _labelUserNameEvent.text=userName;
-        
-        
-    }else{
-        
-        _labelUserNameEvent.text=userName;
-        
-        
-        
-        
-    }
-    [PastEventTableViewCell setShadowView:self.viewonImage];
+    arrayDescriptionEvent=[[NSMutableArray alloc]init];
     
-    _indicator.hidden=YES;
-    arrayNameMyEvent=[[NSMutableArray alloc]init];
+    arrayPriceEvent=[[NSMutableArray alloc]init];
     
+    arrayidMain=[[NSMutableArray alloc]init];
     
-    arrayPicMyEvent =[[NSMutableArray alloc]init];
+    arraylatEvent =[[NSMutableArray alloc]init];
     
-    arrayAddressMyEvent =[[NSMutableArray alloc]init];
+    arraylongEvent =[[NSMutableArray alloc]init];
     
-    arrayDateMyEvent =[[NSMutableArray alloc]init];
+    self.navigationItem.title =@"Events";
+    x1=0;
     
-    arrayStartTimeMyEvent =[[NSMutableArray alloc]init];
-    
-    arrayEndTimeMyEvent =[[NSMutableArray alloc]init];
-    
-    arraylatMyEvent =[[NSMutableArray alloc]init];
-    
-    arraylongMyEvent =[[NSMutableArray alloc]init];
-    
-    arraypriceMyEvent =[[NSMutableArray alloc]init];
-    arraydescriptionMyEvent=[[NSMutableArray alloc]init];
-    
-    
-    
-    
-    arrayNamePastEvent=[[NSMutableArray alloc]init];
-    
-    
-    arrayPicPastEvent =[[NSMutableArray alloc]init];
-    
-    arrayAddressPastEvent =[[NSMutableArray alloc]init];
-    
-    arrayDatePastEvent =[[NSMutableArray alloc]init];
-    
-    arrayStartTimePastEvent =[[NSMutableArray alloc]init];
-    
-    arrayEndTimePastEvent =[[NSMutableArray alloc]init];
-    
-    arraylatPastEvent =[[NSMutableArray alloc]init];
-    
-    arraylongPastEvent =[[NSMutableArray alloc]init];
-    
-    arraypricePastEvent =[[NSMutableArray alloc]init];
-    arraydescriptionPastEvent=[[NSMutableArray alloc]init];
-    
-    
-    //    self.scrollView.delegate=self;
-    //    int width=0;
-    //
-    //    self.scrollView.delaysContentTouches = YES;
-    //    self.scrollView.canCancelContentTouches = NO;
-    //
-    //    width+=300;
-    //
-    //
-    //
-    //    _scrollView.pagingEnabled = YES;
-    //    _scrollView.directionalLockEnabled = YES;
-    //
-    //    _scrollView.contentSize = CGSizeMake(self.view.bounds.size.width*2, self.view.bounds.size.height-98);
-    
-    [self myEventFutureApi];
-    
-    
-    
-    
-    
-    UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    UIImage *backBtnImage = [UIImage imageNamed:@"Back-1"]  ;
-    [backBtn setImage:backBtnImage forState:UIControlStateNormal];
-    [backBtn addTarget:self action:@selector(goback) forControlEvents:UIControlEventTouchUpInside];
-    backBtn.frame = CGRectMake(0, 0, 40, 30);
-    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithCustomView:backBtn] ;
-    // self.navigationItem.leftBarButtonItem = backButton;
-    
+    [self eventgetAllApi];
     
    // _vwcal.dataSource = self;
     _vwcal.scope = FSCalendarScopeMonth;
@@ -265,28 +141,148 @@
     return nil;
 }
 
-- (void)goback
-{
-    [self.navigationController popViewControllerAnimated:YES];
-}
-
-
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    CGFloat width = scrollView.frame.size.width;
-    CGFloat x1 = scrollView.contentOffset.x;
-    NSInteger page = (x1 + (0.5f * width)) / width;
-    // NSLog(@"Page number is %li", (long)page);
+-(void) viewWillAppear:(BOOL)animated{
     
-    NSLog(@"%f", scrollView.contentOffset.x);
-    NSLog(@"%f", scrollView.contentOffset.y);
+    
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
     
 }
 
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (IBAction)buttonMenuAction:(id)sender {
+    
+    //    if (_baseView.hidden==YES) {
+    //
+    //        _baseView.hidden=NO;
+    //
+    //        CGRect initalFrame = self.baseView.frame;
+    //        initalFrame.origin.x = -initalFrame.size.width;
+    //        self.baseView.frame = initalFrame;
+    //        [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(moveFromLefttoRight:) userInfo:@1 repeats:NO];
+    //
+    //
+    ////
+    ////        [UIView animateWithDuration:0.5
+    ////                              delay:1.0
+    ////                            options: UIViewAnimationCurveEaseOut
+    ////                         animations:^{
+    ////                             self.baseView.frame = CGRectMake(115, self.baseView.frame.origin.y, self.baseView.frame.size.width-30, self.baseView.frame.size.height);
+    ////                         }
+    ////                         completion:^(BOOL finished){
+    ////                             NSLog(@"Moved to left!");
+    ////                         }];
+    //
+    //
+    //
+    //
+    //    }else{
+    //
+    ////        _baseView.hidden=YES;
+    //
+    //
+    //
+    ////        CGRect initalFrame = self.baseView.frame;
+    ////        initalFrame.origin.x = -initalFrame.size.width;
+    ////        self.baseView.frame = initalFrame;
+    ////        [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(moveFromrightToLeft:) userInfo:@1 repeats:NO];
+    //
+    //        [UIView animateWithDuration:0.5
+    //                              delay:1.0
+    //                            options: UIViewAnimationCurveEaseOut
+    //                         animations:^{
+    //                             self.baseView.frame = CGRectMake(0, self.baseView.frame.origin.y, 0, self.baseView.frame.size.height);
+    //                         }
+    //                         completion:^(BOOL finished){
+    //
+    //                             _baseView.hidden=YES;
+    //
+    //                             NSLog(@"Back to normal!");
+    //                         }];
+    //
+    //
+    //
+    //    }
+    //
+    
+    
+    
+    
+    if (x1==0) {
+        [UIView animateWithDuration:0.4 animations:^{
+            _baseView.frame=CGRectMake(0,self.baseView.frame.origin.y,self.baseView.frame.size.width,self.baseView.frame.size.height);
+            //            _transperant_view.frame=CGRectMake(0,self.transperant_view.frame.origin.y,self.transperant_view.frame.size.width,self.transperant_view.frame.size.height);
+            //            _transperant_view.hidden=NO;
+            _baseView.hidden=NO;
+            NSLog(@"left");
+            
+        }];
+        
+        
+        x1=1;
+    }
+    else{
+        NSLog(@"heyy%d",x1);
+        [UIView animateWithDuration:0.4 animations:^{
+            _baseView.frame=CGRectMake(-417,self.baseView.frame.origin.y,self.baseView.frame.size.width,self.baseView.frame.size.height);
+            //            _transperant_view.frame=CGRectMake(-500,self.transperant_view.frame.origin.y,self.transperant_view.frame.size.width,self.transperant_view.frame.size.height);
+            
+            
+            //            _transperant_view.hidden=YES;
+            NSLog(@"right");
+        }];
+        x1=0;
+    }
+    
+    
+    
 }
+
+
+//-(void)moveFromrightToLeft:(NSTimer *) timer {
+//
+//
+//    BOOL isLeft = [timer.userInfo boolValue];
+//    CGFloat bounceDistance = 1;
+//    CGFloat bounceDuration = 0.1;
+//    [UIView animateWithDuration:0.3f
+//                          delay:0.0f
+//                        options:UIViewAnimationOptionAllowAnimatedContent
+//                     animations:^{
+//                         CGFloat direction = (isLeft ? -1 : 1);
+//                         self.baseView.frame = CGRectMake(0.0,_baseView.frame.origin.y, self.baseView.frame.size.width,self.baseView.frame.size.height);}
+//                     completion:^(BOOL finished){
+//                         [UIView animateWithDuration:bounceDuration animations:^{
+//                             self.baseView.center = CGPointMake(self.baseView.frame.size.width/2, self.baseView.center.y);
+//
+//                           //  _baseView.hidden=YES;
+//
+//
+//                         }];
+//                     }];
+//
+//}
+
+
+
+
+
+-(void)moveFromLefttoRight:(NSTimer *) timer {
+    BOOL isLeft = [timer.userInfo boolValue];
+    CGFloat bounceDistance = 10;
+    CGFloat bounceDuration = 0.1;
+    [UIView animateWithDuration:0.5 delay:0.0 options:UIViewAnimationOptionAllowAnimatedContent
+                     animations:^{
+                         CGFloat direction = (isLeft ? 1 : -1);
+                         self.baseView.center = CGPointMake(self.baseView.frame.size.width/2 + direction*bounceDistance, self.baseView.center.y);
+                     }
+                     completion:^(BOOL finished){
+                         [UIView animateWithDuration:bounceDuration animations:^{
+                             self.baseView.center = CGPointMake(self.baseView.frame.size.width/2, self.baseView.center.y);
+                         }];
+                     }];
+}
+
+
 
 
 # pragma mark TableView Data source and delegate
@@ -294,17 +290,8 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    if (tableView == _tableViewMyEvent) {
-        return [arrayNameMyEvent count];
-        
-    }else{
-        
-        
-        return [arrayNamePastEvent count];
-        
-    }
     
-    
+    return [arrayNameEvent count];
     
     
 }
@@ -312,246 +299,199 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    //    if (tableView == _tableViewMyEvent) {
-    //
-    //
-    //
-    //    static NSString *simpleTableIdentifier = @"MyEventCreateTableViewCell";
-    //
-    //    MyEventCreateTableViewCell *cell = (MyEventCreateTableViewCell *)[tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
-    //    if (cell == nil)
-    //    {
-    //        //        cell = [[FeaturedTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
-    //        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:simpleTableIdentifier owner:self options:nil];
-    //        cell = (MyEventCreateTableViewCell *)[nib objectAtIndex:0];
-    //
-    //    }
-    //
-    //    //cell.imageViewEvent.image=[ev]
-    //
-    //    NSString *imageUrl = [@"http://122.180.254.6/progressbackend/public/eventpics/" stringByAppendingString:[arrayPicMyEvent objectAtIndex:indexPath.row]];
-    //
-    //
-    //    [cell.imageViewMyEvent sd_setImageWithURL:[NSURL URLWithString:imageUrl] placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
-    //
-    //    cell.labelMyEventName.text=[arrayNameMyEvent objectAtIndex:indexPath.row];
-    //
-    //    cell.labelEventTime.text=[arrayStartTimeMyEvent objectAtIndex:indexPath.row];
-    //
-    //    cell.labelMyEventDate.text=[arrayDateMyEvent objectAtIndex:indexPath.row];
-    //
-    //    cell.labelAMyEventddress.text=[arrayAddressMyEvent objectAtIndex:indexPath.row];
-    //
-    //    //    if (!isFiltered) {
-    //
-    //    //    cell.labelFriendList.text=[arrayName objectAtIndex:indexPath.row];
-    //
-    //    return cell;
-    //
-    //
-    //    }else{
-    //
-    //
-    //
-    //        static NSString *simpleTableIdentifier = @"PastEventTableViewCell";
-    //
-    //        PastEventTableViewCell *cell = (PastEventTableViewCell *)[tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
-    //        if (cell == nil)
-    //        {
-    //            //        cell = [[FeaturedTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
-    //            NSArray *nib = [[NSBundle mainBundle] loadNibNamed:simpleTableIdentifier owner:self options:nil];
-    //
-    //            cell = (PastEventTableViewCell *)[nib objectAtIndex:0];
-    //
-    //        }
-    //
-    //        //cell.imageViewEvent.image=[ev]
-    //
-    //        NSString *imageUrl = [@"http://122.180.254.6/progressbackend/public/eventpics/" stringByAppendingString:[arrayPicPastEvent objectAtIndex:indexPath.row]];
-    //
-    //        [cell.imageViewPastEvents sd_setImageWithURL:[NSURL URLWithString:imageUrl] placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
-    //
-    //        cell.labelTitleNamePast.text=[arrayNameMyEvent objectAtIndex:indexPath.row];
-    //
-    //        cell.labelTimePast.text=[arrayStartTimeMyEvent objectAtIndex:indexPath.row];
-    //
-    //        cell.labelDatePastEvent.text=[arrayDateMyEvent objectAtIndex:indexPath.row];
-    //
-    //        cell.labelAddressPast.text = [arrayAddressMyEvent objectAtIndex:indexPath.row];
-    //
-    //        //    if (!isFiltered) {
-    //
-    //        //    cell.labelFriendList.text=[arrayName objectAtIndex:indexPath.row];
-    //
-    //        return cell;
-    //
-    //    }
-    static NSString *simpleTableIdentifier = @"PastEventTableViewCell";
+    static NSString *simpleTableIdentifier = @"DashBoardMenuTableViewCell";
     
-    PastEventTableViewCell *cell = (PastEventTableViewCell *)[tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
+    DashBoardMenuTableViewCell *cell = (DashBoardMenuTableViewCell *)[tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
     if (cell == nil)
     {
         //        cell = [[FeaturedTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
         NSArray *nib = [[NSBundle mainBundle] loadNibNamed:simpleTableIdentifier owner:self options:nil];
-        
-        cell = (PastEventTableViewCell *)[nib objectAtIndex:0];
+        cell = (DashBoardMenuTableViewCell *)[nib objectAtIndex:0];
         
     }
     
     //cell.imageViewEvent.image=[ev]
-    if (tableView == _tableViewMyEvent) {
-        NSString *imageUrl = [@"http://122.180.254.6/progressbackend/public/eventpics/" stringByAppendingString:[arrayPicMyEvent objectAtIndex:indexPath.row]];
-        [cell.imageViewPastEvents sd_setImageWithURL:[NSURL URLWithString:imageUrl] placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
-        cell.labelTitleNamePast.text=[arrayNameMyEvent objectAtIndex:indexPath.row];
-        cell.labelTimePast.text=[arrayStartTimeMyEvent objectAtIndex:indexPath.row];
-        cell.labelDatePastEvent.text=[arrayDateMyEvent objectAtIndex:indexPath.row];
-        cell.labelAddressPast.text = [arrayAddressMyEvent objectAtIndex:indexPath.row];
-    }else{
-        NSString *imageUrl = [@"http://122.180.254.6/progressbackend/public/eventpics/" stringByAppendingString:[arrayPicPastEvent objectAtIndex:indexPath.row]];
-        [cell.imageViewPastEvents sd_setImageWithURL:[NSURL URLWithString:imageUrl] placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
-        cell.labelTitleNamePast.text=[arrayNamePastEvent objectAtIndex:indexPath.row];
-        cell.labelTimePast.text=[arrayStartTimePastEvent objectAtIndex:indexPath.row];
-        cell.labelDatePastEvent.text=[arrayDatePastEvent objectAtIndex:indexPath.row];
-        cell.labelAddressPast.text = [arrayAddressPastEvent objectAtIndex:indexPath.row];
-    }
+    
+    //    NSString *imageUrl = [@"http://122.180.254.6/progressbackend/public/eventpics/" stringByAppendingString:[arrayPicEvent objectAtIndex:indexPath.row]];
+    //
+    //
+    //    [cell.imageViewEvent sd_setImageWithURL:[NSURL URLWithString:imageUrl] placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
+    
+    cell.labelEventName.text=[arrayNameEvent objectAtIndex:indexPath.row];
+    
+    cell.labelEventAddress.text=[arrayAddressEvent objectAtIndex:indexPath.row];
+    
+    cell.labelEventDate.text=[arrayDateEvent objectAtIndex:indexPath.row];
+    
+    
+    
+    //    if (!isFiltered) {
+    
+    //    cell.labelFriendList.text=[arrayName objectAtIndex:indexPath.row];
+    
     return cell;
+    
+    
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    return 99;
+    return 179;
+    
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    if (tableView == _tableViewMyEvent) {
-        
-        
-        
-        
-        NSArray *valueNameFuture=[arrayNameMyEvent objectAtIndex:indexPath.row];
-        NSArray *valueAddressFuture=[arrayAddressMyEvent objectAtIndex:indexPath.row];
-        NSArray *valueImageFuture=[arrayPicMyEvent objectAtIndex:indexPath.row];
-        NSArray *valueDateFuture=[arrayDateMyEvent objectAtIndex:indexPath.row];
-        
-        NSArray *valuePriceFuture=[arraypriceMyEvent objectAtIndex:indexPath.row];
-        
-        NSArray *valueStartTimeFuture=[arrayStartTimeMyEvent objectAtIndex:indexPath.row];
-        
-        NSArray *valueEndTimeFuture=[arrayEndTimeMyEvent objectAtIndex:indexPath.row];
-        
-        NSArray *valuelatFuture=[arraylatMyEvent objectAtIndex:indexPath.row];
-        
-        NSArray *valuelonFuture=[arraylongMyEvent objectAtIndex:indexPath.row];
-        
-        NSArray *valuedescriptionFuture=[arraydescriptionMyEvent objectAtIndex:indexPath.row];
-        
-        
-        
-        
-        
-        
-        
-        
-        [[NSUserDefaults standardUserDefaults]synchronize];
-        
-        
-        /*  UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-         UINavigationController *init4inchViewController = [storyBoard instantiateViewControllerWithIdentifier:@"FutureDetailViewController"];
-         //[UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
-         [self.navigationController pushViewController:init4inchViewController animated:NO];*/
-        
-        NSMutableDictionary *dic=[[NSMutableDictionary alloc] init];
-        [dic setValue:valuelonFuture forKey:@"valuelonAdmin"];
-        [dic setValue:valuelatFuture forKey:@"valuelatAdmin"];
-        [dic setValue:valueAddressFuture forKey:@"address"];
-        [dic setValue:valueEndTimeFuture forKey:@"valueEndTimeAdmin"];
-        [dic setValue:valueStartTimeFuture forKey:@"valueStartTimeAdmin"];
-        [dic setValue:valuedescriptionFuture forKey:@"valuedescriptionAdmin"];
-        [dic setValue:valuePriceFuture forKey:@"valuePriceAdmin"];
-        [dic setValue:valueDateFuture forKey:@"valueDateAdmin"];
-        [dic setValue:valueImageFuture forKey:@"valueImageAdmin"];
-        [dic setValue:@"" forKey:@"MaxAttendEvent"];
-        
-        [dic setValue:valueNameFuture forKey:@"valueNameAdmin"];
-        [dic setValue:@"" forKey:@"valueTotalAttend"];
-        [dic setValue:@"" forKey:@"valueidAttend"];
-        
-        UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        DashboardNextScreenViewController *init4inchViewController = [storyBoard instantiateViewControllerWithIdentifier:@"DashboardNextScreenViewController"];
-        init4inchViewController.dicdata = dic;
-        //[UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
-        [self.navigationController pushViewController:init4inchViewController animated:NO];
-        
-    }
-    else{
-        
-        
-        
-        
-        NSArray *valueNamePast=[arrayNamePastEvent objectAtIndex:indexPath.row];
-        NSArray *valueAddressPast=[arrayAddressPastEvent objectAtIndex:indexPath.row];
-        NSArray *valueImagePast=[arrayPicPastEvent objectAtIndex:indexPath.row];
-        NSArray *valueDatePast=[arrayDatePastEvent objectAtIndex:indexPath.row];
-        
-        NSArray *valuePricePast=[arraypricePastEvent objectAtIndex:indexPath.row];
-        
-        NSArray *valueStartTimePast=[arrayStartTimePastEvent objectAtIndex:indexPath.row];
-        
-        NSArray *valueEndTimePast=[arrayEndTimePastEvent objectAtIndex:indexPath.row];
-        
-        NSArray *valuelatPast=[arraylatPastEvent objectAtIndex:indexPath.row];
-        
-        NSArray *valuelonPast=[arraylongPastEvent objectAtIndex:indexPath.row];
-        
-        NSArray *valuedescriptionPast=[arraydescriptionPastEvent objectAtIndex:indexPath.row];
-        
-        
-        
-        /*  UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-         UINavigationController *init4inchViewController = [storyBoard instantiateViewControllerWithIdentifier:@"PastEventDetailViewController"];
-         //[UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
-         [self.navigationController pushViewController:init4inchViewController animated:NO];
-         */
-        NSMutableDictionary *dic=[[NSMutableDictionary alloc] init];
-        [dic setValue:valuelonPast forKey:@"valuelonAdmin"];
-        [dic setValue:valuelatPast forKey:@"valuelatAdmin"];
-        [dic setValue:valueAddressPast forKey:@"address"];
-        [dic setValue:valueEndTimePast forKey:@"valueEndTimeAdmin"];
-        [dic setValue:valueStartTimePast forKey:@"valueStartTimeAdmin"];
-        [dic setValue:valuedescriptionPast forKey:@"valuedescriptionAdmin"];
-        [dic setValue:valuePricePast forKey:@"valuePriceAdmin"];
-        [dic setValue:valueDatePast forKey:@"valueDateAdmin"];
-        [dic setValue:valueImagePast forKey:@"valueImageAdmin"];
-        [dic setValue:@"" forKey:@"MaxAttendEvent"];
-        
-        [dic setValue:valueNamePast forKey:@"valueNameAdmin"];
-        [dic setValue:@"" forKey:@"valueTotalAttend"];
-        [dic setValue:@"" forKey:@"valueidAttend"];
-        
-        UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        AdminDashBoardNextScreenViewController *init4inchViewController = [storyBoard instantiateViewControllerWithIdentifier:@"AdminDashBoardNextScreenViewController"];
-        init4inchViewController.dicdata = dic;
-        //[UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
-        [self.navigationController pushViewController:init4inchViewController animated:NO];
-        
-        
-        
-        
-    }
+    
+    NSArray *valueName=[arrayNameEvent objectAtIndex:indexPath.row];
+    NSArray *valueAddress=[arrayAddressEvent objectAtIndex:indexPath.row];
+    NSArray *valueImage=[arrayPicEvent objectAtIndex:indexPath.row];
+    NSArray *valueDate=[arrayDateEvent objectAtIndex:indexPath.row];
+    
+    NSArray *valueDescription=[arrayDescriptionEvent objectAtIndex:indexPath.row];
+    NSArray *valuePrice=[arrayPriceEvent objectAtIndex:indexPath.row];
+    
+    
+    
+    NSArray *valueidMain=[arrayidMain objectAtIndex:indexPath.row];
+    
+    NSArray *valuelat=[arraylatEvent objectAtIndex:indexPath.row];
+    
+    
+    NSArray *valuelon=[arraylongEvent objectAtIndex:indexPath.row];
+    
+    NSArray *startTime=[arrayStartTimeEvent objectAtIndex:indexPath.row];
+    NSArray *endtime=[arrayEndTimeEvent objectAtIndex:indexPath.row];
+    
+    
+    NSArray *maxAttend=[arraymaxAttendevent objectAtIndex:indexPath.row];
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    [[NSUserDefaults standardUserDefaults]setObject:valueDate forKey:@"valueDate"];
+    
+    
+    
+    
+    NSMutableDictionary *dic=[[NSMutableDictionary alloc] init];
+    [dic setValue:valuelon forKey:@"valuelonAdmin"];
+    [dic setValue:valuelat forKey:@"valuelatAdmin"];
+    [dic setValue:valueAddress forKey:@"address"];
+    [dic setValue:endtime forKey:@"valueEndTimeAdmin"];
+    [dic setValue:startTime forKey:@"valueStartTimeAdmin"];
+    [dic setValue:valueDescription forKey:@"valuedescriptionAdmin"];
+    [dic setValue:valuePrice forKey:@"valuePriceAdmin"];
+    [dic setValue:valueDate forKey:@"valueDateAdmin"];
+    [dic setValue:valueImage forKey:@"valueImageAdmin"];
+    [dic setValue:maxAttend forKey:@"MaxAttendEvent"];
+    
+    [dic setValue:valueName forKey:@"valueNameAdmin"];
+    [dic setValue:maxAttend forKey:@"valueTotalAttend"];
+    [dic setValue:valueidMain forKey:@"valueidAttend"];
+    
+    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    DashboardNextScreenViewController *init4inchViewController = [storyBoard instantiateViewControllerWithIdentifier:@"DashboardNextScreenViewController"];
+    init4inchViewController.dicdata = dic;
+    init4inchViewController.strpage = @"detail";
+    //[UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+    [self.navigationController pushViewController:init4inchViewController animated:NO];
+    
+    /*
+     UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+     DashboardNextScreenViewController *init4inchViewController = [storyBoard instantiateViewControllerWithIdentifier:@"DashboardNextScreenViewController"];
+     //[UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+     [self.navigationController pushViewController:init4inchViewController animated:NO];
+     */
+    
+    
+    
 }
 
--(void)myEventFutureApi {
+
+- (IBAction)buttonLogOutAction:(id)sender {
     
-    _indicator.hidden=NO;
-    [_indicator startAnimating];
     
+    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    
+    UIViewController *vc = [sb instantiateViewControllerWithIdentifier:@"ViewController"];
+    
+    [self.navigationController pushViewController:vc animated:YES];
+    
+    
+    //    LoginViewViewControllers *obj  = [self.storyboard instantiateViewControllerWithIdentifier:@"LoginViewViewControllers"];
+    //    [self.navigationController presentViewController:obj animated:true completion:nil];
+    
+}
+
+
+- (IBAction)buttonEventsAction:(id)sender {
+    
+    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    
+    UIViewController *vc = [sb instantiateViewControllerWithIdentifier:@"DashBoradViewController"];
+    
+    [self.navigationController pushViewController:vc animated:YES];
+    
+}
+
+- (IBAction)buttonMyEventsAction:(id)sender {
+    
+    
+    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    
+    UIViewController *vc = [sb instantiateViewControllerWithIdentifier:@"MyEventCreateViewController"];
+    
+    [self.navigationController pushViewController:vc animated:YES];
+    
+}
+
+//- (IBAction)buttonCreateEventAction:(id)sender {
+//
+//    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//
+//    UIViewController *vc = [sb instantiateViewControllerWithIdentifier:@"CreateEventScreenViewController"];
+//
+//    [self.navigationController pushViewController:vc animated:YES];
+//
+//
+//}
+
+
+
+- (IBAction)buttonProfileAccountAction:(id)sender {
+    
+    
+    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    
+    UIViewController *vc = [sb instantiateViewControllerWithIdentifier:@"ProfileAccountViewController"];
+    
+    [self.navigationController pushViewController:vc animated:YES];
+    
+    
+}
+
+
+
+
+
+-(void)eventgetAllApi {
+    
+    //    _indicatorLogin.hidden=NO;
+    //    [_indicatorLogin startAnimating];
     
     NSString *strAccessToken = [Model sharedInstance].accessToken;
     NSString *strBearer = @"Bearer ";
     
-    
-    NSString *URL = [NSString stringWithFormat:@"%@%@",Api_Server_Url,getownevents];
+    NSString *URL = [NSString stringWithFormat:@"%@%@",Api_Server_Url,getallevents];
     NSURL *theURL = [NSURL URLWithString:URL];
     NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:theURL cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:30.0f];
     [theRequest setHTTPMethod:@"POST"];
@@ -560,16 +500,21 @@
     [theRequest setValue:[strBearer stringByAppendingString:strAccessToken] forHTTPHeaderField:@"Authorization"];
     [theRequest setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     
-    NSString *key = @"key=";
-    
-    NSString *concatenate1 = [key stringByAppendingString:@"Future"];
-    
+    //    NSString *username_ = @"username=";
+    //
+    //    NSString *password_ = @"&password=";
+    //
+    //    NSString *concatenate1 = [username_ stringByAppendingString:email];
+    //
+    //    NSString *concatenate2 = [password_ stringByAppendingString:password];
+    //
+    //    NSString *concatenate3 = [concatenate1 stringByAppendingString:concatenate2];
     
     
     //NSString *post = [URL stringByAppendingString:stringWithoutSpaces];
     
-    NSData *postData = [concatenate1 dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
-    [theRequest setHTTPBody:postData];
+    //    NSData *postData = [@"" dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+    //    [theRequest setHTTPBody:postData];
     
     [NSURLConnection sendAsynchronousRequest:theRequest queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         // if(data != nil){
@@ -578,26 +523,11 @@
         NSLog(@"Response:: %@", noti);
         
         
-        [_indicator stopAnimating];
-        _indicator.hidden=YES;
+        //        [_indicatorLogin stopAnimating];
+        //        _indicatorLogin.hidden=YES;
         
         
         if(data!=nil){
-            
-            [arrayNameMyEvent removeAllObjects];
-            [arrayAddressMyEvent removeAllObjects];
-            [arrayDateMyEvent removeAllObjects];
-            [arrayPicMyEvent removeAllObjects];
-            [arrayStartTimeMyEvent removeAllObjects];
-            [arrayEndTimeMyEvent removeAllObjects];
-            
-            [arraypriceMyEvent removeAllObjects];
-            
-            [arraylongMyEvent removeAllObjects];
-            
-            [arraylatMyEvent removeAllObjects];
-            
-            [arraydescriptionMyEvent removeAllObjects];
             
             
             NSError *jsonError;
@@ -609,6 +539,7 @@
             NSLog(@"%@",json);
             
             NSArray *Data = [json objectForKey:@"Data"];
+            
             
             NSArray *allData=[Data valueForKey:@"data"];
             
@@ -628,177 +559,95 @@
                 NSString *eventDateCorrectFormate= [NSString stringWithFormat:@"%@",
                                                     [dateFormatter stringFromDate:yourDate]];
                 
-                
-                
-                
-                
-                
                 NSString *eventpic=[dict valueForKey:@"event_pic"];
                 NSString *starttime=[dict valueForKey:@"start_time"];
                 NSString *endtime=[dict valueForKey:@"end_time"];
                 
+                NSString *idMain= [NSString stringWithFormat:@"%@",[ dict valueForKey:@"id"]];
+                
+                NSLog(@"idmain %@",idMain);
+                
+                NSString *description=[dict valueForKey:@"description"];
+                
                 NSString *price=[dict valueForKey:@"price"];
+                
+                NSString *maxAttend =[NSString stringWithFormat:@"%@", [dict valueForKey:@"max_attend"]];
+                
                 
                 NSString *lat=[dict valueForKey:@"latitude"];
                 
                 NSString *lon=[dict valueForKey:@"longitude"];
                 
-                NSString *description=[dict valueForKey:@"description"];
                 
+                [arrayNameEvent addObject:nameEvent];
+                [arrayAddressEvent addObject:addressEvent];
+                [arrayDateEvent addObject:eventDateCorrectFormate];
+                [arrayPicEvent addObject:eventpic];
+                [arrayStartTimeEvent addObject:starttime];
+                [arrayEndTimeEvent addObject:endtime];
+                [arrayDescriptionEvent addObject:description];
+                [arrayPriceEvent addObject:price];
+                [arrayidMain addObject:idMain];
                 
+                [arraylatEvent addObject:lat];
                 
-                [arrayNameMyEvent addObject:nameEvent];
-                [arrayAddressMyEvent addObject:addressEvent];
-                [arrayDateMyEvent addObject:eventDateCorrectFormate];
-                [arrayPicMyEvent addObject:eventpic];
-                [arrayStartTimeMyEvent addObject:starttime];
-                [arrayEndTimeMyEvent addObject:endtime];
+                [arraylongEvent addObject: lon];
                 
-                [arraypriceMyEvent addObject:price];
-                
-                [arraylongMyEvent addObject:lon];
-                
-                [arraylatMyEvent addObject:lat];
-                
-                [arraydescriptionMyEvent addObject:description];
-                
+                [arraymaxAttendevent addObject:maxAttend];
                 
             }
-            [_tableViewMyEvent setHidden:false];
-            [_tabloeViewPastEvent setHidden:true];
-            [_tableViewMyEvent reloadData];
-        }
-    }];
-}
-
-
-
--(void)myEventPastApi {
-    
-    _indicator.hidden=NO;
-    [_indicator startAnimating];
-    
-    
-    NSString *strAccessToken = [Model sharedInstance].accessToken;
-    NSString *strBearer = @"Bearer ";
-    
-    
-    NSString *URL = [NSString stringWithFormat:@"%@%@",Api_Server_Url,getownevents];
-    NSURL *theURL = [NSURL URLWithString:URL];
-    NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:theURL cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:30.0f];
-    [theRequest setHTTPMethod:@"POST"];
-    [theRequest setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
-    
-    [theRequest setValue:[strBearer stringByAppendingString:strAccessToken] forHTTPHeaderField:@"Authorization"];
-    [theRequest setValue:@"application/json" forHTTPHeaderField:@"Accept"];
-    
-    NSString *key = @"key=";
-    
-    NSString *concatenate1 = [key stringByAppendingString:@"Past"];
-    
-    
-    
-    //NSString *post = [URL stringByAppendingString:stringWithoutSpaces];
-    
-    NSData *postData = [concatenate1 dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
-    [theRequest setHTTPBody:postData];
-    
-    [NSURLConnection sendAsynchronousRequest:theRequest queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-        // if(data != nil){
-        
-        NSString *noti = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-        NSLog(@"Response:: %@", noti);
-        
-        
-        [_indicator stopAnimating];
-        _indicator.hidden=YES;
-        
-        
-        if(data!=nil){
             
-            [arrayNamePastEvent removeAllObjects];
-            [arrayAddressPastEvent removeAllObjects];
-            [arrayDatePastEvent removeAllObjects];
-            [arrayPicPastEvent removeAllObjects];
-            [arrayStartTimePastEvent removeAllObjects];
-            [arrayEndTimePastEvent removeAllObjects];
-            
-            [arraypricePastEvent removeAllObjects];
-            
-            [arraylongPastEvent removeAllObjects];
-            
-            [arraylatPastEvent removeAllObjects];
-            
-            [arraydescriptionPastEvent removeAllObjects];
+            [_tableViewMenu reloadData];
             
             
-            NSError *jsonError;
+            //            if (errors!=nil) {
+            //
+            //
+            //                [self callAlert:@"Warning" message:@"Incorrect username or password"];
+            //
+            //
+            //            }
             
-            NSData *objectData = [noti dataUsingEncoding:NSUTF8StringEncoding];
-            NSDictionary *json = [NSJSONSerialization JSONObjectWithData:objectData
-                                                                 options:NSJSONReadingMutableContainers
-                                                                   error:&jsonError];
-            NSLog(@"%@",json);
+            //            else{
             
-            NSArray *Data = [json objectForKey:@"Data"];
+            //                [Model sharedInstance].accessToken= [json objectForKey:@"access_token"];
+            //
+            //                NSLog(@"access token %@",[Model sharedInstance].accessToken);
+            //
+            //                NSArray *valueData = [json objectForKey:@"user"];
+            //
+            //                NSLog(@"%@ data",valueData);
+            //
+            //                NSArray *username1=[valueData valueForKey:@"username"];
+            //
+            //                NSString *contact=[valueData valueForKey:@"contact"];
+            //
+            //                NSString *email1=[valueData valueForKey:@"email"];
+            //
+            //                //   [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(setButtonEnabled) userInfo:nil repeats:NO];
+            //
+            //
+            //                [[NSUserDefaults standardUserDefaults]setObject:username1 forKey:@"username1"];
+            //
+            //                //   [[NSUserDefaults standardUserDefaults]setObject:_textFieldPassword.text forKey:@"Password"];
+            //
+            //                [[NSUserDefaults standardUserDefaults]setObject:contact forKey:@"contact"];
+            //
+            //                [[NSUserDefaults standardUserDefaults]setObject:email1 forKey:@"email"];
+            //                [[NSUserDefaults standardUserDefaults]synchronize];
+            //
+            //                UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+            //
+            //                UIViewController *vc = [sb instantiateViewControllerWithIdentifier:@"DashBoradViewController"];
+            //
+            //                [self.navigationController pushViewController:vc animated:YES];
+            //
             
-            NSArray *allData=[Data valueForKey:@"data"];
+            //                __textFieldUserNameLogin.text=nil;
+            //
+            //                __textFieldPasswordLogin.text=nil;
             
-            for (int i=0; i < allData.count; i++) {
-                
-                NSDictionary *dict=[allData objectAtIndex:i];
-                
-                NSArray *nameEvent=[dict valueForKey:@"name"];
-                NSString *addressEvent=[dict valueForKey:@"address"];
-                NSString *eventdate=[dict valueForKey:@"event_date"];
-                
-                
-                NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
-                dateFormatter.dateFormat = @"yyyy-MM-dd";
-                NSDate *yourDate = [dateFormatter dateFromString:eventdate];
-                dateFormatter.dateFormat = @"dd-MMM-yyyy";
-                
-                NSString *eventDateCorrectFormate= [NSString stringWithFormat:@"%@",
-                                                    [dateFormatter stringFromDate:yourDate]];
-                
-                
-                
-                
-                NSString *eventpic=[dict valueForKey:@"event_pic"];
-                NSString *starttime=[dict valueForKey:@"start_time"];
-                
-                NSString *endtime=[dict valueForKey:@"end_time"];
-                
-                NSString *price=[dict valueForKey:@"price"];
-                
-                NSString *lat=[dict valueForKey:@"latitude"];
-                
-                NSString *lon=[dict valueForKey:@"longitude"];
-                
-                NSString *description=[dict valueForKey:@"description"];
-                
-                
-                [arrayNamePastEvent addObject:nameEvent];
-                [arrayAddressPastEvent addObject:addressEvent];
-                [arrayDatePastEvent addObject:eventDateCorrectFormate];
-                [arrayPicPastEvent addObject:eventpic];
-                [arrayStartTimePastEvent addObject:starttime];
-                [arrayEndTimePastEvent addObject:endtime];
-                
-                [arraypricePastEvent addObject:price];
-                
-                [arraylongPastEvent addObject:lon];
-                
-                [arraylatPastEvent addObject:lat];
-                
-                [arraydescriptionPastEvent addObject:description];
-                
-                
-            }
-            [_tableViewMyEvent setHidden:true];
-            [_tabloeViewPastEvent setHidden:false];
-            [_tabloeViewPastEvent reloadData];
-            
+            //  }
         }
     }];
 }
@@ -815,94 +664,88 @@
 }
 
 
-
-- (IBAction)backButtonCtion:(id)sender {
-    
-    [self.navigationController popViewControllerAnimated:true];
-    
-    
-    //    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    //
-    //    UIViewController *vc = [sb instantiateViewControllerWithIdentifier:@"DashBoradViewController"];
-    //
-    //    [self.navigationController pushViewController:vc animated:YES];
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return 0.001;
+}
+- (IBAction)buttonSupportAction:(id)sender {
     
     
+    if ([MFMailComposeViewController canSendMail]) {
+        
+        MFMailComposeViewController *mailViewController = [[MFMailComposeViewController alloc] init];
+        mailViewController.mailComposeDelegate = self;
+        [mailViewController setSubject:@""];
+        [mailViewController setMessageBody:@"" isHTML:NO];
+        
+        NSArray *toRecipients = [NSArray arrayWithObject:@"sean@dvlper.com"];
+        // (NSString *) [feed valueForKey:@"email"]];
+        [mailViewController setToRecipients:toRecipients];
+        
+        [self presentModalViewController:mailViewController animated:YES];
+        
+    }
+    
+    else {
+        
+        NSLog(@"Device is unable to send email in its current state.");
+        
+    }
+    
+    //  [self callAlert:@"Email" message:@"sean@dvlper.com"];
     
 }
 
-
-- (IBAction)buttonFutureEventAction:(id)sender {
-    
-    
-    
-    //  _buttonFutureEvents.backgroundColor=[UIColor blackColor];
-    
-    [_buttonFutureEvents setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    
-    //  _buttonPastEvent.backgroundColor=[UIColor whiteColor];
-    
-    [_buttonPastEvent setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
-    
-    [self myEventFutureApi];
-    
-    //
-    //
-    //    CGRect frame = _scrollView.frame;
-    //    frame.origin.x = frame.size.width * 0;
-    //    frame.origin.y = 0;
-    //    [_scrollView scrollRectToVisible:frame animated:NO];
-    //
-    
-    
+- (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error {
+    // switchng the result
+    switch (result) {
+        case MFMailComposeResultCancelled:
+            NSLog(@"Mail send canceled.");
+            /*
+             Execute your code for canceled event here ...
+             */
+            break;
+        case MFMailComposeResultSaved:
+            NSLog(@"Mail saved.");
+            /*
+             Execute your code for email saved event here ...
+             */
+            break;
+        case MFMailComposeResultSent:
+            NSLog(@"Mail sent.");
+            /*
+             Execute your code for email sent event here ...
+             */
+            break;
+        case MFMailComposeResultFailed:
+            NSLog(@"Mail send error: %@.", [error localizedDescription]);
+            /*
+             Execute your code for email send failed event here ...
+             */
+            break;
+        default:
+            break;
+    }
+    // hide the modal view controller
+    [self dismissModalViewControllerAnimated:YES];
 }
 
-
-- (IBAction)buttonPastEventAction:(id)sender {
+-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
     
-    
-    //    _buttonPastEvent.backgroundColor=[UIColor blackColor];
-    
-    [_buttonPastEvent setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    
-    //    _buttonFutureEvents.backgroundColor=[UIColor whiteColor];
-    
-    [_buttonFutureEvents setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
-    //
-    //
-    //    CGRect frame = _scrollView.frame;
-    //    frame.origin.x = frame.size.width * 1;
-    //    frame.origin.y = 0;
-    //    [_scrollView scrollRectToVisible:frame animated:NO];
-    
-    [self myEventPastApi];
-    
-    
+    if (x1 == 1) {
+        NSLog(@"heyy%d",x1);
+        [UIView animateWithDuration:0.4 animations:^{
+            _baseView.frame=CGRectMake(-417,self.baseView.frame.origin.y,self.baseView.frame.size.width,self.baseView.frame.size.height);
+            //            _transperant_view.frame=CGRectMake(-500,self.transperant_view.frame.origin.y,self.transperant_view.frame.size.width,self.transperant_view.frame.size.height);
+            
+            
+            //            _transperant_view.hidden=YES;
+            NSLog(@"right");
+        }];
+        x1=0;
+    }
 }
 
-- (IBAction)settingButton:(id)sender {
-    
-    
-    UIStoryboard *str=[UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    
-    
-    UIViewController *obj = [str instantiateViewControllerWithIdentifier:@"ProfileAccountViewController"];
-    
-    [self.navigationController pushViewController:obj animated:true];
-    
-    
-    
-    
-}
-
-
-- (IBAction)backButtonAction:(id)sender {
-    
-    
-    [self.navigationController popViewControllerAnimated:true];
-    
-    
-}
 
 
 @end
