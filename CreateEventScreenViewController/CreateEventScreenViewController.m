@@ -34,6 +34,8 @@
 
 - (void)viewDidLayoutSubviews
 {
+    [self.scrollViewMain setContentSize:CGSizeMake(0, 1400)];
+
 }
 
 - (void)viewDidLoad {
@@ -190,7 +192,7 @@
 {
     [super viewWillAppear:animated];
     
-    [self.scrollViewMain setContentSize:CGSizeMake(0, 1300)];
+    [self.scrollViewMain setContentSize:CGSizeMake(0, 1400)];
     
 }
 - (void)didReceiveMemoryWarning {

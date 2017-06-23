@@ -175,7 +175,7 @@
 //    
 //    
 //    [_imageViewEvent sd_setImageWithURL:[NSURL URLWithString:imageUrl] placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
-    _lblPrice.text = [NSString stringWithFormat:@"Cost: %@",[_dicdata valueForKey:@"valuePriceAdmin"]];
+    _lblPrice.text = [NSString stringWithFormat:@"Cost: %@$",[_dicdata valueForKey:@"valuePriceAdmin"]];
     _labelAmount.text=valueMaxAttend;
     _labelDate.text=valueDate;
     _labelDescription.text=valueDescription;
@@ -194,7 +194,7 @@
     self.viewAllData.layer.borderColor = [UIColor colorWithRed:(215.0/255.0) green:(215.0/255.0) blue:(215.0/255.0) alpha:1.0].CGColor;
     self.viewAllData.layer.borderWidth = 1.0f;
     
-    self.navigationItem.title =@"Progress";
+    self.navigationItem.title =@"Event Detail";
     
     UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     UIImage *backBtnImage = [UIImage imageNamed:@"Back-1"]  ;
@@ -342,7 +342,15 @@ NSString *strAccessToken = [Model sharedInstance].accessToken;
         if(error == nil && [@"success" isEqualToString:msg]){
             [self showAlert:@"Event booked successfully"];
         }else if(error != nil){
-            [self showAlert:error];
+            if ([error isEqualToString:@"already booked this event"]) {
+                [self showAlert:error];
+
+            }
+            else
+            {
+                [self showAlert:@"Something went wrong.Please try again."];
+
+            }
         }
     }
 }
