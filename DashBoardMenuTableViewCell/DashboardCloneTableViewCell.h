@@ -10,6 +10,7 @@
 
 @interface DashboardCloneTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *imageViewEvent;
+@property (strong, nonatomic) IBOutlet UIView *vwmain;
 
 @property (weak, nonatomic) IBOutlet UILabel *labelEventName;
 
