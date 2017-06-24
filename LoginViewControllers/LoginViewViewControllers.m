@@ -32,7 +32,7 @@
     __textFieldUserNameLogin.text=userName;
     
     __textFieldPasswordLogin.text=password;
-//    
+//
     
     _indicatorLogin.hidden=YES;
     

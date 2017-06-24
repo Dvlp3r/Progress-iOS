@@ -18,7 +18,7 @@
 #import "PastEventDetailViewController.h"
 #import "AdminDashBoardNextScreenViewController.h"
 #import "ProfileAccountViewController.h"
-
+#import "DashboardNextScreenViewController.h"
 
 @interface MyEventCreateViewController ()
 
@@ -59,7 +59,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+    self.navigationItem.title=@"My Events";
     //_imageViewMyEvent.layer.cornerRadius = 55.0;
     UIGraphicsBeginImageContextWithOptions(_imageViewMyEvent.bounds.size, NO, [UIScreen mainScreen].scale);
     [[UIBezierPath bezierPathWithRoundedRect:_imageViewMyEvent.bounds
@@ -78,6 +78,10 @@
     NSString *imageProfile=[[NSUserDefaults standardUserDefaults]objectForKey:@"imageProfile"];
     
     NSString *userName=[[NSUserDefaults standardUserDefaults]objectForKey:@"username1"];
+    UIBarButtonItem *mailbutton =[[UIBarButtonItem alloc] initWithCustomView:_btnsetting];
+    
+    // set the nav bar's right button item
+    self.navigationItem.rightBarButtonItem = mailbutton;
 
     
     if ([profilepicchangeCheck isEqualToString:@"1"]) {
@@ -420,7 +424,7 @@
         [dic setValue:@"" forKey:@"valueidAttend"];
         
         UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        AdminDashBoardNextScreenViewController *init4inchViewController = [storyBoard instantiateViewControllerWithIdentifier:@"AdminDashBoardNextScreenViewController"];
+        DashboardNextScreenViewController *init4inchViewController = [storyBoard instantiateViewControllerWithIdentifier:@"DashboardNextScreenViewController"];
         init4inchViewController.dicdata = dic;
         //[UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
         [self.navigationController pushViewController:init4inchViewController animated:NO];

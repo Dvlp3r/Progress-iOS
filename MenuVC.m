@@ -26,7 +26,7 @@
     }
     else
     {
-        arrayData=[NSArray arrayWithObjects:@"Events",@"My Events",  @"Account", @"Support",@"Logout" ,nil];
+        arrayData=[NSArray arrayWithObjects:@"Events",@"My Events",  @"Account", @"Calendar",@"Logout" ,nil];
         arrayImages=[NSArray arrayWithObjects:@"events",@"my_events",  @"account", @"2017-03-3",@"logout-512.png" ,nil];
 
     }
@@ -141,6 +141,14 @@
         UIViewController *vc = [sb instantiateViewControllerWithIdentifier:@"ProfileAccountViewController"];
          self.sidePanelController.centerPanel = [[UINavigationController alloc]initWithRootViewController:vc];
     }
+    else  if ([[arrayData objectAtIndex:indexPath.row]  isEqualToString:@"Calendar"])
+    {
+        
+        UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        
+        UIViewController *vc = [sb instantiateViewControllerWithIdentifier:@"CalendarViewController"];
+        self.sidePanelController.centerPanel = [[UINavigationController alloc]initWithRootViewController:vc];
+    }
     else  if ([[arrayData objectAtIndex:indexPath.row]  isEqualToString:@"Support"])
     {
         if ([MFMailComposeViewController canSendMail]) {
@@ -177,6 +185,7 @@
   }
     else  if ([[arrayData objectAtIndex:indexPath.row]  isEqualToString:@"Create Events"])
   {
+      [[NSUserDefaults standardUserDefaults] setValue:@"2" forKey:@"Createventdataedit"];
       UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
       
       UIViewController *vc = [sb instantiateViewControllerWithIdentifier:@"CreateEventScreenViewController"];

@@ -11,8 +11,8 @@
 #import "Constant.h"
 #import "Model.h"
 #import "APIGenerator.h"
-
-
+#import "CreateEventScreenViewController.h"
+#import "AFNetworking.h"
 @interface DashboardNextScreenViewController ()
 
 @end
@@ -91,7 +91,7 @@
         NSLog(@"Woo! Can make payments!");
         
         
-        NSString *valuePrice=[[NSUserDefaults standardUserDefaults]objectForKey:@"valuePrice"];
+        NSString *valuePrice=[_dicdata valueForKey:@"valuePriceAdmin"];
         
         if ([valuePrice isEqualToString:@"0"]) {
         
@@ -145,22 +145,37 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    if ([_strpage isEqualToString:@"detail"]) {
+        _btnEdit.hidden = true;
+         _btnRSVP.hidden = false;
+    }
+    else
+    {
+        NSString *roleAdmin=[[NSUserDefaults standardUserDefaults]objectForKey:@"role"];
+        if ([roleAdmin isEqualToString:@"1"]) {
+        _btnEdit.hidden = false;
+        }
+        _btnRSVP.hidden = true;
+         self.navigationItem.title=@"Event Detail";
+    }
+    UIBarButtonItem *mailbutton =[[UIBarButtonItem alloc] initWithCustomView:_btnEdit];
     
-    
-    NSString *startTime=[[NSUserDefaults standardUserDefaults]objectForKey:@"startTime"];
+    // set the nav bar's right button item
+    self.navigationItem.rightBarButtonItem = mailbutton;
+    NSString *startTime=[_dicdata valueForKey:@"valueStartTimeAdmin"];
 
     
-    NSString *valueName=[[NSUserDefaults standardUserDefaults]objectForKey:@"valueName"];
-    NSString *valueMaxAttend=[[NSUserDefaults standardUserDefaults]objectForKey:@"maxAttend"];
-    NSString *valueImage=[[NSUserDefaults standardUserDefaults]objectForKey:@"valueImage"];
-    NSString *valueDate=[[NSUserDefaults standardUserDefaults]objectForKey:@"valueDate"];
-    NSString *valueDescription=[[NSUserDefaults standardUserDefaults]objectForKey:@"valueDescription"];
+    NSString *valueName=[_dicdata valueForKey:@"valueNameAdmin"];
+    NSString *valueMaxAttend=[_dicdata valueForKey:@"MaxAttendEvent"];
+    NSString *valueImage=[_dicdata valueForKey:@"valueImageAdmin"];
+    NSString *valueDate=[_dicdata valueForKey:@"valueDateAdmin"];
+    NSString *valueDescription=[_dicdata valueForKey:@"valuedescriptionAdmin"];
     
 //    NSString *imageUrl = [@"http://122.180.254.6/progressbackend/public/eventpics/" stringByAppendingString:valueImage];
 //    
 //    
 //    [_imageViewEvent sd_setImageWithURL:[NSURL URLWithString:imageUrl] placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
-    
+    _lblPrice.text = [NSString stringWithFormat:@"Cost: %@$",[_dicdata valueForKey:@"valuePriceAdmin"]];
     _labelAmount.text=valueMaxAttend;
     _labelDate.text=valueDate;
     _labelDescription.text=valueDescription;
@@ -179,14 +194,27 @@
     self.viewAllData.layer.borderColor = [UIColor colorWithRed:(215.0/255.0) green:(215.0/255.0) blue:(215.0/255.0) alpha:1.0].CGColor;
     self.viewAllData.layer.borderWidth = 1.0f;
     
+    self.navigationItem.title =@"Event Detail";
     
+    UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    UIImage *backBtnImage = [UIImage imageNamed:@"Back-1"]  ;
+    [backBtn setImage:backBtnImage forState:UIControlStateNormal];
+    [backBtn addTarget:self action:@selector(goback) forControlEvents:UIControlEventTouchUpInside];
+    backBtn.frame = CGRectMake(0, 0, 40, 30);
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithCustomView:backBtn] ;
+    self.navigationItem.leftBarButtonItem = backButton;
+    
+}
+- (void)goback
+{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     
     
-    NSString *value4=[[NSUserDefaults standardUserDefaults]objectForKey:@"valuelat"];
-    NSString *value5=[[NSUserDefaults standardUserDefaults]objectForKey:@"valuelon"];
+    NSString *value4=[_dicdata valueForKey:@"valuelatAdmin"];
+    NSString *value5=[_dicdata valueForKey:@"valuelonAdmin"];
     
 
     
@@ -238,14 +266,72 @@
 }
 
 -(void)bookEvent{
-    NSString *eventid = [[NSUserDefaults standardUserDefaults]objectForKey:@"valueidMain"];
+    
+    NSString *eventid = [_dicdata valueForKey:@"valueidAttend"];
     NSMutableDictionary *dict = [[NSMutableDictionary alloc]init];
     [dict setValue:eventid forKey:@"event_id"];
+   /* AFHTTPRequestOperationManager *manager=[[AFHTTPRequestOperationManager alloc]init];
+    manager.requestSerializer = [AFHTTPRequestSerializer serializer];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+NSString *strAccessToken = [Model sharedInstance].accessToken;
+    strAccessToken = [NSString stringWithFormat:@"Bearer %@",strAccessToken];
+    [manager.requestSerializer setValue:[NSString stringWithFormat:@"%@",strAccessToken] forHTTPHeaderField:@"Authorization"];
+    manager.requestSerializer = [AFHTTPRequestSerializer serializer];
+    
+    
+    [manager.requestSerializer setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    [manager POST:[NSString stringWithFormat:@"http://54.209.19.2/api/booktoevent"] parameters:dict success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"responseObject %@",responseObject);
+        NSDictionary *dictResult = [NSJSONSerialization JSONObjectWithData:responseObject options:kNilOptions error:nil];
+        NSLog(@"dictResult %@",dictResult);
+       
+        [self stopHudAnimating];
+        NSLog(@"%@",  responseObject);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error)
+     {
+         [self stopHudAnimating];
+     }];
+*/
+  /*  NSString *strAccessToken = [Model sharedInstance].accessToken;
+    strAccessToken = [NSString stringWithFormat:@"Bearer %@",strAccessToken];
+    NSDictionary *headers = @{ @"authorization": strAccessToken,
+                               @"content-type": @"application/x-www-form-urlencoded"
+                               };
+    
+    NSMutableData *postData = [[NSMutableData alloc] initWithData:[[NSString stringWithFormat:@"event_id=8"] dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"http://54.209.19.2/api/booktoevent"]
+                                                           cachePolicy:NSURLRequestUseProtocolCachePolicy
+                                                       timeoutInterval:10.0];
+    [request setHTTPMethod:@"POST"];
+    [request setAllHTTPHeaderFields:headers];
+    [request setHTTPBody:postData];
+    
+    NSURLSession *session = [NSURLSession sharedSession];
+    NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
+                                                completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+                                                    if (error) {
+                                                        NSLog(@"%@", error);
+
+                                                        [self showAlert:error.localizedDescription];
+                                                        [self stopHudAnimating];
+
+                                                    } else {
+                                                        NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
+                                                        NSLog(@"%@", httpResponse);
+                                                        NSDictionary *dictResult = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+                                                        NSLog(@"dictResult %@",dictResult);
+                                                    }
+                                                }];
+    [dataTask resume];
+    */
     [self executeTask:[APIGenerator bookEvent:dict]];
 }
 
 -(BOOL)onSuccess:(id)object forRT:(NSString *)rt andParamObject:(HttpObject *)params{
     [self onBookEventResponseReceived:object];
+    
+
     return YES;
 }
 
@@ -253,10 +339,18 @@
     if(json != nil){
         NSString *msg = [json objectForKey:@"message"];
         NSString *error = [json objectForKey:@"error"];
-        if(msg != nil && [@"success" isEqualToString:msg]){
+        if(error == nil && [@"success" isEqualToString:msg]){
             [self showAlert:@"Event booked successfully"];
         }else if(error != nil){
-            [self showAlert:error];
+            if ([error isEqualToString:@"already booked this event"]) {
+                [self showAlert:error];
+
+            }
+            else
+            {
+                [self showAlert:@"Something went wrong.Please try again."];
+
+            }
         }
     }
 }
@@ -271,7 +365,7 @@
     //    [_indicatorLogin startAnimating];
     
     
-    NSString *eventid = [[NSUserDefaults standardUserDefaults]objectForKey:@"valueidMain"];
+    NSString *eventid = [_dicdata valueForKey:@"valueidAttend"];
     
     
     NSString *strAccessToken = [Model sharedInstance].accessToken;
@@ -420,4 +514,20 @@
 }
 
 
+- (IBAction)EditAction:(id)sender {
+    [[NSUserDefaults standardUserDefaults]setValue:@"1" forKey:@"Createventdataedit"];
+    
+    [[NSUserDefaults standardUserDefaults]synchronize];
+    
+    
+    
+    UIStoryboard *str=[UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    
+    CreateEventScreenViewController *init4inchViewController = [str instantiateViewControllerWithIdentifier:@"CreateEventScreenViewController"];
+    init4inchViewController.strpage = @"edit";
+    init4inchViewController.dicdata = _dicdata;
+    //[UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+    [self.navigationController pushViewController:init4inchViewController animated:NO];
+
+}
 @end

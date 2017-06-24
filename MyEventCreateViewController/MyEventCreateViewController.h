@@ -33,6 +33,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *labelUserNameEvent;
 
 @property (strong, nonatomic) IBOutlet UILabel *labelAddress;
+@property (weak, nonatomic) IBOutlet UIButton *btnsetting;
 
 
 

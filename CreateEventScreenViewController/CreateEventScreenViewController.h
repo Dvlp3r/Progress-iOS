@@ -15,7 +15,9 @@
 }
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *indicatorEvent;
 
+@property (weak, nonatomic) IBOutlet UIButton *btncreateevent;
 @property (weak, nonatomic) IBOutlet UITextField *textFieldEventName;
+- (IBAction)btnActionselectLocation:(id)sender;
 
 @property (weak, nonatomic) IBOutlet UITextView *textFieldEventDescription;
 
@@ -71,5 +73,5 @@
 
 @property (strong, nonatomic) IBOutlet UIButton *imageViewButton;
 @property (strong, nonatomic)  NSString *strpage;
-
+@property (strong, nonatomic)  NSMutableDictionary *dicdata;
 @end
