@@ -65,6 +65,8 @@
 		<string>Roboto-Condensed-LightItalic.ttf</string>
 		<string>Roboto-Condensed-Regular.ttf</string>
 	</array>
+	<key>UILaunchStoryboardName</key>
+	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
 	<key>UIRequiredDeviceCapabilities</key>

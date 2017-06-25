@@ -7,11 +7,12 @@
 //
 
 #import "DashboardCloneTableViewCell.h"
-
+#import "PastEventTableViewCell.h"
 @implementation DashboardCloneTableViewCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    [PastEventTableViewCell setShadowView:_vwmain];
     // Initialization code
 }
 

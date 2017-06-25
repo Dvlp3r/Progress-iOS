@@ -24,26 +24,27 @@
 @interface CalendarViewController ()
 {
 
-    NSMutableArray *arrayNameEvent;
-    NSMutableArray *arrayAddressEvent;
-    NSMutableArray *arrayPicEvent;
-    NSMutableArray *arrayDateEvent;
-    NSMutableArray *arrayStartTimeEvent;
-    NSMutableArray *arrayEndTimeEvent;
-    NSMutableArray *arrayDescriptionEvent;
-    NSMutableArray *arrayPriceEvent;
-    NSMutableArray *arrayidMain;
+//    NSMutableArray *arrayNameEvent;
+//    NSMutableArray *arrayAddressEvent;
+//    NSMutableArray *arrayPicEvent;
+   NSMutableArray *arrayDateEvent;
+//    NSMutableArray *arrayStartTimeEvent;
+//    NSMutableArray *arrayEndTimeEvent;
+//    NSMutableArray *arrayDescriptionEvent;
+//    NSMutableArray *arrayPriceEvent;
+//    NSMutableArray *arrayidMain;
+//    
+//    NSMutableArray *arraylatEvent;
+//    
+//    NSMutableArray *arraymaxAttendevent;
+//    
+//    NSMutableArray *arraylongEvent;
+//    
+//    
+//    NSMutableArray *arrayName;
     
-    NSMutableArray *arraylatEvent;
-    
-    NSMutableArray *arraymaxAttendevent;
-    
-    NSMutableArray *arraylongEvent;
-    
-    
-    NSMutableArray *arrayName;
-    
-    
+    NSArray *arrdata;
+    NSArray *arrtempdata;
     int x1;
 }
 @end
@@ -56,31 +57,31 @@
     // Do any additional setup after loading the view.
     _baseView.hidden=YES;
     
-    arrayName =[[NSMutableArray alloc]initWithObjects:@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",nil];
+  //  arrayName =[[NSMutableArray alloc]initWithObjects:@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",nil];
     
-    arrayNameEvent =[[NSMutableArray alloc]init];
+//    arrayNameEvent =[[NSMutableArray alloc]init];
     
-    arraymaxAttendevent = [[NSMutableArray alloc]init];
+  //  arraymaxAttendevent = [[NSMutableArray alloc]init];
     
-    arrayPicEvent =[[NSMutableArray alloc]init];
+  ///  arrayPicEvent =[[NSMutableArray alloc]init];
     
-    arrayAddressEvent =[[NSMutableArray alloc]init];
+//arrayAddressEvent =[[NSMutableArray alloc]init];
     
     arrayDateEvent =[[NSMutableArray alloc]init];
     
-    arrayStartTimeEvent =[[NSMutableArray alloc]init];
+  //  arrayStartTimeEvent =[[NSMutableArray alloc]init];
     
-    arrayEndTimeEvent =[[NSMutableArray alloc]init];
+  //  arrayEndTimeEvent =[[NSMutableArray alloc]init];
     
-    arrayDescriptionEvent=[[NSMutableArray alloc]init];
+  //  arrayDescriptionEvent=[[NSMutableArray alloc]init];
     
-    arrayPriceEvent=[[NSMutableArray alloc]init];
+ //   arrayPriceEvent=[[NSMutableArray alloc]init];
     
-    arrayidMain=[[NSMutableArray alloc]init];
+  ///  arrayidMain=[[NSMutableArray alloc]init];
     
-    arraylatEvent =[[NSMutableArray alloc]init];
+ //   arraylatEvent =[[NSMutableArray alloc]init];
     
-    arraylongEvent =[[NSMutableArray alloc]init];
+ //   arraylongEvent =[[NSMutableArray alloc]init];
     
     self.navigationItem.title =@"Events";
     x1=0;
@@ -116,9 +117,38 @@
      calendarViewController *objcal =[[calendarViewController alloc] initWithNibName:@"calendarViewController" bundle:nil];
      objcal.arrdata = arrtemp;
      [self.navigationController pushViewController:objcal animated:NO];*/
+    NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
+    dateFormatter.dateFormat = @"yyyy-MM-dd";
+  //  NSDate *yourDate = [dateFormatter dateFromString:eventdate];
+    dateFormatter.dateFormat = @"dd-MMM-yyyy";
+    
+    NSString *eventDateCorrectFormate= [NSString stringWithFormat:@"%@",
+                                        [dateFormatter stringFromDate:date]];
+    arrtempdata = [self arrseort:eventDateCorrectFormate];
+    if (arrtempdata.count == 0) {
+        self.tableViewMenu.hidden = true;
+        self.lblEvent.hidden = false;
+        
+    }
+    else
+    {
+        self.tableViewMenu.hidden = false;
+        self.lblEvent.hidden = true;
+        
+    }
+    [_tableViewMenu reloadData];
     
 }
-
+-(NSArray*)arrseort:(NSString*)strdate
+{
+    NSMutableArray *arr =[[NSMutableArray alloc] init];
+    for (int i=0; i<arrdata.count; i++) {
+        if ([[arrayDateEvent objectAtIndex:i] isEqualToString:strdate]) {
+            [arr addObject:[arrdata objectAtIndex:i]];
+        }
+    }
+    return arr;
+}
 - (void)calendarCurrentMonthDidChange:(FSCalendar *)calendar
 {
     // NSLog(@"did change to month %@",[calendar.currentMonth fs_stringWithFormat:@"MMMM yyyy"]);
@@ -291,7 +321,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
     
-    return [arrayNameEvent count];
+    return [arrtempdata count];
     
     
 }
@@ -317,11 +347,24 @@
     //
     //    [cell.imageViewEvent sd_setImageWithURL:[NSURL URLWithString:imageUrl] placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
     
-    cell.labelEventName.text=[arrayNameEvent objectAtIndex:indexPath.row];
+
     
-    cell.labelEventAddress.text=[arrayAddressEvent objectAtIndex:indexPath.row];
     
-    cell.labelEventDate.text=[arrayDateEvent objectAtIndex:indexPath.row];
+    NSString *eventdate=[[arrtempdata objectAtIndex:indexPath.row] valueForKey:@"event_date"];
+    
+    NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
+    dateFormatter.dateFormat = @"yyyy-MM-dd";
+    NSDate *yourDate = [dateFormatter dateFromString:eventdate];
+    dateFormatter.dateFormat = @"dd-MMM-yyyy";
+    
+    NSString *eventDateCorrectFormate= [NSString stringWithFormat:@"%@",
+                                        [dateFormatter stringFromDate:yourDate]];
+
+    cell.labelEventName.text=[[arrtempdata valueForKey:@"name"] objectAtIndex:indexPath.row];
+    
+    cell.labelEventAddress.text=[[arrtempdata objectAtIndex:indexPath.row] valueForKey:@"address"];
+    
+    cell.labelEventDate.text=eventDateCorrectFormate;
     
     
     
@@ -336,35 +379,43 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    return 179;
+    return 280;
     
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    NSArray *nameEvent=[[arrtempdata objectAtIndex:indexPath.row] valueForKey:@"name"];
+    NSString *addressEvent=[[arrtempdata objectAtIndex:indexPath.row] valueForKey:@"address"];
+    NSString *eventdate=[[arrtempdata objectAtIndex:indexPath.row] valueForKey:@"event_date"];
+    
+    NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
+    dateFormatter.dateFormat = @"yyyy-MM-dd";
+    NSDate *yourDate = [dateFormatter dateFromString:eventdate];
+    dateFormatter.dateFormat = @"dd-MMM-yyyy";
+    
+    NSString *eventDateCorrectFormate= [NSString stringWithFormat:@"%@",
+                                        [dateFormatter stringFromDate:yourDate]];
+    
+    NSString *eventpic=[[arrtempdata objectAtIndex:indexPath.row] valueForKey:@"event_pic"];
+    NSString *starttime=[[arrtempdata objectAtIndex:indexPath.row] valueForKey:@"start_time"];
+    NSString *endtime=[[arrtempdata objectAtIndex:indexPath.row] valueForKey:@"end_time"];
+    
+    NSString *idMain= [NSString stringWithFormat:@"%@",[ [arrtempdata objectAtIndex:indexPath.row] valueForKey:@"id"]];
+    
+    NSLog(@"idmain %@",idMain);
+    
+    NSString *description=[[arrtempdata objectAtIndex:indexPath.row] valueForKey:@"description"];
+    
+    NSString *price=[[arrtempdata objectAtIndex:indexPath.row] valueForKey:@"price"];
+    
+    NSString *maxAttend =[NSString stringWithFormat:@"%@", [[arrtempdata objectAtIndex:indexPath.row] valueForKey:@"max_attend"]];
     
     
-    NSArray *valueName=[arrayNameEvent objectAtIndex:indexPath.row];
-    NSArray *valueAddress=[arrayAddressEvent objectAtIndex:indexPath.row];
-    NSArray *valueImage=[arrayPicEvent objectAtIndex:indexPath.row];
-    NSArray *valueDate=[arrayDateEvent objectAtIndex:indexPath.row];
+    NSString *lat=[[arrtempdata objectAtIndex:indexPath.row] valueForKey:@"latitude"];
     
-    NSArray *valueDescription=[arrayDescriptionEvent objectAtIndex:indexPath.row];
-    NSArray *valuePrice=[arrayPriceEvent objectAtIndex:indexPath.row];
+    NSString *lon=[[arrtempdata objectAtIndex:indexPath.row] valueForKey:@"longitude"];
     
-    
-    
-    NSArray *valueidMain=[arrayidMain objectAtIndex:indexPath.row];
-    
-    NSArray *valuelat=[arraylatEvent objectAtIndex:indexPath.row];
-    
-    
-    NSArray *valuelon=[arraylongEvent objectAtIndex:indexPath.row];
-    
-    NSArray *startTime=[arrayStartTimeEvent objectAtIndex:indexPath.row];
-    NSArray *endtime=[arrayEndTimeEvent objectAtIndex:indexPath.row];
-    
-    
-    NSArray *maxAttend=[arraymaxAttendevent objectAtIndex:indexPath.row];
+   
     
     
     
@@ -377,26 +428,28 @@
     
     
     
-    [[NSUserDefaults standardUserDefaults]setObject:valueDate forKey:@"valueDate"];
+    
+    
+    [[NSUserDefaults standardUserDefaults]setObject:eventDateCorrectFormate forKey:@"valueDate"];
     
     
     
     
     NSMutableDictionary *dic=[[NSMutableDictionary alloc] init];
-    [dic setValue:valuelon forKey:@"valuelonAdmin"];
-    [dic setValue:valuelat forKey:@"valuelatAdmin"];
-    [dic setValue:valueAddress forKey:@"address"];
+    [dic setValue:lon forKey:@"valuelonAdmin"];
+    [dic setValue:lat forKey:@"valuelatAdmin"];
+    [dic setValue:addressEvent forKey:@"address"];
     [dic setValue:endtime forKey:@"valueEndTimeAdmin"];
-    [dic setValue:startTime forKey:@"valueStartTimeAdmin"];
-    [dic setValue:valueDescription forKey:@"valuedescriptionAdmin"];
-    [dic setValue:valuePrice forKey:@"valuePriceAdmin"];
-    [dic setValue:valueDate forKey:@"valueDateAdmin"];
-    [dic setValue:valueImage forKey:@"valueImageAdmin"];
+    [dic setValue:starttime forKey:@"valueStartTimeAdmin"];
+    [dic setValue:description forKey:@"valuedescriptionAdmin"];
+    [dic setValue:price forKey:@"valuePriceAdmin"];
+    [dic setValue:eventDateCorrectFormate forKey:@"valueDateAdmin"];
+    [dic setValue:eventpic forKey:@"valueImageAdmin"];
     [dic setValue:maxAttend forKey:@"MaxAttendEvent"];
     
-    [dic setValue:valueName forKey:@"valueNameAdmin"];
+    [dic setValue:nameEvent forKey:@"valueNameAdmin"];
     [dic setValue:maxAttend forKey:@"valueTotalAttend"];
-    [dic setValue:valueidMain forKey:@"valueidAttend"];
+    [dic setValue:idMain forKey:@"valueidAttend"];
     
     UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     DashboardNextScreenViewController *init4inchViewController = [storyBoard instantiateViewControllerWithIdentifier:@"DashboardNextScreenViewController"];
@@ -542,7 +595,8 @@
             
             
             NSArray *allData=[Data valueForKey:@"data"];
-            
+            arrdata = allData;
+            arrtempdata = allData;
             for (int i=0; i < allData.count; i++) {
                 
                 NSDictionary *dict=[allData objectAtIndex:i];
@@ -579,22 +633,34 @@
                 NSString *lon=[dict valueForKey:@"longitude"];
                 
                 
-                [arrayNameEvent addObject:nameEvent];
-                [arrayAddressEvent addObject:addressEvent];
-                [arrayDateEvent addObject:eventDateCorrectFormate];
-                [arrayPicEvent addObject:eventpic];
-                [arrayStartTimeEvent addObject:starttime];
-                [arrayEndTimeEvent addObject:endtime];
-                [arrayDescriptionEvent addObject:description];
-                [arrayPriceEvent addObject:price];
-                [arrayidMain addObject:idMain];
+//                [arrayNameEvent addObject:nameEvent];
+//                [arrayAddressEvent addObject:addressEvent];
+               [arrayDateEvent addObject:eventDateCorrectFormate];
+//                [arrayPicEvent addObject:eventpic];
+//                [arrayStartTimeEvent addObject:starttime];
+//                [arrayEndTimeEvent addObject:endtime];
+//                [arrayDescriptionEvent addObject:description];
+//                [arrayPriceEvent addObject:price];
+//                [arrayidMain addObject:idMain];
+//                
+//                [arraylatEvent addObject:lat];
+//                
+//                [arraylongEvent addObject: lon];
+//                
+//                [arraymaxAttendevent addObject:maxAttend];
                 
-                [arraylatEvent addObject:lat];
+            }
+            
+            if (arrtempdata.count == 0) {
+                self.tableViewMenu.hidden = true;
+                self.lblEvent.hidden = false;
                 
-                [arraylongEvent addObject: lon];
-                
-                [arraymaxAttendevent addObject:maxAttend];
-                
+            }
+            else
+            {
+                self.tableViewMenu.hidden = false;
+                self.lblEvent.hidden = true;
+
             }
             
             [_tableViewMenu reloadData];

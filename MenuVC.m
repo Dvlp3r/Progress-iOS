@@ -26,7 +26,7 @@
     }
     else
     {
-        arrayData=[NSArray arrayWithObjects:@"Events",@"My Events",  @"Account", @"Calendar",@"Logout" ,nil];
+        arrayData=[NSArray arrayWithObjects:@"Events",@"My Events",  @"Account",@"Logout" ,nil];
         arrayImages=[NSArray arrayWithObjects:@"events",@"my_events",  @"account", @"2017-03-3",@"logout-512.png" ,nil];
 
     }
@@ -116,11 +116,17 @@
 
         if ([[arrayData objectAtIndex:indexPath.row]  isEqualToString:@"Events"])
     {
-        UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+       /* UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         
         UIViewController *vc = [sb instantiateViewControllerWithIdentifier:@"DashBoradViewController"];
         
        self.sidePanelController.centerPanel = [[UINavigationController alloc]initWithRootViewController:vc];
+        
+        */
+        UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        
+        UIViewController *vc = [sb instantiateViewControllerWithIdentifier:@"CalendarViewController"];
+        self.sidePanelController.centerPanel = [[UINavigationController alloc]initWithRootViewController:vc];
 
     }
     else  if ([[arrayData objectAtIndex:indexPath.row]  isEqualToString:@"My Events"])

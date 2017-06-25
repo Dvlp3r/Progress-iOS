@@ -178,6 +178,7 @@
 		A7762FE2CE40F221EA3FEF89 /* libPods-Events.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD38E6B1EED2DB295B1FE914 /* libPods-Events.a */; };
 		B1E3AF5B1EFB1FF3004B7B1E /* DashboardCloneTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B1E3AF591EFB1FF3004B7B1E /* DashboardCloneTableViewCell.m */; };
 		B1E3AF5C1EFB1FF3004B7B1E /* DashboardCloneTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B1E3AF5A1EFB1FF3004B7B1E /* DashboardCloneTableViewCell.xib */; };
+		B1E3AF601EFE5F5F004B7B1E /* blacksplash-1.png in Resources */ = {isa = PBXBuildFile; fileRef = B1E3AF5F1EFE5F5F004B7B1E /* blacksplash-1.png */; };
 		B89D45E96F2BC1E7EC53406F /* libPods-EventsUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9266BA804F0DB28A51AC6282 /* libPods-EventsUITests.a */; };
 		BB2068B71EF0351500887276 /* AdminDashboardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BB2068B51EF0351500887276 /* AdminDashboardCell.m */; };
 		BB2068B81EF0351600887276 /* AdminDashboardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB2068B61EF0351500887276 /* AdminDashboardCell.xib */; };
@@ -475,6 +476,7 @@
 		B1E3AF581EFB1FF3004B7B1E /* DashboardCloneTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DashboardCloneTableViewCell.h; sourceTree = "<group>"; };
 		B1E3AF591EFB1FF3004B7B1E /* DashboardCloneTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DashboardCloneTableViewCell.m; sourceTree = "<group>"; };
 		B1E3AF5A1EFB1FF3004B7B1E /* DashboardCloneTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DashboardCloneTableViewCell.xib; sourceTree = "<group>"; };
+		B1E3AF5F1EFE5F5F004B7B1E /* blacksplash-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "blacksplash-1.png"; path = "Assets.xcassets/LaunchImage.launchimage/blacksplash-1.png"; sourceTree = "<group>"; };
 		BB2068B41EF0351500887276 /* AdminDashboardCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdminDashboardCell.h; sourceTree = "<group>"; };
 		BB2068B51EF0351500887276 /* AdminDashboardCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdminDashboardCell.m; sourceTree = "<group>"; };
 		BB2068B61EF0351500887276 /* AdminDashboardCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AdminDashboardCell.xib; sourceTree = "<group>"; };
@@ -1039,6 +1041,7 @@
 		8141B3E61E40862B0079FE0C /* Events */ = {
 			isa = PBXGroup;
 			children = (
+				B1E3AF5F1EFE5F5F004B7B1E /* blacksplash-1.png */,
 				106FA4301EE73C1600921B84 /* AppDelegate.h */,
 				106FA4311EE73C1600921B84 /* AppDelegate.m */,
 				811D94D21E55C0F200EA4C9E /* Events.entitlements */,
@@ -1436,6 +1439,7 @@
 				8141B4241E408ED50079FE0C /* special-events-hero-image.jpg in Resources */,
 				8130D3DF1E432A1700DA7995 /* firstimage.jpg in Resources */,
 				8130D3DB1E43133500DA7995 /* Log.png in Resources */,
+				B1E3AF601EFE5F5F004B7B1E /* blacksplash-1.png in Resources */,
 				81B9AFD51E66F7090024F92A /* UserAdminEventTableViewCell.xib in Resources */,
 				8130D3F71E4343B100DA7995 /* menublackimage.png in Resources */,
 				81CA72251E659C2200700A40 /* upload.png in Resources */,
@@ -1843,7 +1847,6 @@
 			baseConfigurationReference = 9E4883B6B94A7132A7271A01 /* Pods-Events.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Chloe Berkowitz (7LRH4VL44G)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 8NL99R24EE;
@@ -1862,7 +1865,6 @@
 			baseConfigurationReference = EEE7E06F83DAF1A81CD7794E /* Pods-Events.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Chloe Berkowitz (7LRH4VL44G)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 8NL99R24EE;

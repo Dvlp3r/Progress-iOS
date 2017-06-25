@@ -380,7 +380,7 @@
                 
                 [self.navigationController pushViewController:vc animated:YES];*/
                 
-                UIViewController *objHomeVC=[sb instantiateViewControllerWithIdentifier:@"DashBoradViewController"];
+                UIViewController *objHomeVC=[sb instantiateViewControllerWithIdentifier:@"CalendarViewController"];
                 self.sidePanelObj = [[JASidePanelController alloc]init];
                 self.sidePanelObj.shouldDelegateAutorotateToVisiblePanel = NO;
                 self.sidePanelObj.leftPanel = [sb instantiateViewControllerWithIdentifier:@"menuView"];

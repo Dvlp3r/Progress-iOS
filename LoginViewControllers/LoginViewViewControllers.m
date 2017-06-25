@@ -274,7 +274,7 @@
     UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
    /* UIViewController *vc = [sb instantiateViewControllerWithIdentifier:@"DashBoradViewController"];
     [self.navigationController pushViewController:vc animated:YES];*/
-    DashBoradViewController *objHomeVC=[sb instantiateViewControllerWithIdentifier:@"DashBoradViewController"];
+    DashBoradViewController *objHomeVC=[sb instantiateViewControllerWithIdentifier:@"CalendarViewController"];
     self.sidePanelObj = [[JASidePanelController alloc]init];
     self.sidePanelObj.shouldDelegateAutorotateToVisiblePanel = NO;
     self.sidePanelObj.leftPanel = [sb instantiateViewControllerWithIdentifier:@"menuView"];
@@ -436,7 +436,7 @@
                     
                     UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
                     
-                    UIViewController *vc = [sb instantiateViewControllerWithIdentifier:@"DashBoradViewController"];
+                    UIViewController *vc = [sb instantiateViewControllerWithIdentifier:@"CalendarViewController"];
                     
                     [self.navigationController pushViewController:vc animated:YES];
                     
