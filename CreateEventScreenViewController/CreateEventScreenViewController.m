@@ -34,8 +34,8 @@
 
 - (void)viewDidLayoutSubviews
 {
-    [self.scrollViewMain setContentSize:CGSizeMake(0, 1400)];
-
+    //    [self.scrollViewMain setContentSize:CGSizeMake(0, 1400)];
+    
 }
 
 - (void)viewDidLoad {
@@ -166,18 +166,18 @@
     
     [self.view addGestureRecognizer:tap];
     self.navigationItem.title  = @"Create Event";
-
+    
     if ([_strpage isEqualToString:@"edit"]) {
         
         self.navigationItem.title  = @"Edit Event";
-
-    UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    UIImage *backBtnImage = [UIImage imageNamed:@"Back-1"]  ;
-    [backBtn setImage:backBtnImage forState:UIControlStateNormal];
-    [backBtn addTarget:self action:@selector(goback) forControlEvents:UIControlEventTouchUpInside];
-    backBtn.frame = CGRectMake(0, 0, 40, 30);
-    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithCustomView:backBtn] ;
-    self.navigationItem.leftBarButtonItem = backButton;
+        
+        UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        UIImage *backBtnImage = [UIImage imageNamed:@"Back-1"]  ;
+        [backBtn setImage:backBtnImage forState:UIControlStateNormal];
+        [backBtn addTarget:self action:@selector(goback) forControlEvents:UIControlEventTouchUpInside];
+        backBtn.frame = CGRectMake(0, 0, 40, 30);
+        UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithCustomView:backBtn] ;
+        self.navigationItem.leftBarButtonItem = backButton;
     }
 }
 - (void)goback
@@ -192,7 +192,7 @@
 {
     [super viewWillAppear:animated];
     
-    [self.scrollViewMain setContentSize:CGSizeMake(0, 1400)];
+    //    [self.scrollViewMain setContentSize:CGSizeMake(0, 1400)];
     
 }
 - (void)didReceiveMemoryWarning {
@@ -268,88 +268,6 @@
 }
 
 
-//- (UIImage*)imageWithImage:(UIImage*)image
-//              scaledToSize:(CGSize)newSize;
-//{
-//    newSize.width=550;
-//    newSize.height=950;
-//    UIGraphicsBeginImageContext(newSize);
-//
-//    //x=0 (because widhth : 320) y=0 (aboveImageController's empty part's start)
-//    [image drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
-//    UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
-//    UIGraphicsEndImageContext();
-//
-//    NSLog(@"this is image%@",newImage);
-//
-//    return newImage;
-//}
-
-
-
-
-//- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
-//
-//
-//
-//
-//    NSURL *mediaUrl;
-//
-//    mediaUrl = (NSURL *)[info valueForKey:UIImagePickerControllerMediaURL];
-//
-//    if (mediaUrl == nil) {
-//
-//        selectedImage = (UIImage *) [info valueForKey:UIImagePickerControllerEditedImage];
-//        if (selectedImage == nil) {
-//
-//            selectedImage= (UIImage *) [info valueForKey:UIImagePickerControllerOriginalImage];
-//            NSLog(@"Original image picked.");
-//
-//        }
-//        else {
-//
-//            NSLog(@"Edited image picked.");
-//
-//        }
-//
-//        _imageViewEditPicture.image=selectedImage;
-//
-//
-//        CLCloudinary *cloudinary = [[CLCloudinary alloc] initWithUrl: @"cloudinary://918791757128321:8RUYVjWnToPF8MKGgsWvzzR-4TY@icarusapp"];
-//
-//
-//        CLUploader* uploader = [[CLUploader alloc] init:cloudinary delegate:self];
-//
-//        NSData* pictureData = UIImageJPEGRepresentation(_imageViewEditPicture.image,0.0365);
-//
-//        NSLog(@"image size %@",pictureData);
-//
-//        //    NSString *imageFilePath = [[NSBundle mainBundle] pathForResource:@"logo" ofType:@"png"];
-//
-//        [uploader upload:pictureData options:@{}];
-//
-//
-//    }
-//
-//    [picker dismissViewControllerAnimated:YES completion:nil];
-//
-//   // img=1;
-//
-//
-//    _imageViewEditPicture.image = selectedImage;
-//
-//    _imageViewBackground.image=selectedImage;
-//
-//    [self dismissViewControllerAnimated:YES completion:^{
-//
-//    }];
-//
-//
-//    self.imageViewEditPicture.image = [info objectForKey:UIImagePickerControllerOriginalImage];
-//
-//
-//}
-
 - (UIImage*)imageWithImage:(UIImage*)image andWidth:(CGFloat)width andHeight:(CGFloat)height
 {
     UIGraphicsBeginImageContext( CGSizeMake(width, height));
@@ -360,26 +278,6 @@
 }
 
 #pragma mark- UIImageController delegate
-
-//- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
-//{
-//    UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
-//
-//
-//    self.imageViewProfilePic.image=image;
-//
-//    [self dismissModalViewControllerAnimated:YES];
-//
-//
-////    selectedImage= [  image;
-//
-////    CLImageEditor *editor = [[CLImageEditor alloc] initWithImage:image];
-////    editor.delegate = self;
-////
-////    [picker pushViewController:editor animated:YES];
-//
-//
-//}
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     //  [SVProgressHUD showWithStatus:@"Uploading..." maskType:SVProgressHUDMaskTypeBlack];
@@ -569,7 +467,7 @@
     [aParametersDic setObject:@"12:12p" forKey:@"end_time"];
     [aParametersDic setObject:_textFieldSelectMaxAttendes.text forKey:@"max_attend"];
     [aParametersDic setObject:_cost.text forKey:@"price"];
-
+    
     
     AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:[NSURL URLWithString:strUrl]];
     
@@ -591,44 +489,44 @@
         //do not put image inside parameters dictionary as I did, but append it!
         
     } success:^(AFHTTPRequestOperation *operation, id responseObject) {
-       
-            
-         //   NSString *requestReply = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-            NSLog(@"%@",responseObject);
-            //    [SVProgressHUD dismiss];
-            
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:@"Event Created Successfully!" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles: nil];
-            [alert show];
-            
-            
-            [_indicatorEvent stopAnimating];
-            
-            
-            _indicatorEvent.hidden=YES;
+        
+        
+        //   NSString *requestReply = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        NSLog(@"%@",responseObject);
+        //    [SVProgressHUD dismiss];
+        
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:@"Event Created Successfully!" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles: nil];
+        [alert show];
+        
+        
+        [_indicatorEvent stopAnimating];
+        
+        
+        _indicatorEvent.hidden=YES;
         NSError *error;
         
         
-            
-            NSArray *message=[responseObject objectForKey:@"message"];
-            
-            
-            if ([message isEqual:@"Success"]) {
-                
-                
-                UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-                
-                UIViewController *vc = [sb instantiateViewControllerWithIdentifier:@"AdminDashboardViewController"];
-                
-                self.sidePanelController.centerPanel = [[UINavigationController alloc]initWithRootViewController:vc];
-            }
-            
-            
-            
         
-       
+        NSArray *message=[responseObject objectForKey:@"message"];
+        
+        
+        if ([message isEqual:@"Success"]) {
+            
+            
+            UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+            
+            UIViewController *vc = [sb instantiateViewControllerWithIdentifier:@"AdminDashboardViewController"];
+            
+            self.sidePanelController.centerPanel = [[UINavigationController alloc]initWithRootViewController:vc];
+        }
+        
+        
+        
+        
+        
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         [_indicatorEvent stopAnimating];
-
+        
         NSLog(@"Error: %@ ***** %@", operation.responseString, error);
     }];
     [op start];
@@ -639,7 +537,7 @@
     
     if (_textFieldEventName.text.length == 0) {
         [self callAlert:@"" message:@"Please enter Name."];
-
+        
     }
     else  if (_textFieldEventDescription.text.length == 0) {
         [self callAlert:@"" message:@"Please enter Description."];
@@ -655,175 +553,14 @@
     }
     else
     {
-    _indicatorEvent.hidden=NO;
-    
-    [_indicatorEvent startAnimating];
+        _indicatorEvent.hidden=NO;
+        
+        [_indicatorEvent startAnimating];
         [self sendImageToServer];
-   /*
-    NSString *fulladdressevent=[[NSUserDefaults standardUserDefaults]objectForKey:@"fulladdressevent"];
-    NSString *eventlat=[[NSUserDefaults standardUserDefaults]objectForKey:@"eventlat"];
-    
-    NSString *eventlong=[[NSUserDefaults standardUserDefaults]objectForKey:@"eventlong"];
-    
-    NSString *dateStartString=[[NSUserDefaults standardUserDefaults]objectForKey:@"dateStartString"];
-    
-    
-    NSString *dateEndString=[[NSUserDefaults standardUserDefaults]objectForKey:@"dateEndString"];
-    
-    */
-        
-        
-        /*
-    NSMutableDictionary*aParametersDic;
-    NSMutableDictionary*aImageDic;
-    NSString *URL = [NSString stringWithFormat:@"%@%@",Api_Server_Url,addevent];
-    NSURL *url = [NSURL URLWithString:URL];
-    NSMutableURLRequest *request= [[NSMutableURLRequest alloc] initWithURL:url] ;
-    aParametersDic = [[NSMutableDictionary alloc] init];
-    
-    if([Model sharedInstance].accessToken.length>0)
-    {
-        NSString * barrer_token=@"Bearer ";
-        barrer_token=[barrer_token stringByAppendingString:[Model sharedInstance].accessToken];
-        [request setValue:barrer_token forHTTPHeaderField:@"Authorization"];
-        NSString * barrer_token2=@"application/json";
-        [request setValue:barrer_token2 forHTTPHeaderField:@"Accept"];
         
     }
     
-    //    _textFieldEventName.text = @"abc";
-    //    _textFieldEventDescription.text = @"Descriptions";
-    //    fulladdressevent = @"Full address";
-    //    eventlong = @"22.12321";
-    //    eventlat = @"33.44432";
-    //    _txtEventDate.text= @"22/01/2018";
-    //    dateEndString = @"24/01/2018";
-    //    _textFieldSelectMaxAttendes.text = @"1200";
     
-    
-    [aParametersDic setObject:_textFieldEventName.text forKey:@"name"];
-    [aParametersDic setObject:_textFieldEventDescription.text forKey:@"description"];
-    
-    
-    //[aParametersDic setObject:fulladdressevent forKey:@"address"];
-    [aParametersDic setObject:stradd forKey:@"address"];
-    
-    //    [aParametersDic setObject:eventlong forKey:@"longitude"];
-    //    [aParametersDic setObject:eventlat forKey:@"latitude"];
-    [aParametersDic setObject:strlon forKey:@"longitude"];
-    [aParametersDic setObject:strlat forKey:@"latitude"];
-    
-    
-    [aParametersDic setObject:_txtEventDate.text forKey:@"event_date"];
-    // [aParametersDic setObject:dateStartString forKey:@"start_time"];
-    [aParametersDic setObject:@"11:11" forKey:@"start_time"];
-    //[aParametersDic setObject:dateEndString forKey:@"end_time"];
-    [aParametersDic setObject:@"12:12p" forKey:@"end_time"];
-    [aParametersDic setObject:_textFieldSelectMaxAttendes.text forKey:@"max_attend"];
-    [aParametersDic setObject:_cost.text forKey:@"price"];
-    
-    //[aParametersDic setObject:_textFieldSelectPrice.text forKey:@"price"];
-    
-    
-    
-    
-    [request setURL:url];
-    aImageDic = [[NSMutableDictionary alloc]init];
-    
-//        CGFloat scaleSize = 0.2f;
-//        UIImage *smallImage = [UIImage imageWithCGImage:image.CGImage
-//                                                  scale:scaleSize
-//                                            orientation:image.imageOrientation];
-    
-    
-    NSData *imageData = UIImageJPEGRepresentation(_imageViewEventImage.image, 0.5);
-    
-    if(imageData){
-        [aImageDic setObject:imageData forKey:[NSString stringWithFormat:@"image%d.jpg",0]];
-    }
-    [request setURL:url];
-    [request setHTTPMethod:@"POST"];
-    NSString *boundary = @"---------------------------14737809831466499882746641449";
-    NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@",boundary];
-    [request addValue:contentType forHTTPHeaderField: @"Content-Type"];
-    
-    NSMutableData *postbody = [NSMutableData data];
-    NSString *postData = [self getHTTPBodyParamsFromDictionary:aParametersDic boundary:boundary];
-    [postbody appendData:[postData dataUsingEncoding:NSUTF8StringEncoding]];
-    
-    [aImageDic enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
-        if(obj != nil)
-        {
-            [postbody appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
-            [postbody appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"event_pic\"; filetype=\"image/png\"; filename=\"%@\"\r\n", key] dataUsingEncoding:NSUTF8StringEncoding]];
-            [postbody appendData:[@"Content-Type: image/jpeg\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
-            [postbody appendData:[NSData dataWithData:obj]];
-            
-        }
-    }];
-    
-    [postbody appendData:[[NSString stringWithFormat:@"\r\n--%@--\r\n",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
-    [request setHTTPBody:postbody];
-    [NSURLConnection sendAsynchronousRequest:request
-                                       queue:[NSOperationQueue mainQueue]
-                           completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
-                               
-                               
-                               
-                               if(response != nil){
-                                   NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
-                                   
-                                   NSString *requestReply = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-                                   
-                                   
-                                   
-                                   if ([httpResponse statusCode] == 200) {
-                                       
-                                       NSString *requestReply = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-                                       NSLog(@"%@",requestReply);
-                                       //    [SVProgressHUD dismiss];
-                                       
-                                       UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:@"Event Created Successfully!" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles: nil];
-                                       [alert show];
-                                       
-                                       
-                                       [_indicatorEvent stopAnimating];
-                                       
-                                       
-                                       _indicatorEvent.hidden=YES;
-                                       
-                                       
-                                       NSDictionary *result = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
-                                       
-                                       NSArray *message=[result objectForKey:@"message"];
-                                       
-                                       
-                                       if ([message isEqual:@"Success"]) {
-                                           
-                                           
-                                           UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-                                           
-                                           UIViewController *vc = [sb instantiateViewControllerWithIdentifier:@"AdminDashboardViewController"];
-                                           
-                                           [self.navigationController pushViewController:vc animated:YES];
-                                       }
-                                       
-                                       
-                                       
-                                   }
-                                   else
-                                   {
-                                       
-                                       UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"OOOpppssss!" message:@"Something Went Wrong! Try again" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles: nil];
-                                       [alert show];
-                                   }
-                               }
-                               
-                               
-                           }];*/
-    }
-         
-        
     
 }
 
@@ -849,152 +586,152 @@
     }
     else
     {
-
-    _indicatorEvent.hidden=NO;
-    
-    [_indicatorEvent startAnimating];
-    
-    
-    NSString *fulladdressevent=[[NSUserDefaults standardUserDefaults]objectForKey:@"fulladdressevent"];
-    NSString *eventlat=[[NSUserDefaults standardUserDefaults]objectForKey:@"eventlat"];
-    
-    NSString *eventlong=[[NSUserDefaults standardUserDefaults]objectForKey:@"eventlong"];
-    
-    NSString *dateStartString=[[NSUserDefaults standardUserDefaults]objectForKey:@"dateStartString"];
-    
-    
-    NSString *dateEndString=[[NSUserDefaults standardUserDefaults]objectForKey:@"dateEndString"];
-    
-    NSString *valueidAttend=[[NSUserDefaults standardUserDefaults]objectForKey:@"valueidAttend"];
-    
-    
-    
-    NSMutableDictionary*aParametersDic;
-    NSMutableDictionary*aImageDic;
-    NSString *URL = [NSString stringWithFormat:@"%@%@",Api_Server_Url,addevent];
-    NSURL *url = [NSURL URLWithString:URL];
-    NSMutableURLRequest *request= [[NSMutableURLRequest alloc] initWithURL:url] ;
-    aParametersDic = [[NSMutableDictionary alloc] init];
-    
-    if([Model sharedInstance].accessToken.length>0)
-    {
-        NSString * barrer_token=@"Bearer ";
-        barrer_token=[barrer_token stringByAppendingString:[Model sharedInstance].accessToken];
-        [request setValue:barrer_token forHTTPHeaderField:@"Authorization"];
-        NSString * barrer_token2=@"application/json";
-        [request setValue:barrer_token2 forHTTPHeaderField:@"Accept"];
         
-    }
-    [aParametersDic setObject:_textFieldEventName.text forKey:@"name"];
-    [aParametersDic setObject:_textFieldEventDescription.text forKey:@"description"];
-    
-    [aParametersDic setObject:stradd forKey:@"address"];
-    [aParametersDic setObject:strlon forKey:@"longitude"];
-    [aParametersDic setObject:strlat forKey:@"latitude"];
-    
-    
-    [aParametersDic setObject:_txtEventDate.text forKey:@"event_date"];
-    [aParametersDic setObject:dateStartString forKey:@"start_time"];
-    [aParametersDic setObject:dateEndString forKey:@"end_time"];
-    
-    [aParametersDic setObject:_textFieldSelectMaxAttendes.text forKey:@"max_attend"];
-    
-    
-    //[aParametersDic setObject:_textFieldSelectPrice.text forKey:@"price"];
-    
-    [aParametersDic setObject:valueidAttend forKey:@"id"];
-    
-    
-    
-    
-    
-    
-    
-    [request setURL:url];
-    aImageDic = [[NSMutableDictionary alloc]init];
-    
-    CGFloat scaleSize = 0.2f;
-    UIImage *smallImage = [UIImage imageWithCGImage:image.CGImage
-                                              scale:scaleSize
-                                        orientation:image.imageOrientation];
-    
-    NSData *imageData = UIImageJPEGRepresentation(smallImage, 6);
-    
-    if(imageData){
-        [aImageDic setObject:imageData forKey:[NSString stringWithFormat:@"image%d.jpg",0]];
-    }
-    [request setURL:url];
-    [request setHTTPMethod:@"POST"];
-    NSString *boundary = @"---------------------------14737809831466499882746641449";
-    NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@",boundary];
-    [request addValue:contentType forHTTPHeaderField: @"Content-Type"];
-    
-    NSMutableData *postbody = [NSMutableData data];
-    NSString *postData = [self getHTTPBodyParamsFromDictionary:aParametersDic boundary:boundary];
-    [postbody appendData:[postData dataUsingEncoding:NSUTF8StringEncoding]];
-    
-    [aImageDic enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
-        if(obj != nil)
+        _indicatorEvent.hidden=NO;
+        
+        [_indicatorEvent startAnimating];
+        
+        
+        NSString *fulladdressevent=[[NSUserDefaults standardUserDefaults]objectForKey:@"fulladdressevent"];
+        NSString *eventlat=[[NSUserDefaults standardUserDefaults]objectForKey:@"eventlat"];
+        
+        NSString *eventlong=[[NSUserDefaults standardUserDefaults]objectForKey:@"eventlong"];
+        
+        NSString *dateStartString=[[NSUserDefaults standardUserDefaults]objectForKey:@"dateStartString"];
+        
+        
+        NSString *dateEndString=[[NSUserDefaults standardUserDefaults]objectForKey:@"dateEndString"];
+        
+        NSString *valueidAttend=[[NSUserDefaults standardUserDefaults]objectForKey:@"valueidAttend"];
+        
+        
+        
+        NSMutableDictionary*aParametersDic;
+        NSMutableDictionary*aImageDic;
+        NSString *URL = [NSString stringWithFormat:@"%@%@",Api_Server_Url,addevent];
+        NSURL *url = [NSURL URLWithString:URL];
+        NSMutableURLRequest *request= [[NSMutableURLRequest alloc] initWithURL:url] ;
+        aParametersDic = [[NSMutableDictionary alloc] init];
+        
+        if([Model sharedInstance].accessToken.length>0)
         {
-            [postbody appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
-            [postbody appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"event_pic\"; filetype=\"image/png\"; filename=\"%@\"\r\n", key] dataUsingEncoding:NSUTF8StringEncoding]];
-            [postbody appendData:[@"Content-Type: image/jpeg\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
-            [postbody appendData:[NSData dataWithData:obj]];
+            NSString * barrer_token=@"Bearer ";
+            barrer_token=[barrer_token stringByAppendingString:[Model sharedInstance].accessToken];
+            [request setValue:barrer_token forHTTPHeaderField:@"Authorization"];
+            NSString * barrer_token2=@"application/json";
+            [request setValue:barrer_token2 forHTTPHeaderField:@"Accept"];
             
         }
-    }];
-    
-    [postbody appendData:[[NSString stringWithFormat:@"\r\n--%@--\r\n",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
-    [request setHTTPBody:postbody];
-    [NSURLConnection sendAsynchronousRequest:request
-                                       queue:[NSOperationQueue mainQueue]
-                           completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
-                               
-                               
-                               
-                               if(response != nil){
-                                   NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
+        [aParametersDic setObject:_textFieldEventName.text forKey:@"name"];
+        [aParametersDic setObject:_textFieldEventDescription.text forKey:@"description"];
+        
+        [aParametersDic setObject:stradd forKey:@"address"];
+        [aParametersDic setObject:strlon forKey:@"longitude"];
+        [aParametersDic setObject:strlat forKey:@"latitude"];
+        
+        
+        [aParametersDic setObject:_txtEventDate.text forKey:@"event_date"];
+        [aParametersDic setObject:dateStartString forKey:@"start_time"];
+        [aParametersDic setObject:dateEndString forKey:@"end_time"];
+        
+        [aParametersDic setObject:_textFieldSelectMaxAttendes.text forKey:@"max_attend"];
+        
+        
+        //[aParametersDic setObject:_textFieldSelectPrice.text forKey:@"price"];
+        
+        [aParametersDic setObject:valueidAttend forKey:@"id"];
+        
+        
+        
+        
+        
+        
+        
+        [request setURL:url];
+        aImageDic = [[NSMutableDictionary alloc]init];
+        
+        CGFloat scaleSize = 0.2f;
+        UIImage *smallImage = [UIImage imageWithCGImage:image.CGImage
+                                                  scale:scaleSize
+                                            orientation:image.imageOrientation];
+        
+        NSData *imageData = UIImageJPEGRepresentation(smallImage, 6);
+        
+        if(imageData){
+            [aImageDic setObject:imageData forKey:[NSString stringWithFormat:@"image%d.jpg",0]];
+        }
+        [request setURL:url];
+        [request setHTTPMethod:@"POST"];
+        NSString *boundary = @"---------------------------14737809831466499882746641449";
+        NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@",boundary];
+        [request addValue:contentType forHTTPHeaderField: @"Content-Type"];
+        
+        NSMutableData *postbody = [NSMutableData data];
+        NSString *postData = [self getHTTPBodyParamsFromDictionary:aParametersDic boundary:boundary];
+        [postbody appendData:[postData dataUsingEncoding:NSUTF8StringEncoding]];
+        
+        [aImageDic enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+            if(obj != nil)
+            {
+                [postbody appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+                [postbody appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"event_pic\"; filetype=\"image/png\"; filename=\"%@\"\r\n", key] dataUsingEncoding:NSUTF8StringEncoding]];
+                [postbody appendData:[@"Content-Type: image/jpeg\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+                [postbody appendData:[NSData dataWithData:obj]];
+                
+            }
+        }];
+        
+        [postbody appendData:[[NSString stringWithFormat:@"\r\n--%@--\r\n",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+        [request setHTTPBody:postbody];
+        [NSURLConnection sendAsynchronousRequest:request
+                                           queue:[NSOperationQueue mainQueue]
+                               completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
                                    
-                                   NSString *requestReply = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
                                    
                                    
-                                   
-                                   if ([httpResponse statusCode] == 200) {
+                                   if(response != nil){
+                                       NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
                                        
                                        NSString *requestReply = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-                                       NSLog(@"%@",requestReply);
-                                       //    [SVProgressHUD dismiss];
                                        
                                        
-                                       [_indicatorEvent stopAnimating];
                                        
-                                       
-                                       _indicatorEvent.hidden=YES;
-                                       
-                                       
-                                       NSDictionary *result = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
-                                       
-                                       NSArray *message=[result objectForKey:@"message"];
-                                       
-                                       
-                                       if ([message isEqual:@"Success"]) {
+                                       if ([httpResponse statusCode] == 200) {
                                            
-                                           [[NSUserDefaults standardUserDefaults]removeObjectForKey:@"Createventdataedit"];
-                                           [[NSUserDefaults standardUserDefaults]synchronize];
+                                           NSString *requestReply = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+                                           NSLog(@"%@",requestReply);
+                                           //    [SVProgressHUD dismiss];
                                            
-                                           UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
                                            
-                                           UIViewController *vc = [sb instantiateViewControllerWithIdentifier:@"AdminDashboardViewController"];
+                                           [_indicatorEvent stopAnimating];
                                            
-                                           [self.navigationController pushViewController:vc animated:YES];
+                                           
+                                           _indicatorEvent.hidden=YES;
+                                           
+                                           
+                                           NSDictionary *result = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+                                           
+                                           NSArray *message=[result objectForKey:@"message"];
+                                           
+                                           
+                                           if ([message isEqual:@"Success"]) {
+                                               
+                                               [[NSUserDefaults standardUserDefaults]removeObjectForKey:@"Createventdataedit"];
+                                               [[NSUserDefaults standardUserDefaults]synchronize];
+                                               
+                                               UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+                                               
+                                               UIViewController *vc = [sb instantiateViewControllerWithIdentifier:@"AdminDashboardViewController"];
+                                               
+                                               [self.navigationController pushViewController:vc animated:YES];
+                                           }
+                                           
+                                           
                                        }
-                                       
-                                       
                                    }
-                               }
-                               
-                               
-                           }];
+                                   
+                                   
+                               }];
     }
     
 }
@@ -1110,53 +847,13 @@
     [[NSUserDefaults standardUserDefaults]synchronize];
     
     
-    
-    //    NSDateFormatter *df = [[NSDateFormatter alloc] init];
-    //    df.dateStyle = NSDateFormatterMediumStyle;
-    //
-    //    //[df setDateStyle:NSDateFormatterMediumStyle];
-    //    [df setDateFormat:@"HH:mm:ss"];
-    ////    NSDate *date1 = [df dateFromString:df];
-    ////    NSLog(@"date1 : %@", df);
-    //
-    //    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    //    [formatter setDateFormat:@"hh:mm a"];
-    ////    NSLog(@"Current Date: %@", [formatter stringFromDate:date1]);
-    //
-    //    _labelStartTime.text = [NSString stringWithFormat:@"%@",
-    //                            [df stringFromDate:_datePickerView.timeZone]];
-    
-    
-    //    NSDate *currDate = [NSDate date];
-    //
-    //
-    //    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
-    //    [dateFormatter setDateFormat:@"HH:mm:ss"];
-    //
-    //    NSString *dateString = [dateFormatter stringFromDate:currDate];
-    //    _labelStartTime.text = [dateFormatter stringFromDate:currDate];
-    
-    
-    
-    //
-    //    [[NSUserDefaults standardUserDefaults] setObject:dateString forKey:@"time_backgorund"];
-    //    [[NSUserDefaults standardUserDefaults] synchronize];
-    
-    
 }
 
 
 - (IBAction)datePickerEndTimeAction:(id)sender {
     
-    //    NSDateFormatter *df = [[NSDateFormatter alloc] init];
-    //    df.dateStyle = NSDateFormatterMediumStyle;
-    //
-    //    _labelEventDate.text = [NSString stringWithFormat:@"%@",
-    //                            [df stringFromDate:_datePickerView.timeZone]];
+        NSDateFormatter *outputFormatter = [[NSDateFormatter alloc] init]; [outputFormatter setDateFormat:@"HH:mm"];
     
-    
-    NSDateFormatter *outputFormatter = [[NSDateFormatter alloc] init]; [outputFormatter setDateFormat:@"HH:mm"];
-    //NSString *dateEndString = [outputFormatter stringFromDate:seldatePickerStartTimeefaults]setObject:dateEndString forKey:@"dateEndString"];
     
     [[NSUserDefaults standardUserDefaults]synchronize];
     
@@ -1209,32 +906,9 @@
 }
 
 
-//- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
-//
-//
-//    _tableViewFriendList.hidden=YES;
-//
-//    [searchBar setShowsCancelButton: YES animated: YES];
-//
-//
-//}
-
-
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
-    //
-    //    NSString *firstLetter= searchBar.text;
-    //
-    ////    [[NSUserDefaults standardUserDefaults]setObject:firstLetter forKey:@"firstLetter"];
-    ////    [[NSUserDefaults standardUserDefaults]synchronize];
-    //
-    
-    //
-    //    [searchBar resignFirstResponder];
-    
-    
-    
-    [_SearchBarLocation resignFirstResponder];
+        [_SearchBarLocation resignFirstResponder];
     
     CLGeocoder *geocoder = [[CLGeocoder alloc] init];
     [geocoder geocodeAddressString:_SearchBarLocation.text completionHandler:^(NSArray *placemarks, NSError *error) {
@@ -1440,7 +1114,7 @@
 
 - (void)openMapForLocationSelection
 {
-//    [self performSegueWithIdentifier:@"openLocationView" sender:self];
+    //    [self performSegueWithIdentifier:@"openLocationView" sender:self];
 }
 
 - (void)viewController:(GMSAutocompleteViewController *)viewController
@@ -1476,7 +1150,7 @@ didFailAutocompleteWithError:(NSError *)error {
 }
 - (CLLocationCoordinate2D) geoCodeUsingAddress:(NSString *)address
 {
-   
+    
     double latitude = 0, longitude = 0;
     NSString *esc_addr =  [address stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     NSString *req = [NSString stringWithFormat:@"http://maps.google.com/maps/api/geocode/json?sensor=false&address=%@", esc_addr];
@@ -1495,7 +1169,7 @@ didFailAutocompleteWithError:(NSError *)error {
     center.longitude = longitude;
     strlat =[ NSString stringWithFormat:@"%f",latitude];
     strlon =[ NSString stringWithFormat:@"%f",longitude];
-
+    
     return center;
 }
 

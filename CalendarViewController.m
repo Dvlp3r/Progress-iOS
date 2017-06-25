@@ -57,31 +57,9 @@
     // Do any additional setup after loading the view.
     _baseView.hidden=YES;
     
-  //  arrayName =[[NSMutableArray alloc]initWithObjects:@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",nil];
-    
-//    arrayNameEvent =[[NSMutableArray alloc]init];
-    
-  //  arraymaxAttendevent = [[NSMutableArray alloc]init];
-    
-  ///  arrayPicEvent =[[NSMutableArray alloc]init];
-    
-//arrayAddressEvent =[[NSMutableArray alloc]init];
     
     arrayDateEvent =[[NSMutableArray alloc]init];
-    
-  //  arrayStartTimeEvent =[[NSMutableArray alloc]init];
-    
-  //  arrayEndTimeEvent =[[NSMutableArray alloc]init];
-    
-  //  arrayDescriptionEvent=[[NSMutableArray alloc]init];
-    
- //   arrayPriceEvent=[[NSMutableArray alloc]init];
-    
-  ///  arrayidMain=[[NSMutableArray alloc]init];
-    
- //   arraylatEvent =[[NSMutableArray alloc]init];
-    
- //   arraylongEvent =[[NSMutableArray alloc]init];
+
     
     self.navigationItem.title =@"Events";
     x1=0;
@@ -379,7 +357,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    return 280;
+    return 128;
     
 }
 

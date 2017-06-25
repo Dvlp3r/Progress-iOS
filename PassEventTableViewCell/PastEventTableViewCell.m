@@ -14,7 +14,6 @@
     [super awakeFromNib];
     // Initialization code
     [self setCardView];
-    
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
