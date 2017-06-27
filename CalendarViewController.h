@@ -14,6 +14,7 @@
 @interface CalendarViewController : UIViewController<FSCalendarDataSource, FSCalendarDelegate,FSCalendarDelegateAppearance,UITableViewDelegate,UITableViewDataSource,MFMailComposeViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UIView *baseView;
 @property (strong, nonatomic) IBOutlet UILabel *lblEvent;
+@property (weak, nonatomic) IBOutlet UISearchBar *searchbar;
 
 @property (weak, nonatomic) IBOutlet UITableView *tableViewMenu;
 @property (weak, nonatomic) IBOutlet FSCalendar *vwcal;

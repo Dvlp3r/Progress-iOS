@@ -45,6 +45,7 @@
     
     NSArray *arrdata;
     NSArray *arrtempdata;
+    NSString *selecteddate;
     int x1;
 }
 @end
@@ -119,6 +120,7 @@
 }
 -(NSArray*)arrseort:(NSString*)strdate
 {
+    selecteddate = strdate;
     NSMutableArray *arr =[[NSMutableArray alloc] init];
     for (int i=0; i<arrdata.count; i++) {
         if ([[arrayDateEvent objectAtIndex:i] isEqualToString:strdate]) {
@@ -510,7 +512,33 @@
     
 }
 
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
+{
+    if ([searchText isEqualToString:@""]) {
+     arrtempdata =   [self arrseort:selecteddate];
+        [_tableViewMenu reloadData];
+        return;
+    }
+    
+    NSMutableArray *arrtest =[[NSMutableArray alloc] init];
+        NSLog(@"%@",arrtempdata);
+        for (int i = 0; i<arrtempdata.count; i++) {
+            NSDictionary * dictedata = [arrtempdata objectAtIndex:i];
+            if ([[[NSString stringWithFormat:@"%@",[dictedata valueForKey:@"name"]] lowercaseString] containsString:[searchText lowercaseString]]) {
+                [arrtest addObject:dictedata];
+            }
+            else  if ([[[NSString stringWithFormat:@"%@",[dictedata valueForKey:@"address"]] lowercaseString] containsString:[searchText lowercaseString]]) {
+                [arrtest addObject:dictedata];
+            }
+            else  if ([[[NSString stringWithFormat:@"%@",[dictedata valueForKey:@"description"]] lowercaseString] containsString:[searchText lowercaseString]]) {
+                [arrtest addObject:dictedata];
+            }
 
+        }
+        
+    arrtempdata = arrtest;
+    [_tableViewMenu reloadData];
+}
 
 
 
@@ -628,6 +656,16 @@
 //                [arraymaxAttendevent addObject:maxAttend];
                 
             }
+            
+            NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
+            dateFormatter.dateFormat = @"yyyy-MM-dd";
+            //  NSDate *yourDate = [dateFormatter dateFromString:eventdate];
+            dateFormatter.dateFormat = @"dd-MMM-yyyy";
+            
+            NSString *eventDateCorrectFormate= [NSString stringWithFormat:@"%@",
+                                                [dateFormatter stringFromDate:[NSDate date]]];
+            arrtempdata = [self arrseort:eventDateCorrectFormate];
+            
             
             if (arrtempdata.count == 0) {
                 self.tableViewMenu.hidden = true;
