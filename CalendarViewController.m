@@ -46,6 +46,7 @@
     NSArray *arrdata;
     NSArray *arrtempdata;
     NSString *selecteddate;
+    NSMutableArray *arrdate;
     int x1;
 }
 @end
@@ -58,7 +59,7 @@
     // Do any additional setup after loading the view.
     _baseView.hidden=YES;
     
-    
+    arrdate = [[NSMutableArray alloc] init];
     arrayDateEvent =[[NSMutableArray alloc]init];
 
     
@@ -143,11 +144,11 @@
 - (UIColor *)calendar:(FSCalendar *)calendar appearance:(FSCalendarAppearance *)appearance fillDefaultColorForDate:(NSDate *)date
 {
     
-    NSString *key = [calendar stringFromDate:date format:@"yyyy-MM-dd"];
+    NSString *key = [calendar stringFromDate:date format:@"dd-MM-yyyy"];
     
-    /* if ([arrdate containsObject:key]) {
+     if ([arrdate containsObject:key]) {
      return  [[UIColor lightGrayColor] colorWithAlphaComponent:0.7f];
-     }*/
+     }
     return nil;
 }
 
@@ -362,7 +363,21 @@
     return 128;
     
 }
-
+-(void)convertdateFormat
+{
+    for (int i = 0; i<arrdata.count; i++) {
+        NSString *stringDate =[NSString stringWithFormat:@"%@",[[arrdata objectAtIndex:i] valueForKey:@"event_date"]];
+        NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
+        dateFormatter.dateFormat = @"yyyy-MM-dd";
+        NSDate *yourDate = [dateFormatter dateFromString:stringDate];
+        dateFormatter.dateFormat = @"dd-MM-yyyy";
+        
+        NSString *eventDateCorrectFormate= [NSString stringWithFormat:@"%@",
+                                            [dateFormatter stringFromDate:yourDate]];
+        [arrdate addObject:eventDateCorrectFormate];
+    }
+    [_vwcal reloadData];
+}
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     NSArray *nameEvent=[[arrtempdata objectAtIndex:indexPath.row] valueForKey:@"name"];
     NSString *addressEvent=[[arrtempdata objectAtIndex:indexPath.row] valueForKey:@"address"];
@@ -603,6 +618,7 @@
             NSArray *allData=[Data valueForKey:@"data"];
             arrdata = allData;
             arrtempdata = allData;
+            [self convertdateFormat];
             for (int i=0; i < allData.count; i++) {
                 
                 NSDictionary *dict=[allData objectAtIndex:i];
